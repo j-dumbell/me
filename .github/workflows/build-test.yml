@@ -12,6 +12,10 @@ jobs:
       with:
         node-version: 18.17.1
         cache: 'npm'
-    - run: yarn install --frozen-lockfile
-    - run: yarn test
+    - name: install dependencies
+      run: yarn install --frozen-lockfile
+    - name: typecheck
+      run: yarn typecheck
+    - name: test
+      run: yarn test --run
     - run: yarn build
