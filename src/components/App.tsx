@@ -5,7 +5,7 @@ import { Experience } from './Experience'
 import { About } from './About'
 
 const App: React.FC = () => (
-  <div className="h-screen bg-white dark:bg-slate-900 text-white">
+  <div className="dark:bg-slate-900 text-white pb-10">
     <Navbar />
 
     <main>
