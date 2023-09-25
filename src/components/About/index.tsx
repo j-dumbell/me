@@ -1,4 +1,5 @@
 import React from 'react'
+import { Section } from '../Section'
 
 const skills: string[] = [
   'Golang',
@@ -16,8 +17,7 @@ const skills: string[] = [
 ]
 
 export const About: React.FC = () => (
-  <section className="mx-auto my-20 max-w-screen-lg">
-    <h2 className="my-7 text-2xl font-semibold text-slate-200">About me</h2>
+  <Section title="About me" num={1}>
     <div className="flex">
       <div className="mr-10">
         <div>
@@ -48,5 +48,5 @@ export const About: React.FC = () => (
         alt="James Dumbell"
       />
     </div>
-  </section>
+  </Section>
 )

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { format } from 'date-fns'
 import { Hyperlink } from '../Hyperlink'
+import { Section } from '../Section'
 
 const companies = ['Grafana', 'Infinity Works', 'Wonderbly'] as const
 type Company = (typeof companies)[number]
@@ -53,37 +54,50 @@ const locDurationDetails = (
 }
 
 export const Experience: React.FC = () => {
-  const [company, setCompany] = useState<Company>('Grafana')
+  const [selectedCompany, setSelectedSelectedCompany] =
+    useState<Company>('Grafana')
 
   const { title, fromDate, toDate, companyHref, location, descriptons } =
-    allJobs[company]
+    allJobs[selectedCompany]
 
   return (
-    <section className="mx-auto  max-w-screen-lg">
-      <h2 className="text-2xl font-semibold text-slate-200 my-7">Experience</h2>
-      <div>
+    <Section title="Experience" num={2}>
+      <div className="flex">
         <div>
-          {companies.map((company) => (
-            <button key={company} onClick={() => setCompany(company)}>
-              <span>{company}</span>
-            </button>
-          ))}
+          {companies.map((company) => {
+            const buttonTextColour =
+              company === selectedCompany ? 'text-cyan-500' : ''
+            return (
+              <button
+                className={`block w-40 py-3 pl-4 text-left hover:bg-slate-800 hover:text-cyan-500 ${buttonTextColour}`}
+                key={company}
+                onClick={() => setSelectedSelectedCompany(company)}
+              >
+                <span>{company}</span>
+              </button>
+            )
+          })}
         </div>
         <div>
           <h3 className="text-slate-200">
             {`${title} @`}&nbsp;
-            <Hyperlink title={company} href={companyHref} />
+            <Hyperlink title={selectedCompany} href={companyHref} />
           </h3>
           <p>{locDurationDetails(fromDate, toDate, location)}</p>
           <div>
             <ul>
               {descriptons.map((description, index) => (
-                <li key={index}>{description}</li>
+                <li
+                  key={index}
+                  className="before:mr-4 before:text-cyan-500 before:content-['▹']"
+                >
+                  {description}
+                </li>
               ))}
             </ul>
           </div>
         </div>
       </div>
-    </section>
+    </Section>
   )
 }

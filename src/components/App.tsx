@@ -19,18 +19,14 @@ const App: React.FC = () => (
         </h2>
         <p className="text-slate-500 my-6 max-w-xl">
           I'm a senior software engineer with experience across full stack web
-          development, data engineering and devOps. Currently I'm based in
-          London, building full stack applications for &nbsp;
+          development, data engineering and devOps. I'm based in London
+          currently, building microservices in Golang for &nbsp;
           <Hyperlink href="https://grafana.com/" title="Grafana" />.
         </p>
       </section>
 
       <About />
       <Experience />
-      {/*<section className="">*/}
-      {/*  <h2>About me</h2>*/}
-      {/*  <p>ToDo</p>*/}
-      {/*</section>*/}
     </main>
   </div>
 )
