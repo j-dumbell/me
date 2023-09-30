@@ -7,6 +7,7 @@ const companies = ['Grafana', 'Infinity Works', 'Wonderbly'] as const
 type Company = (typeof companies)[number]
 
 type JobDetails = {
+  companyDesc: string
   companyHref: string
   title: string
   fromDate: Date
@@ -17,13 +18,19 @@ type JobDetails = {
 
 const allJobs: Record<Company, JobDetails> = {
   Grafana: {
+    companyDesc:
+      'Open source and SAS observability software with metrics, logging, tracing and dashboards.',
     companyHref: 'https://grafana.com/',
     title: 'Senior Software Engineer',
     fromDate: new Date('2023-06-01'),
     location: 'Remote',
-    descriptons: ['PLACEHOLDER1', 'PLACEHOLDER2']
+    descriptons: [
+      'Built new microservices in Golang to handle customer billing and power internal admin functions.',
+      'PLACEHOLDER2'
+    ]
   },
   'Infinity Works': {
+    companyDesc: 'Software engineering consultancy.',
     companyHref: 'https://www.infinityworks.com/',
     title: 'Senior Software Engineer',
     fromDate: new Date('2019-07-01'),
@@ -32,6 +39,7 @@ const allJobs: Record<Company, JobDetails> = {
     descriptons: ['PLACEHOLDER']
   },
   Wonderbly: {
+    companyDesc: 'E-commerce personalised book publisher.',
     companyHref: 'https://www.wonderbly.com/',
     title: 'Data Engineer',
     fromDate: new Date('2018-09-01'),
@@ -57,8 +65,15 @@ export const Experience: React.FC = () => {
   const [selectedCompany, setSelectedSelectedCompany] =
     useState<Company>('Grafana')
 
-  const { title, fromDate, toDate, companyHref, location, descriptons } =
-    allJobs[selectedCompany]
+  const {
+    title,
+    fromDate,
+    toDate,
+    companyHref,
+    location,
+    descriptons,
+    companyDesc
+  } = allJobs[selectedCompany]
 
   return (
     <Section title="Experience" num={2}>
@@ -78,7 +93,7 @@ export const Experience: React.FC = () => {
             )
           })}
         </div>
-        <div>
+        <div className="ml-5">
           <h3 className="text-slate-200">
             {`${title} @`}&nbsp;
             <Hyperlink title={selectedCompany} href={companyHref} />
@@ -86,6 +101,7 @@ export const Experience: React.FC = () => {
           <p>{locDurationDetails(fromDate, toDate, location)}</p>
           <div>
             <ul>
+              <li>{companyDesc}</li>
               {descriptons.map((description, index) => (
                 <li
                   key={index}

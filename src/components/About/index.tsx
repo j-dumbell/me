@@ -42,11 +42,13 @@ export const About: React.FC = () => (
           ))}
         </ul>
       </div>
-      <img
-        className="max-w-sm"
-        src="src/assets/images/me.png"
-        alt="James Dumbell"
-      />
+      <div className="shadow-2xl">
+        <img
+          className="max-w-sm"
+          src="src/assets/images/me.png"
+          alt="James Dumbell"
+        />
+      </div>
     </div>
   </Section>
 )

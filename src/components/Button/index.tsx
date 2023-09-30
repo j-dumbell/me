@@ -1,8 +1,9 @@
-import React, { MouseEventHandler } from 'react'
+import React, { ButtonHTMLAttributes, MouseEventHandler } from 'react'
 
 export type ButtonProps = {
   title: string
-  onClick: MouseEventHandler<HTMLButtonElement>
+  onClick?: MouseEventHandler<HTMLButtonElement>
+  type?: ButtonHTMLAttributes<unknown>['type']
 }
 
 export const Button: React.FC<ButtonProps> = (props: ButtonProps) => (

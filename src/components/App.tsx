@@ -3,6 +3,7 @@ import React from 'react'
 import { Hyperlink } from './Hyperlink'
 import { Experience } from './Experience'
 import { About } from './About'
+import { Contact } from './Contact'
 
 const App: React.FC = () => (
   <div className="dark:bg-slate-900 text-white pb-10">
@@ -27,6 +28,7 @@ const App: React.FC = () => (
 
       <About />
       <Experience />
+      <Contact />
     </main>
   </div>
 )
