@@ -3,7 +3,7 @@ import React from 'react'
 const Logo: React.FC = () => {
   return (
     <svg
-      className="h-12 w-12 text-white hover:text-cyan-500"
+      className="h-9 w-9 text-white hover:text-cyan-500"
       viewBox="0 0 427 429"
       xmlns="http://www.w3.org/2000/svg"
       stroke="currentColor"
