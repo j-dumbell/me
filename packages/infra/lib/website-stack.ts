@@ -14,6 +14,7 @@ import {
 import { Construct } from "constructs";
 
 const domainName = "dumbell.dev";
+const wwwDomainName = `www.${domainName}`;
 
 export class WebsiteStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -55,6 +56,7 @@ export class WebsiteStack extends Stack {
       "site-certificate",
       {
         domainName: domainName,
+        subjectAlternativeNames: [wwwDomainName],
         hostedZone: zone,
         region: "us-east-1",
       },
@@ -102,7 +104,7 @@ export class WebsiteStack extends Stack {
       "cloudfront-distribution",
       {
         certificate: certificate,
-        domainNames: [domainName],
+        domainNames: [domainName, wwwDomainName],
         defaultRootObject: "index.html",
         defaultBehavior: {
           origin: new origins.S3Origin(websiteBucket, {
@@ -115,7 +117,7 @@ export class WebsiteStack extends Stack {
       },
     );
 
-    [domainName, `www.${domainName}`].forEach((recordName) => {
+    [domainName, wwwDomainName].forEach((recordName) => {
       new route53.ARecord(this, `a-record-${recordName}`, {
         recordName,
         target: route53.RecordTarget.fromAlias(
