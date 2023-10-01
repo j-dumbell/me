@@ -115,12 +115,14 @@ export class WebsiteStack extends Stack {
       },
     );
 
-    new route53.ARecord(this, "a-record", {
-      recordName: domainName,
-      target: route53.RecordTarget.fromAlias(
-        new route53Targets.CloudFrontTarget(cloudfrontDistribution),
-      ),
-      zone,
+    [domainName, `www.${domainName}`].forEach((recordName) => {
+      new route53.ARecord(this, `a-record-${recordName}`, {
+        recordName,
+        target: route53.RecordTarget.fromAlias(
+          new route53Targets.CloudFrontTarget(cloudfrontDistribution),
+        ),
+        zone,
+      });
     });
   }
 }
