@@ -7,6 +7,14 @@
     "dev": "yarn workspace ui dev",
     "typecheck": "yarn workspace ui typecheck",
     "test": "yarn workspace ui test",
-    "ui-build": "yarn workspace ui build"
+    "ui-build": "yarn workspace ui build",
+    "ui-deploy": "aws s3 sync packages/ui/dist/ s3://jdumbell-portfolio-website-bucket --delete",
+    "ui-serve": "yarn workspace ui serve",
+    "infra-diff": "yarn workspace infra diff",
+    "infra-deploy": "yarn workspace infra deploy"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "@types/node": "^20.6.3"
   }
 }
