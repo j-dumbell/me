@@ -2,6 +2,11 @@ name: build-test
 
 on: [pull_request]
 
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,4 +23,7 @@ jobs:
       run: yarn typecheck
     - name: test
       run: yarn test --run
-    - run: yarn build
+    - name: build
+      run: yarn ui-build
+    - name: infra diff
+      run: yarn infra-diff
