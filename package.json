@@ -23,9 +23,5 @@
     "ui-serve": "yarn workspace ui serve",
     "infra-diff": "yarn workspace infra diff",
     "infra-deploy": "yarn workspace infra deploy"
-  },
-  "devDependencies": {
-    "typescript": "^5.2.2",
-    "@types/node": "^20.6.3"
   }
 }
