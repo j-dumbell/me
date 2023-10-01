@@ -1,7 +1,18 @@
 {
+  "name": "me",
+  "description": "Personal website for James Dumbell",
+  "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "James Dumbell",
+    "url": "https://github.com/j-dumbell/me"
+  },
+  "bugs": {
+    "url": "https://github.com/j-dumbell/me/issues"
+  },
   "workspaces": [
-    "packages/ui"
+    "packages/ui",
+    "packages/infra"
   ],
   "scripts": {
     "dev": "yarn workspace ui dev",
