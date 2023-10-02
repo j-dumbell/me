@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
     <footer className="bg-pink-800 text-center">
       <div className="py-5">
         <div className="pb-6">
-          <JD className="h-16 w-16 text-white mx-auto" />
+          <JD className="mx-auto h-16 w-16 text-white" />
         </div>
         <p className="text-sm">
           Handcrafted by yours truly using Typescript, React and Tailwind CSS.
