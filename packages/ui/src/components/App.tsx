@@ -4,10 +4,12 @@ import { Hyperlink } from './Hyperlink'
 import { Experience } from './Experience'
 import { About } from './About'
 import { Contact } from './Contact'
+import { Footer } from './Footer'
+import { Icon } from './Icon'
 
 const App: React.FC = () => (
   <p>wip</p>
-  // <div className="dark:bg-slate-900 text-white pb-10">
+  // <div className="dark:bg-slate-900 text-white">
   //   <Navbar />
   //
   //   <main>
@@ -30,6 +32,7 @@ const App: React.FC = () => (
   //     <About />
   //     <Experience />
   //     <Contact />
+  //     <Footer />
   //   </main>
   // </div>
 )

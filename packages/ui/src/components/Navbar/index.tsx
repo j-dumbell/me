@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Logo from '../Logo'
 import { Button } from '../Button'
+import { ReactComponent as JD } from '../../assets/svgs/jd.svg'
 
 type NavElementProps = {
   title: string
@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-1">
-        <Logo />
+        <JD className="h-9 w-9 text-white hover:text-cyan-500" />
         <div className="hidden w-full md:block md:w-auto">
           <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0 bg-inherit">
             <NavElement title="About" />
