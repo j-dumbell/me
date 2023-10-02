@@ -1,5 +1,6 @@
 import React from 'react'
 import { Section } from '../Section'
+import myImage from '../../assets/images/me.png'
 
 const skills: string[] = [
   'Golang',
@@ -43,11 +44,7 @@ export const About: React.FC = () => (
         </ul>
       </div>
       <div className="shadow-2xl">
-        <img
-          className="max-w-sm"
-          src="src/assets/images/me.png"
-          alt="James Dumbell"
-        />
+        <img className="max-w-sm" src={myImage} alt="James Dumbell" />
       </div>
     </div>
   </Section>
