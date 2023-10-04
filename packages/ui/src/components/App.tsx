@@ -8,7 +8,7 @@ import { Landing } from './Landing'
 
 const App: React.FC = () => (
   // <p>wip</p>
-  <div className="text-white dark:bg-slate-900">
+  <div className="text-black">
     <Navbar />
     <main>
       <Landing />
