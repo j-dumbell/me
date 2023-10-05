@@ -38,8 +38,8 @@ export const Contact: React.FC = () => {
   }
 
   return (
-    <Section num={5} title={'Get in touch'}>
-      <p>PLACEHOLDER</p>
+    <Section id="contact" title={'Get in touch'}>
+      <p className="">Interested in collaborating, or just want to say hi?</p>
 
       <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>
         <div>

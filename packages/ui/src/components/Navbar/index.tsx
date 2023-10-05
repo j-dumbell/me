@@ -18,15 +18,15 @@ const NavElement: React.FC<NavElementProps> = (props: NavElementProps) => (
 )
 
 const Navbar: React.FC = () => {
-  const [visible, setVisible] = useState<boolean>(true)
+  const [visible, setVisible] = useState<boolean>(false)
   const [lastScrollY, setLastScrollY] = useState(0)
 
   useEffect(() => {
     const handleScroll = (): void => {
-      if (window.scrollY > lastScrollY) {
-        setVisible(false)
-      } else {
+      if (window.scrollY > document.getElementById('about')!.offsetTop) {
         setVisible(true)
+      } else {
+        setVisible(false)
       }
 
       setLastScrollY(window.scrollY)

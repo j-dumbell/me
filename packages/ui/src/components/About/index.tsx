@@ -17,6 +17,9 @@ import { ReactComponent as Dynamo } from '../../assets/svgs/dynamo.svg'
 import { ReactComponent as AWS } from '../../assets/svgs/aws.svg'
 import { ReactComponent as Nest } from '../../assets/svgs/nest.svg'
 import { ReactComponent as Kafka } from '../../assets/svgs/kafka.svg'
+import { ReactComponent as Cloud } from '../../assets/svgs/cloud.svg'
+import { ReactComponent as Chart } from '../../assets/svgs/chart.svg'
+import { ReactComponent as Software } from '../../assets/svgs/software.svg'
 
 const iconList: {
   Svg: React.FC<React.SVGProps<SVGSVGElement>>
@@ -40,8 +43,28 @@ const iconList: {
   { Svg: AWS, name: 'AWS' }
 ]
 
+type Pillar = {
+  Svg: React.FC<React.SVGProps<SVGSVGElement>>
+  title: string
+}
+
+const pillars: Pillar[] = [
+  { Svg: Software, title: 'Full stack software engineering' },
+  { Svg: Chart, title: 'Data engineering' },
+  { Svg: Cloud, title: 'DevOps' }
+]
+
 export const About: React.FC = () => (
-  <Section title="About me" num={1}>
+  <Section id="about" title="About me">
+    <div className="flex justify-around py-10">
+      {pillars.map(({ Svg, title }) => (
+        <div key={title}>
+          <Svg className="h-20 w-20" />
+          <h3 className="font-bold">{title}</h3>
+        </div>
+      ))}
+    </div>
+
     <div className="flex">
       <div className="mr-10">
         <div>
