@@ -40,10 +40,10 @@ const TopLink: React.FC = () => {
 
   return (
     <a
-      className="h-14 w-14 block mx-auto group bg-pink-600 hover:bg-pink-400 -translate-y-1/2"
+      className="group mx-auto block h-14 w-14 -translate-y-1/2 rounded bg-pink-600 hover:bg-pink-400"
       onClick={scrollToTop}
     >
-      <Chevron className="block h-6 w-6 m-auto translate-y-1/2 group-hover:fill-slate-800" />
+      <Chevron className="m-auto block h-6 w-6 translate-y-1/2 group-hover:fill-slate-800" />
     </a>
   )
 }
@@ -61,19 +61,19 @@ const socialLinks: SocialLink[] = [
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-800 text-center">
+    <footer className="absolute bottom-0 w-full bg-slate-800 text-center">
       <TopLink />
       <div className="py-5">
-        <div className="pb-6 flex justify-center">
+        <div className="flex justify-center pb-6">
           {socialLinks.map(({ Svg, destination }) => (
             <a
               key={destination}
-              className="rounded-full h-14 w-14 block border-white border-2 mx-2 group hover:bg-white"
+              className="group mx-2 block h-14 w-14 rounded-full border-2 border-white hover:bg-white"
               href={destination}
               target="_blank"
               rel="noreferrer"
             >
-              <Svg className="block h-6 w-6 m-auto translate-y-1/2 group-hover:fill-slate-800" />
+              <Svg className="m-auto block h-6 w-6 translate-y-1/2 group-hover:fill-slate-800" />
             </a>
           ))}
         </div>

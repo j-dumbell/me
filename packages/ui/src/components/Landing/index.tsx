@@ -29,23 +29,27 @@ const scrollToId = (targetId: string): void => {
 
 export const Landing: React.FC = () => {
   return (
-    <Section id="landing">
-      <h1 className="text-slate-800 text-6xl font-bold tracking-wider my-3">
+    <Section
+      id="landing"
+      verticallyCenter={true}
+      backgroundColour="bg-slate-800"
+    >
+      <h1 className="text-white text-6xl font-bold tracking-wider my-3 text-center">
         Hi, I'm&nbsp;
         <span className="text-pink-600">James Dumbell</span>.
       </h1>
-      <h2 className="text-slate-800 text-5xl font-semibold my-3">
+      <h2 className="text-white text-5xl font-semibold text-center mb-6">
         I'm a software engineer.
       </h2>
-      <p className="text-slate-500 my-6 max-w-xl">
-        I'm a senior software engineer with experience across full stack web
-        development, data engineering and devOps. I'm based in London currently,
-        building microservices in Golang for &nbsp;
-        <Hyperlink href="https://grafana.com/" title="Grafana" />.
-      </p>
+      {/*<p className="text-slate-500 my-6 max-w-xl">*/}
+      {/*  I'm a senior software engineer with experience across full stack web*/}
+      {/*  development, data engineering and devOps. I'm based in London currently,*/}
+      {/*  building microservices in Golang for &nbsp;*/}
+      {/*  <Hyperlink href="https://grafana.com/" title="Grafana" />.*/}
+      {/*</p>*/}
 
       <button
-        className="text-cyan-500 border border-cyan-500 rounded py-2 px-8 hover:bg-cyan-500 hover:text-white flex group transition-colors duration-300 ease-in-out"
+        className="text-cyan-500 border border-cyan-500 rounded py-2 px-8 hover:bg-cyan-500 hover:text-white flex group transition-colors duration-300 ease-in-out mx-auto"
         onClick={() => scrollToId('about')}
       >
         Let's go!

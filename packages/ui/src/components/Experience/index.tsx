@@ -76,7 +76,7 @@ export const Experience: React.FC = () => {
   } = allJobs[selectedCompany]
 
   return (
-    <Section id="experience" title="Experience">
+    <Section id="experience" title="Experience" verticallyCenter={false}>
       <div className="flex">
         <div>
           {companies.map((company) => {
