@@ -58,7 +58,6 @@ export const Contact: React.FC = () => {
             {...register('name', { required: true })}
           />
         </div>
-        {errors.name && <span>This field is required</span>}
 
         <div>
           <input
@@ -70,7 +69,6 @@ export const Contact: React.FC = () => {
             {...register('email', { required: true })}
           />
         </div>
-        {errors.email && <span>This field is required</span>}
 
         <div className="sm:col-span-2">
           <textarea
@@ -78,10 +76,10 @@ export const Contact: React.FC = () => {
             rows={6}
             className="mb-2 block w-full border border-gray-600 bg-gray-700 p-2.5 text-sm text-white shadow-sm placeholder:text-gray-400"
             placeholder="Message"
+            required
             {...register('message', { required: true })}
           ></textarea>
         </div>
-        {errors.message && <span>This field is required</span>}
 
         <button
           type="submit"

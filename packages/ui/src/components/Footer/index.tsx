@@ -40,7 +40,7 @@ const TopLink: React.FC = () => {
 
   return (
     <a
-      className="group mx-auto block h-14 w-14 -translate-y-1/2 rounded bg-pink-600 hover:bg-pink-400"
+      className="group mx-auto block h-14 w-14 -translate-y-1/2 rounded bg-pink-600 hover:bg-pink-400 cursor-pointer"
       onClick={scrollToTop}
     >
       <Chevron className="m-auto block h-6 w-6 translate-y-1/2 group-hover:fill-slate-800" />

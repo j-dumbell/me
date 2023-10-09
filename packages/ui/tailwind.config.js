@@ -6,8 +6,11 @@ module.exports = {
     extend: {
       colors: {
         midnight: '#0a192f'
+      },
+      animationDuration: {
+        '2s': '2s'
       }
     }
   },
-  plugins: []
+  plugins: [require('tailwindcss-animate')]
 }

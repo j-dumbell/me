@@ -28,7 +28,9 @@ export const Section: React.FC<PropsWithChildren<SectionProps>> = (
             {props.title}
           </h2>
           <div
-            className={`mx-auto my-2 h-1 w-20 bg-${props.titleColour}`}
+            className={`mx-auto my-2 h-1 w-20 ${
+              props.titleColour ? `bg-${props.titleColour}` : 'bg-black'
+            }`}
           ></div>
         </>
       )}

@@ -113,19 +113,20 @@ const pillars: Pillar[] = [
   {
     Svg: Software,
     title: 'Full stack software engineering',
-    description: 'From distributed microservices to slick UIs.'
+    description:
+      'From REST / GraphQL APIs and event-driven microservices, to slick UIs - I build for the web'
   },
   {
     Svg: Chart,
     title: 'Data engineering',
     description:
-      'I build and orchestrate high throughput data pipelines for machine learning and analytics'
+      'I build and orchestrate high throughput data pipelines to power machine learning and analytics'
   },
   {
     Svg: Cloud,
     title: 'DevOps',
     description:
-      'I architect cloud-native systems and implement them using infrastructure as code'
+      'I architect cloud-native systems, implement them using infrastructure as code and deploy them using CICD'
   }
 ]
 
@@ -135,6 +136,7 @@ export const About: React.FC = () => (
     title="About me"
     verticallyCenter={true}
     backgroundColour="white"
+    titleColour="black"
   >
     <div className="flex justify-around mx-10 rounded-3xl border-black border-2">
       {pillars.map(({ Svg, title, description }) => (
