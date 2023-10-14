@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { Section } from '../Section'
-import { Button } from '../Button'
+import { Footer } from '../Footer'
 
 type FormInputs = {
   name: string
@@ -27,76 +27,67 @@ const mkFormUrl = (inputs: FormInputs): string => {
 }
 
 export const Contact: React.FC = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<FormInputs>()
+  const { register, handleSubmit } = useForm<FormInputs>()
 
   const onSubmit: SubmitHandler<FormInputs> = (inputs) => {
     window.open(mkFormUrl(inputs), '_blank', 'noreferrer')
   }
 
   return (
-    <Section num={5} title={'Get in touch'}>
-      <p>PLACEHOLDER</p>
+    <Section
+      id="contact"
+      title={'Get in touch'}
+      verticallyCenter={false}
+      backgroundColour="slate-700"
+      titleColour="white"
+    >
+      <p className="py-6 text-center text-cyan-500">
+        Interested in working together?
+      </p>
 
-      <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>
+      <form className="mx-auto max-w-xl" onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <label
-            htmlFor="name"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >
-            Email
-          </label>
           <input
             type="text"
             id="name"
-            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-            placeholder="James Dumbell"
+            className="block w-full border border-gray-600 bg-gray-700 p-2.5 text-sm text-white shadow-sm placeholder:text-gray-400"
+            placeholder="Name"
             required
             {...register('name', { required: true })}
           />
         </div>
-        {errors.name && <span>This field is required</span>}
 
         <div>
-          <label
-            htmlFor="email"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >
-            Email
-          </label>
           <input
             type="email"
             id="email"
-            className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-            placeholder="abc@email.com"
+            className="block w-full border border-gray-600 bg-gray-700 p-3 text-sm text-white shadow-sm placeholder:text-gray-400"
+            placeholder="Email"
             required
             {...register('email', { required: true })}
           />
         </div>
-        {errors.email && <span>This field is required</span>}
 
         <div className="sm:col-span-2">
-          <label
-            htmlFor="message"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
-          >
-            Your message
-          </label>
           <textarea
             id="message"
             rows={6}
-            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-            placeholder="Leave a comment..."
+            className="mb-2 block w-full border border-gray-600 bg-gray-700 p-2.5 text-sm text-white shadow-sm placeholder:text-gray-400"
+            placeholder="Message"
+            required
             {...register('message', { required: true })}
           ></textarea>
         </div>
-        {errors.message && <span>This field is required</span>}
 
-        <Button type="submit" title="Send message" />
+        <button
+          type="submit"
+          className="w-full rounded border border-cyan-500 px-8 py-2 text-center text-cyan-500 transition-colors duration-300 ease-in-out hover:bg-cyan-500 hover:text-white"
+        >
+          Submit
+        </button>
       </form>
+
+      <Footer />
     </Section>
   )
 }

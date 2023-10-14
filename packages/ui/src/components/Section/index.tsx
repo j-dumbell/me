@@ -1,30 +1,47 @@
 import React, { PropsWithChildren } from 'react'
 
-// https://tailwindcss.com/docs/content-configuration#dynamic-class-names
-const prefixClasses = {
-  1: "before:content-['01.']",
-  2: "before:content-['02.']",
-  3: "before:content-['03.']",
-  4: "before:content-['04.']",
-  5: "before:content-['05.']"
-} as const
+type Colour = 'slate-700' | 'slate-200' | 'white' | 'black'
 
 export type SectionProps = {
-  num: keyof typeof prefixClasses
-  title: string
+  id?: string
+  title?: string
+  titleColour?: Colour
+  backgroundColour?: Colour
+  verticallyCenter: boolean
 }
+
+// bg-white bg-slate-700 bg-slate-200 bg-black text-white text-slate-700 text-slate-200 text-black
 
 export const Section: React.FC<PropsWithChildren<SectionProps>> = (
   props: PropsWithChildren<SectionProps>
-) => (
-  <section className="mx-auto my-20 max-w-screen-lg">
-    <h2
-      className={`before:bottom-1 before:mr-3 before:text-lg before:text-cyan-500 ${
-        prefixClasses[props.num]
-      } my-7 text-2xl font-semibold text-slate-200 flex after:ml-5 after:h-px after:w-60 after:bg-slate-500 after:content-[""] after:block after:relative`}
+) => {
+  return (
+    <section
+      id={props.id}
+      className={`relative mx-auto h-screen bg-${props.backgroundColour}`}
     >
-      {props.title}
-    </h2>
-    {props.children}
-  </section>
-)
+      {props.title && (
+        <>
+          <h2
+            className={`pb-3 pt-8 text-center text-3xl font-semibold text-${props.titleColour}`}
+          >
+            {props.title}
+          </h2>
+          <div
+            className={`mx-auto my-2 h-1 w-20 ${
+              props.titleColour ? `bg-${props.titleColour}` : 'bg-black'
+            }`}
+          ></div>
+        </>
+      )}
+
+      {props.verticallyCenter ? (
+        <div className="absolute top-1/2 w-full -translate-y-1/2">
+          {props.children}
+        </div>
+      ) : (
+        props.children
+      )}
+    </section>
+  )
+}
