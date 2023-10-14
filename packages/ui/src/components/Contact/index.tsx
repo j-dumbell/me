@@ -27,11 +27,7 @@ const mkFormUrl = (inputs: FormInputs): string => {
 }
 
 export const Contact: React.FC = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<FormInputs>()
+  const { register, handleSubmit } = useForm<FormInputs>()
 
   const onSubmit: SubmitHandler<FormInputs> = (inputs) => {
     window.open(mkFormUrl(inputs), '_blank', 'noreferrer')
@@ -45,7 +41,9 @@ export const Contact: React.FC = () => {
       backgroundColour="slate-700"
       titleColour="white"
     >
-      <p className="py-6 text-center">Interested in working together?</p>
+      <p className="py-6 text-center text-cyan-500">
+        Interested in working together?
+      </p>
 
       <form className="mx-auto max-w-xl" onSubmit={handleSubmit(onSubmit)}>
         <div>

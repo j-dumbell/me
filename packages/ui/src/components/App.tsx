@@ -8,13 +8,14 @@ import { Projects } from './Projects'
 const App: React.FC = () => (
   <div className="text-black">
     {/*<Navbar />*/}
-    <main>
-      <Landing />
-      <About />
-      <Experience />
-      <Projects />
-      <Contact />
-    </main>
+    <p>WIP</p>
+    {/*<main>*/}
+    {/*  <Landing />*/}
+    {/*  <About />*/}
+    {/*  /!*<Experience />*!/*/}
+    {/*  <Projects />*/}
+    {/*  <Contact />*/}
+    {/*</main>*/}
   </div>
 )
 

@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 
-type Colour = 'slate-700' | 'white' | 'black'
+type Colour = 'slate-700' | 'slate-200' | 'white' | 'black'
 
 export type SectionProps = {
   id?: string
@@ -10,7 +10,7 @@ export type SectionProps = {
   verticallyCenter: boolean
 }
 
-// bg-white bg-slate-700 bg-black text-white text-slate-700 text-black
+// bg-white bg-slate-700 bg-slate-200 bg-black text-white text-slate-700 text-slate-200 text-black
 
 export const Section: React.FC<PropsWithChildren<SectionProps>> = (
   props: PropsWithChildren<SectionProps>
