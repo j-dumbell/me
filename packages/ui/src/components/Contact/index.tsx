@@ -41,7 +41,7 @@ export const Contact: React.FC = () => {
       backgroundColour="slate-700"
       titleColour="white"
     >
-      <p className="py-6 text-center text-cyan-500">
+      <p className="py-6 text-center text-white">
         Interested in working together?
       </p>
 

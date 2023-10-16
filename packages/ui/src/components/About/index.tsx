@@ -136,11 +136,22 @@ export const About: React.FC = () => (
     title="About me"
     verticallyCenter={true}
     backgroundColour="white"
-    titleColour="black"
+    titleColour="slate-700"
   >
-    <div className="flex justify-around mx-10 rounded-3xl border-black border-2">
+    <div className="flex justify-center items-center mb-10">
+      <img className="h-44 mr-10" src={Me} alt="James Dumbell" />
+      <p className="my-6 max-w-md text-slate-700">
+        I'm a master of mathematics turned software engineer with over 5 years
+        experience across full stack web development, data engineering and
+        devOps. I'm currently based in London, building full-stack applications
+        for&nbsp;
+        <Hyperlink href="https://grafana.com/" title="Grafana" />.
+      </p>
+    </div>
+
+    <div className="flex justify-around mx-28 rounded-3xl">
       {pillars.map(({ Svg, title, description }) => (
-        <div key={title} className="flex-1 border-r-black border-r-2 px-10">
+        <div key={title} className="flex-1 px-4 text-slate-700">
           <div className="mx-auto block h-24 w-24 rounded-full bg-teal-500 mt-8">
             <Svg className="mx-auto block h-14 w-14 translate-y-1/3" />
           </div>
@@ -148,23 +159,6 @@ export const About: React.FC = () => (
           <p className="pt-5 text-center mb-5">{description}</p>
         </div>
       ))}
-    </div>
-
-    <div className="flex mt-10 mx-10">
-      <div className="mr-10">
-        <div>
-          <p className="my-6 max-w-xl text-slate-500">
-            I'm a master of mathematics turned software engineer with over 5
-            years experience across full stack web development, data engineering
-            and devOps. I'm currently based in London, building full-stack
-            applications for&nbsp;
-            <Hyperlink href="https://grafana.com/" title="Grafana" />.
-          </p>
-        </div>
-      </div>
-      <div>
-        <img className="h-60 w-60 rounded-full" src={Me} alt="James Dumbell" />
-      </div>
     </div>
 
     {/*<div className="flex flex-wrap justify-center">*/}

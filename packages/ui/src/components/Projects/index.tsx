@@ -155,7 +155,7 @@ const ProjectContainer: React.FC<ProjectContainerProps> = ({
     <a href={project.destination} target="_blank" rel="noreferrer">
       <div
         key={project.title}
-        className="max-w-96 group relative h-96 max-h-96 w-96 border-2 border-black"
+        className="max-w-96 group relative h-96 max-h-96 w-96"
       >
         <div className="relative z-10 h-full w-full bg-slate-600 text-slate-200 opacity-0 transition-opacity duration-500 group-hover:opacity-100 px-4 py-4 flex flex-col justify-between">
           <div className="flex justify-between items-center">
@@ -208,7 +208,8 @@ export const Projects: React.FC = () => {
     <Section
       verticallyCenter={true}
       title="Projects"
-      backgroundColour="slate-200"
+      backgroundColour="slate-300"
+      titleColour="slate-700"
     >
       <div className="mx-20 flex justify-center">
         {projects.map((proj) => (
