@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading } from '@/components/section'
+import { Description, Heading } from '@/components/section'
 
 type SvgFC = React.FC<React.SVGProps<SVGSVGElement>>
 
@@ -89,7 +89,7 @@ const columns: Column[] = [
 
 export const About: React.FC = () => {
   return (
-    <div>
+    <div className="pb-40">
       <Heading text="About" />
       <div className="container grid items-center justify-center gap-4 px-4 py-12 text-center md:px-6 lg:py-16">
         <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3 md:gap-12">

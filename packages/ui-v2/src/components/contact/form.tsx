@@ -7,12 +7,13 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import React from 'react'
 import { Textarea } from '@/components/ui/textarea'
+import { ComponentProps, FC, useState } from 'react'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { CheckIcon, RocketIcon } from '@radix-ui/react-icons'
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -43,27 +44,38 @@ const mkFormUrl = (fields: Fields): string => {
   return `https://docs.google.com/forms/u/0/d/e/1FAIpQLSdvadbRcLHcZg-McLXur5TytNocoixdxN4QkffNHI2meTA-Dg/formResponse?${queryParams}`
 }
 
-export const ContactForm: React.FC<React.ComponentProps<'form'>> = (props) => {
+export const ContactForm: FC<ComponentProps<'form'>> = (props) => {
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema)
   })
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values)
     window.open(mkFormUrl(values), '_blank', 'noreferrer')
+    setIsSubmitted(true)
+  }
+
+  if (isSubmitted) {
+    return (
+      <Alert className="m-auto max-w-sm">
+        <CheckIcon className="size-6" />
+        <AlertTitle>Success!</AlertTitle>
+        <AlertDescription>I'll review and respond shortly.</AlertDescription>
+      </Alert>
+    )
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className={props.className}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="m-auto max-w-lg">
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
+            <FormItem className="mb-4">
               <FormControl>
-                <Input placeholder="James Dumbell" {...field} />
+                <Input placeholder="Name" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -74,10 +86,9 @@ export const ContactForm: React.FC<React.ComponentProps<'form'>> = (props) => {
           control={form.control}
           name="email"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
+            <FormItem className="mb-4">
               <FormControl>
-                <Input placeholder="abc@gmail.com" {...field} />
+                <Input placeholder="Email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -88,16 +99,17 @@ export const ContactForm: React.FC<React.ComponentProps<'form'>> = (props) => {
           control={form.control}
           name="message"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Message</FormLabel>
+            <FormItem className="mb-4">
               <FormControl>
-                <Textarea placeholder="Let's chat" {...field} />
+                <Textarea placeholder="Message" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="w-[100%]">
+          Submit
+        </Button>
       </form>
     </Form>
   )

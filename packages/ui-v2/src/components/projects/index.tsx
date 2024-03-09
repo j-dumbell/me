@@ -9,7 +9,7 @@ import {
 import { FC } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { GithubIcon, NPMIcon } from '@/components/icons'
-import { Heading } from '@/components/section'
+import { Description, Heading } from '@/components/section'
 
 type ProjectDetails = {
   name: string
@@ -76,14 +76,16 @@ const Project: FC<ProjectDetails> = ({
         {npm && <NPMIcon href={npm} className="size-6 text-black" />}
       </div>
       <CardHeader>
-        <CardTitle className="text-2xl">{name}</CardTitle>
+        <CardTitle className="text-2xl">
+          <a href={github}>{name}</a>
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <CardDescription>{description}</CardDescription>
       </CardContent>
       <CardFooter className="flex flex-wrap">
         {technologies.map((tech) => (
-          <Badge key={tech} variant="outline" className="mr-1">
+          <Badge key={tech} variant="outline" className="mb-1 mr-1">
             {tech}
           </Badge>
         ))}
@@ -94,9 +96,9 @@ const Project: FC<ProjectDetails> = ({
 
 export const Projects: FC = () => {
   return (
-    <div>
+    <div className="pb-40">
       <Heading text="Projects" />
-      <div className="mx-10 flex flex-wrap">
+      <div className="mx-10 flex flex-wrap justify-center">
         {projects.map((proj) => (
           <Project key={proj.name} {...proj} />
         ))}

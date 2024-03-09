@@ -18,14 +18,14 @@ import {
 } from '@/components/ui/drawer'
 import React, { FC, useState } from 'react'
 import useMediaQuery from '@/lib/useMediaQuery'
-import { Description, Heading } from '@/components/section'
+import { Heading } from '@/components/section'
 
 export const Contact: FC = () => {
   return (
-    <div>
+    <div className="mb-40">
       <Heading text="Contact" />
-      <Description text="Let's chat." className="text-center" />
-      <ContactDrawer />
+      <ContactForm className="m-auto max-w-lg" />
+      {/*<ContactDrawer />*/}
     </div>
   )
 }

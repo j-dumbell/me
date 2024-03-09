@@ -111,14 +111,10 @@ const formatRange = (from: Date, to: Date | undefined): string => {
 
 export const Experience: FC = () => {
   return (
-    <section className="w-full py-12">
+    <section className="w-full pb-40">
       <Heading text="Experience" />
-      <Description
-        text="Some of the places I've worked."
-        className="text-center"
-      />
       <div className="flex justify-center space-y-12">
-        <Accordion type="single" collapsible className="mx-10 w-full max-w-5xl">
+        <Accordion type="single" collapsible className="mx-10 w-full max-w-3xl">
           {employments.map(
             ({ company, title, from, to, Details, logo, technologies }) => (
               <AccordionItem key={company} value={company}>

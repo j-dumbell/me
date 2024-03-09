@@ -10,10 +10,12 @@ const App: FC = () => {
   return (
     <>
       <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Contact />
+      <div className="container">
+        <About />
+        <Experience />
+        <Projects />
+        <Contact />
+      </div>
       <Footer />
     </>
   )
