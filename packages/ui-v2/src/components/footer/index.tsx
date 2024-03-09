@@ -7,7 +7,7 @@ import {
 
 export const Footer: React.FC = () => {
   return (
-    <section className="w-full bg-zinc-900 py-10 dark:bg-zinc-100">
+    <section className="w-full bg-zinc-900 py-6 dark:bg-zinc-100">
       <div className="container flex flex-col items-center px-4 text-center md:px-6">
         <div className="flex justify-center space-x-4">
           <a
@@ -33,6 +33,9 @@ export const Footer: React.FC = () => {
           </a>
         </div>
       </div>
+      <p className="text-center text-sm leading-7 text-white [&:not(:first-child)]:mt-2">
+        Created by yours truly using React, Typescript and TailwindCSS
+      </p>
     </section>
   )
 }

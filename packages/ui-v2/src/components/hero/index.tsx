@@ -12,7 +12,7 @@ import { CaretDownIcon } from '@radix-ui/react-icons'
 //   window.scrollTo({ top: -pixelsToScroll, left: 0, behavior: 'smooth' })
 // }
 
-export const Landing: React.FC = () => {
+export const Hero: React.FC = () => {
   return (
     <section className="flex h-screen">
       <div className="container m-auto px-4 md:px-6">

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Heading } from '@/components/section'
 
 type SvgFC = React.FC<React.SVGProps<SVGSVGElement>>
 
@@ -82,23 +83,26 @@ const columns: Column[] = [
     Svg: Cloud,
     title: 'DevOps',
     description:
-      'I architect cloud-native systems, implement them using infrastructure as code and deploy them using CICD'
+      'I architect cloud-native systems, implement them using infrastructure as code and deploy them using CICD.  Ship to production frequently and safely.'
   }
 ]
 
 export const About: React.FC = () => {
   return (
-    <div className="container grid items-center justify-center gap-4 px-4 py-12 text-center md:px-6 lg:py-16">
-      <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3 md:gap-12">
-        {columns.map(({ title, description, Svg }) => (
-          <div key={title} className="space-y-3">
-            <div className="flex items-center justify-center">
-              <Svg className="size-12 text-blue-600" />
+    <div>
+      <Heading text="About" />
+      <div className="container grid items-center justify-center gap-4 px-4 py-12 text-center md:px-6 lg:py-16">
+        <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3 md:gap-12">
+          {columns.map(({ title, description, Svg }) => (
+            <div key={title} className="space-y-3">
+              <div className="flex items-center justify-center">
+                <Svg className="size-12 text-blue-600" />
+              </div>
+              <h3 className="text-2xl font-bold tracking-tighter">{title}</h3>
+              <p className="text-gray-500 dark:text-gray-400">{description}</p>
             </div>
-            <h3 className="text-2xl font-bold tracking-tighter">{title}</h3>
-            <p className="text-gray-500 dark:text-gray-400">{description}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   )

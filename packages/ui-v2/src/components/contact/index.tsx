@@ -16,10 +16,21 @@ import {
   DrawerTitle,
   DrawerTrigger
 } from '@/components/ui/drawer'
-import { FC, useState } from 'react'
+import React, { FC, useState } from 'react'
 import useMediaQuery from '@/lib/useMediaQuery'
+import { Description, Heading } from '@/components/section'
 
-export const ContactDrawer: FC = () => {
+export const Contact: FC = () => {
+  return (
+    <div>
+      <Heading text="Contact" />
+      <Description text="Let's chat." className="text-center" />
+      <ContactDrawer />
+    </div>
+  )
+}
+
+const ContactDrawer: FC = () => {
   const [open, setOpen] = useState(false)
   const isDesktop = useMediaQuery('(min-width: 768px)')
 
