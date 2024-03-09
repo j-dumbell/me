@@ -13,7 +13,7 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { ComponentProps, FC, useState } from 'react'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
-import { CheckIcon, RocketIcon } from '@radix-ui/react-icons'
+import { CheckIcon } from '@radix-ui/react-icons'
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -44,7 +44,7 @@ const mkFormUrl = (fields: Fields): string => {
   return `https://docs.google.com/forms/u/0/d/e/1FAIpQLSdvadbRcLHcZg-McLXur5TytNocoixdxN4QkffNHI2meTA-Dg/formResponse?${queryParams}`
 }
 
-export const ContactForm: FC<ComponentProps<'form'>> = (props) => {
+export const ContactForm: FC<ComponentProps<'form'>> = () => {
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const form = useForm<z.infer<typeof formSchema>>({

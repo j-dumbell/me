@@ -9,7 +9,7 @@ import {
 import { FC } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { GithubIcon, NPMIcon } from '@/components/icons'
-import { Description, Heading } from '@/components/section'
+import { Heading } from '@/components/section'
 
 type ProjectDetails = {
   name: string

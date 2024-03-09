@@ -5,7 +5,7 @@ import {
   Accordion
 } from '@/components/ui/accordion'
 import React, { FC } from 'react'
-import { Description, Heading } from '@/components/section'
+import { Heading } from '@/components/section'
 import { format } from 'date-fns/format'
 import GrafanaLabsLogo from '../../assets/grafana-labs.png'
 import InfinityWorksLogo from '../../assets/infinity-works.png'
@@ -30,13 +30,37 @@ const employments: Employment[] = [
     logo: GrafanaLabsLogo,
     from: new Date('2023-06-01'),
     Details: () => (
-      <ul className="my-6 ml-6 list-disc text-left [&>li]:mt-2">
-        <li>1st level of puns: 5 gold coins</li>
-        <li>2nd level of jokes: 10 gold coins</li>
-        <li>3rd level of one-liners : 20 gold coins</li>
-      </ul>
+      <>
+        <p>
+          Senior software engineer at a global technology company that develops
+          open-source and SAS observability software.
+        </p>
+        <ul className="ml-6 list-disc text-left [&>li]:mt-2">
+          <li>
+            Wrote microservices in Go to manage SAS customer usage and billing
+            including REST APIs and Kafka event consumers.
+          </li>
+          <li>
+            Provisioned GCP infrastructure including Kubernetes deployments.
+          </li>
+          <li>
+            Monitored the services via Prometheus metrics & traces, visualized
+            in Grafana dashboards.
+          </li>
+        </ul>
+      </>
     ),
-    technologies: ['Golang', 'Kafka', 'Kubernetes', 'KEDA', 'Docker', 'MySQL']
+    technologies: [
+      'Golang',
+      'Kafka',
+      'Kubernetes',
+      'KEDA',
+      'Docker',
+      'MySQL',
+      'Protobuf',
+      'Prometheus',
+      'Grafana'
+    ]
   },
   {
     company: 'Infinity Works',
@@ -45,11 +69,20 @@ const employments: Employment[] = [
     from: new Date('2019-07-01'),
     to: new Date('2023-06-01'),
     Details: () => (
-      <ul className="my-6 ml-6 list-disc text-left [&>li]:mt-2">
-        <li>1st level of puns: 5 gold coins</li>
-        <li>2nd level of jokes: 10 gold coins</li>
-        <li>3rd level of one-liners : 20 gold coins</li>
-      </ul>
+      <>
+        <p>
+          Senior software engineer at a London-based consultancy, working across
+          data engineering and full stack development projects for various
+          clients.
+        </p>
+        <h4>Sainsbury's</h4>
+        <ul className="ml-6 list-disc text-left [&>li]:mt-2">
+          <li>
+            Built a web app to allow digital marketers to run campaigns that
+            target specific audiences using the terrabytes of customer data.
+          </li>
+        </ul>
+      </>
     ),
     technologies: [
       'Scala',
@@ -69,33 +102,55 @@ const employments: Employment[] = [
   },
   {
     company: 'Wonderbly',
-    title: 'Senior Data Engineer / Analyst',
+    title: 'Senior Growth Analyst',
     logo: WonderblyLogo,
     from: new Date('2018-09-01'),
     to: new Date('2019-06-01'),
     Details: () => (
-      <ul className="my-6 ml-6 list-disc text-left [&>li]:mt-2">
-        <li>1st level of puns: 5 gold coins</li>
-        <li>2nd level of jokes: 10 gold coins</li>
-        <li>3rd level of one-liners : 20 gold coins</li>
-      </ul>
+      <>
+        <p>
+          Lead analyst at a personalized book ecommerce website, working across
+          all business domains. perform analysis using Python and SQL, and
+          produce Looker dashboards.
+        </p>
+        <ul className="ml-6 list-disc text-left [&>li]:mt-2">
+          <li>
+            Ingest and model business data in data warehouse (AWS Redshift).
+          </li>
+          <li>
+            Analyze the data with SQL and Python, producing predictive models.
+          </li>
+          <li>Build and maintain Looker dasbhoards.</li>
+        </ul>
+      </>
     ),
-    technologies: ['Python', 'Redshift', 'Looker']
+    technologies: ['Python', 'Redshift', 'SQL', 'Looker']
   },
   {
     company: 'Spark44',
-    title: 'Metrics Analyst',
+    title: 'Data Engineer',
     logo: Spark44Logo,
     from: new Date('2016-10-01'),
     to: new Date('2018-09-01'),
     Details: () => (
-      <ul className="my-6 ml-6 list-disc text-left [&>li]:mt-2">
-        <li>1st level of puns: 5 gold coins</li>
-        <li>2nd level of jokes: 10 gold coins</li>
-        <li>3rd level of one-liners : 20 gold coins</li>
-      </ul>
+      <>
+        <p>
+          Data engineer at digital marketing agency, working on the Jaguar Land
+          Rover account.
+        </p>
+        <ul className="ml-6 list-disc text-left [&>li]:mt-2">
+          <li>
+            Ingested Google Analytics website data into a data warehouse (Big
+            Query) via Python applications deployed in GCP.
+          </li>
+          <li>
+            Transformed and modelled the data within Big Query to produce a
+            layer ready for business consumption.
+          </li>
+        </ul>
+      </>
     ),
-    technologies: ['Python', 'BigQuery']
+    technologies: ['Python', 'BigQuery', 'SQL']
   }
 ]
 
@@ -135,13 +190,19 @@ export const Experience: FC = () => {
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
-                  <Details />
-                  <div className="mx-10 flex flex-wrap">
-                    {technologies.map((tech) => (
-                      <Badge key={tech} variant="outline" className="mr-1 mt-1">
-                        {tech}
-                      </Badge>
-                    ))}
+                  <div className="pl-20">
+                    <Details />
+                    <div className="mt-4 flex flex-wrap">
+                      {technologies.map((tech) => (
+                        <Badge
+                          key={tech}
+                          variant="outline"
+                          className="mr-1 mt-1"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
                   </div>
                 </AccordionContent>
               </AccordionItem>
