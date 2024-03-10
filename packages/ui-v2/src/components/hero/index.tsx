@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { CaretDownIcon } from '@radix-ui/react-icons'
+import HeroImg from '../../assets/hero.png'
 
 // const scrollToId = (targetId: string): void => {
 //   const targetElement = document.getElementById(targetId)
@@ -15,8 +16,8 @@ import { CaretDownIcon } from '@radix-ui/react-icons'
 export const Hero: React.FC = () => {
   return (
     <section className="flex h-screen">
-      <div className="container m-auto px-4 md:px-6">
-        <div className="flex flex-col items-center space-y-4 text-center">
+      <div className="container m-auto flex flex-wrap items-center justify-center px-4 md:px-6">
+        <div className="mr-20 flex flex-col items-center space-y-4 text-center">
           <div className="space-y-2">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
               James Dumbell
@@ -30,6 +31,7 @@ export const Hero: React.FC = () => {
             </Button>
           </div>
         </div>
+        <img className="size-[500px]" src={HeroImg} alt="desk image" />
       </div>
     </section>
   )
