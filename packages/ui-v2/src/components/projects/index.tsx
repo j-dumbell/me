@@ -21,9 +21,9 @@ type ProjectDetails = {
 
 const projects: ProjectDetails[] = [
   {
-    name: 'Snowbuilder',
+    name: 'Snow-Builder',
     description:
-      'Typesafe query builder library for Snowflake, with smart return type inference',
+      'Type-safe query builder library for Snowflake with smart return type inference, written in Typescript.',
     technologies: ['Typescript', 'NodeJS', 'Snowflake'],
     github: 'https://github.com/j-dumbell/snow-builder',
     npm: 'https://www.npmjs.com/package/snow-builder'
@@ -70,19 +70,21 @@ const Project: FC<ProjectDetails> = ({
   npm
 }) => {
   return (
-    <Card className="m-1 w-80">
-      <div className="flex">
-        {github && <GithubIcon href={github} className="size-6 text-black" />}
-        {npm && <NPMIcon href={npm} className="size-6 text-black" />}
+    <Card className="m-1 flex h-72 w-80 flex-col justify-between p-5">
+      <div>
+        <div className="flex justify-end">
+          {npm && <NPMIcon href={npm} className="mr-2 size-7 text-black" />}
+          <GithubIcon href={github} className="size-7 text-black" />
+        </div>
+        <CardHeader className="mt-4">
+          <CardTitle className="text-2xl">
+            <a href={github}>{name}</a>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="mt-4">
+          <CardDescription>{description}</CardDescription>
+        </CardContent>
       </div>
-      <CardHeader>
-        <CardTitle className="text-2xl">
-          <a href={github}>{name}</a>
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <CardDescription>{description}</CardDescription>
-      </CardContent>
       <CardFooter className="flex flex-wrap">
         {technologies.map((tech) => (
           <Badge key={tech} variant="outline" className="mb-1 mr-1">
