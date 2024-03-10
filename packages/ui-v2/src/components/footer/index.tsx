@@ -1,22 +1,16 @@
 import React from 'react'
-import {
-  GitHubLogoIcon,
-  InstagramLogoIcon,
-  LinkedInLogoIcon
-} from '@radix-ui/react-icons'
+import { InstagramLogoIcon, LinkedInLogoIcon } from '@radix-ui/react-icons'
+import { GithubIcon } from '@/components/icons'
 
 export const Footer: React.FC = () => {
   return (
     <section className="w-full bg-zinc-900 py-6 dark:bg-zinc-100">
       <div className="container flex flex-col items-center px-4 text-center md:px-6">
         <div className="flex justify-center space-x-4">
-          <a
-            aria-label="Github profile"
-            className="text-white"
+          <GithubIcon
             href="https://github.com/j-dumbell"
-          >
-            <GitHubLogoIcon className="size-6" />
-          </a>
+            className="size-6 text-white"
+          />
           <a
             aria-label="LinkedIn profile"
             className="text-white"
