@@ -1,5 +1,5 @@
 import React from 'react'
-import { Description, Heading } from '@/components/section'
+import { Heading } from '@/components/section'
 
 type SvgFC = React.FC<React.SVGProps<SVGSVGElement>>
 
@@ -77,13 +77,13 @@ const columns: Column[] = [
     Svg: Chart,
     title: 'Data engineering',
     description:
-      'I build and orchestrate high throughput data pipelines to power machine learning and analytics'
+      'I build and orchestrate high throughput ETL pipelines to power analytics and machine learning applications.'
   },
   {
     Svg: Cloud,
     title: 'DevOps',
     description:
-      'I architect cloud-native systems, implement them using infrastructure as code and deploy them using CICD.  Ship to production frequently and safely.'
+      'I architect cloud-native systems and provision with infrastructure-as-code.  I write CI/CD pipelines to enable shipping to production frequently and safely.'
   }
 ]
 

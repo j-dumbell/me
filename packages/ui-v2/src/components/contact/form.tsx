@@ -75,7 +75,7 @@ export const ContactForm: FC<ComponentProps<'form'>> = () => {
           render={({ field }) => (
             <FormItem className="mb-4">
               <FormControl>
-                <Input placeholder="Name" {...field} />
+                <Input type="text" placeholder="Name" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -88,7 +88,7 @@ export const ContactForm: FC<ComponentProps<'form'>> = () => {
           render={({ field }) => (
             <FormItem className="mb-4">
               <FormControl>
-                <Input placeholder="Email" {...field} />
+                <Input type="text" placeholder="Email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

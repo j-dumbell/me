@@ -31,7 +31,7 @@ const projects: ProjectDetails[] = [
   {
     name: 'CacheMem',
     description:
-      'A concurrency safe, strongly typed in memory cache for Golang',
+      'A concurrency safe, strongly typed, in-memory cache for Golang.',
     technologies: ['Golang'],
     github: 'https://github.com/j-dumbell/cachemem'
   },
@@ -43,13 +43,13 @@ const projects: ProjectDetails[] = [
   },
   {
     name: 'Me',
-    description: 'Personal portfolio website.  This one!',
+    description: 'This site!  My personal portfolio website.',
     technologies: ['Typescript', 'React', 'TailwindCSS', 'AWS', 'CDK'],
     github: 'https://github.com/j-dumbell/me'
   },
   {
     name: 'Splendid',
-    description: 'A bootleg online version of the boardgame Splendid.',
+    description: 'A bootleg online version of the board game Splendor.',
     technologies: [
       'Golang',
       'Typescript',

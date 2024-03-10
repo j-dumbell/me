@@ -12,20 +12,24 @@ import InfinityWorksLogo from '../../assets/infinity-works.png'
 import Spark44Logo from '../../assets/spark44.jpg'
 import WonderblyLogo from '../../assets/wonderbly.png'
 import { Badge } from '@/components/ui/badge'
+import { IconMapPinFilled, IconExternalLink } from '@tabler/icons-react'
 
 type Employment = {
   company: string
+  url: string
   title: string
   logo: string
   from: Date
   to?: Date
   Details: FC
   technologies: string[]
+  location: string
 }
 
 const employments: Employment[] = [
   {
     company: 'Grafana Labs',
+    url: 'grafana.com',
     title: 'Senior Software Engineer',
     logo: GrafanaLabsLogo,
     from: new Date('2023-06-01'),
@@ -40,9 +44,7 @@ const employments: Employment[] = [
             Wrote microservices in Go to manage SAS customer usage and billing
             including REST APIs and Kafka event consumers.
           </li>
-          <li>
-            Provisioned GCP infrastructure including Kubernetes deployments.
-          </li>
+          <li>Provisioned GCP infrastructure and Kubernetes resources.</li>
           <li>
             Monitored the services via Prometheus metrics & traces, visualized
             in Grafana dashboards.
@@ -60,10 +62,12 @@ const employments: Employment[] = [
       'Protobuf',
       'Prometheus',
       'Grafana'
-    ]
+    ],
+    location: 'Remote (London, UK)'
   },
   {
     company: 'Infinity Works',
+    url: 'accenture.com',
     title: 'Senior Software Engineer',
     logo: InfinityWorksLogo,
     from: new Date('2019-07-01'),
@@ -98,10 +102,12 @@ const employments: Employment[] = [
       'DynamoDB',
       'MongoDB',
       'PostgreSQL'
-    ]
+    ],
+    location: 'London, UK'
   },
   {
     company: 'Wonderbly',
+    url: 'wonderbly.com',
     title: 'Senior Growth Analyst',
     logo: WonderblyLogo,
     from: new Date('2018-09-01'),
@@ -124,10 +130,12 @@ const employments: Employment[] = [
         </ul>
       </>
     ),
-    technologies: ['Python', 'Redshift', 'SQL', 'Looker']
+    technologies: ['Python', 'Redshift', 'SQL', 'Looker'],
+    location: 'London, UK'
   },
   {
     company: 'Spark44',
+    url: 'linkedin.com/company/spark44',
     title: 'Data Engineer',
     logo: Spark44Logo,
     from: new Date('2016-10-01'),
@@ -150,7 +158,8 @@ const employments: Employment[] = [
         </ul>
       </>
     ),
-    technologies: ['Python', 'BigQuery', 'SQL']
+    technologies: ['Python', 'BigQuery', 'SQL'],
+    location: 'Birmingham, UK'
   }
 ]
 
@@ -169,9 +178,19 @@ export const Experience: FC = () => {
     <section className="w-full pb-40">
       <Heading text="Experience" />
       <div className="flex justify-center space-y-12">
-        <Accordion type="single" collapsible className="mx-10 w-full max-w-3xl">
+        <Accordion type="single" collapsible className="mx-10 w-full max-w-2xl">
           {employments.map(
-            ({ company, title, from, to, Details, logo, technologies }) => (
+            ({
+              company,
+              title,
+              from,
+              to,
+              Details,
+              logo,
+              technologies,
+              location,
+              url
+            }) => (
               <AccordionItem key={company} value={company}>
                 <AccordionTrigger>
                   <div className="flex">
@@ -191,6 +210,14 @@ export const Experience: FC = () => {
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="pl-20">
+                    <div className="mb-2 flex">
+                      <IconMapPinFilled className="mr-1" size="20" />
+                      <p className="mr-5">{location}</p>
+                    </div>
+                    <a href={`https://www.${url}`} className="mb-4 flex">
+                      <IconExternalLink size="20" className="mr-1" />
+                      <p>{url}</p>
+                    </a>
                     <Details />
                     <div className="mt-4 flex flex-wrap">
                       {technologies.map((tech) => (
