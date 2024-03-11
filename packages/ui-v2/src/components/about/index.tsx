@@ -1,9 +1,9 @@
-import React from 'react'
+import { FC, MutableRefObject, SVGProps } from 'react'
 import { Heading } from '@/components/section'
 
-type SvgFC = React.FC<React.SVGProps<SVGSVGElement>>
+type SvgFC = FC<SVGProps<SVGSVGElement>>
 
-const Chart: SvgFC = (props: React.SVGProps<SVGSVGElement>) => (
+const Chart: SvgFC = (props: SVGProps<SVGSVGElement>) => (
   <svg
     className={`fill-transparent ${props.className}`}
     viewBox="0 0 24 24"
@@ -87,9 +87,13 @@ const columns: Column[] = [
   }
 ]
 
-export const About: React.FC = () => {
+type AboutProps = {
+  aboutRef: MutableRefObject<HTMLDivElement | null>
+}
+
+export const About: FC<AboutProps> = (props) => {
   return (
-    <div className="pb-40">
+    <div className="pb-40 pt-10" ref={props.aboutRef}>
       <Heading text="About" />
       <div className="container grid items-center justify-center gap-4 px-4 py-12 text-center md:px-6 lg:py-16">
         <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3 md:gap-12">

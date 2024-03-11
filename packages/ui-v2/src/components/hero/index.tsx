@@ -1,19 +1,13 @@
-import React from 'react'
+import { FC, MutableRefObject } from 'react'
 import { Button } from '@/components/ui/button'
 import { CaretDownIcon } from '@radix-ui/react-icons'
 import HeroImg from '../../assets/hero.png'
 
-// const scrollToId = (targetId: string): void => {
-//   const targetElement = document.getElementById(targetId)
-//   if (!targetElement) {
-//     console.error('element not found')
-//     return
-//   }
-//   const pixelsToScroll = window.scrollY - targetElement.offsetTop
-//   window.scrollTo({ top: -pixelsToScroll, left: 0, behavior: 'smooth' })
-// }
+type HeroProps = {
+  aboutRef: MutableRefObject<HTMLDivElement | null>
+}
 
-export const Hero: React.FC = () => {
+export const Hero: FC<HeroProps> = (props) => {
   return (
     <section className="flex h-screen">
       <div className="container m-auto flex flex-wrap items-center justify-around md:px-6">
@@ -22,7 +16,7 @@ export const Hero: React.FC = () => {
             <p className="text3xl mx-auto max-w-[700px] text-gray-700 dark:text-gray-400 md:text-xl">
               Hi, I'm
             </p>
-            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-7xl/none">
+            <h1 className="scroll-m-20 text-4xl font-bold tracking-tight lg:text-7xl">
               James Dumbell.
             </h1>
             <p className="mx-auto max-w-[500px] pb-8 text-2xl text-gray-500 dark:text-gray-400 md:text-xl">
@@ -31,7 +25,12 @@ export const Hero: React.FC = () => {
               <a href="https://www.grafana.com">Grafana Labs</a>, helping
               companies monitor their mission critical applications.
             </p>
-            <Button size="lg">
+            <Button
+              size="lg"
+              onClick={() =>
+                props.aboutRef.current?.scrollIntoView({ behavior: 'smooth' })
+              }
+            >
               Let's go!
               <CaretDownIcon className="ml-2 size-4" />
             </Button>
