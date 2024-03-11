@@ -17,13 +17,18 @@ export const Hero: React.FC = () => {
   return (
     <section className="flex h-screen">
       <div className="container m-auto flex flex-wrap items-center justify-center px-4 md:px-6">
-        <div className="mr-20 flex flex-col items-center space-y-4 text-center">
+        <div className="mr-20 flex flex-col items-center space-y-4 text-left">
           <div className="space-y-2">
+            <p className="text3xl mx-auto max-w-[700px] text-gray-700 dark:text-gray-400 md:text-xl">
+              Hi, I'm
+            </p>
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-              James Dumbell
+              James Dumbell.
             </h1>
             <p className="mx-auto max-w-[700px] text-2xl text-gray-500 dark:text-gray-400 md:text-xl">
-              I'm a software engineer.
+              I'm a software engineer based in London where I'm currently
+              building things for the brilliant Grafana Labs, helping companies
+              monitor their mission critical applications.
             </p>
             <Button>
               Let's go!
