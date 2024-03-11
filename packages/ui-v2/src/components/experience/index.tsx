@@ -178,7 +178,7 @@ export const Experience: FC = () => {
     <section className="w-full pb-40">
       <Heading text="Experience" />
       <div className="flex justify-center space-y-12">
-        <Accordion type="single" collapsible className="mx-10 w-full max-w-2xl">
+        <Accordion type="single" collapsible className="mx-4 w-full max-w-2xl">
           {employments.map(
             ({
               company,
@@ -194,8 +194,8 @@ export const Experience: FC = () => {
               <AccordionItem key={company} value={company}>
                 <AccordionTrigger>
                   <div className="flex">
-                    <img className="size-12" src={logo} alt={company} />
-                    <div className="ml-8 space-y-1">
+                    <img className="mr-5 size-12" src={logo} alt={company} />
+                    <div className="space-y-1">
                       <h2 className="scroll-m-20 text-left text-xl font-semibold tracking-tight">
                         {company}
                       </h2>
@@ -209,10 +209,10 @@ export const Experience: FC = () => {
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
-                  <div className="pl-20">
+                  <div className="ml-[67px]">
                     <div className="mb-2 flex">
                       <IconMapPinFilled className="mr-1" size="20" />
-                      <p className="mr-5">{location}</p>
+                      <p>{location}</p>
                     </div>
                     <a href={`https://www.${url}`} className="mb-4 flex">
                       <IconExternalLink size="20" className="mr-1" />
