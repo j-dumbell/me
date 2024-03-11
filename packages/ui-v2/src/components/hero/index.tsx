@@ -2,6 +2,7 @@ import { FC, MutableRefObject } from 'react'
 import { Button } from '@/components/ui/button'
 import { CaretDownIcon } from '@radix-ui/react-icons'
 import HeroImg from '../../assets/hero.png'
+import { Hyperlink } from '@/components/hyperlink'
 
 type HeroProps = {
   aboutRef: MutableRefObject<HTMLDivElement | null>
@@ -22,8 +23,8 @@ export const Hero: FC<HeroProps> = (props) => {
             <p className="mx-auto max-w-[500px] pb-8 text-2xl text-gray-500 dark:text-gray-400 md:text-xl">
               I'm a software engineer based in London where I'm currently
               building things for{' '}
-              <a href="https://www.grafana.com">Grafana Labs</a>, helping
-              companies monitor their mission critical applications.
+              <Hyperlink href="https://www.grafana.com" title="Grafana Labs" />,
+              helping companies monitor their mission critical applications.
             </p>
             <Button
               size="lg"

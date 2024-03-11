@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
         </div>
       </div>
       <p className="text-center text-sm leading-7 text-white [&:not(:first-child)]:mt-2">
-        Created by yours truly using React, Typescript and TailwindCSS
+        Created by yours truly using React, Typescript and TailwindCSS.
       </p>
     </section>
   )
