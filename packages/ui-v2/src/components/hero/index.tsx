@@ -20,7 +20,7 @@ export const Hero: FC<HeroProps> = (props) => {
             <h1 className="scroll-m-20 text-4xl font-bold tracking-tight lg:text-7xl">
               James Dumbell.
             </h1>
-            <p className="mx-auto max-w-[500px] pb-8 text-2xl text-gray-500 dark:text-gray-400 md:text-xl">
+            <p className="mx-auto max-w-[500px] pb-8 text-xl text-gray-500 dark:text-gray-400 md:text-xl">
               I'm a software engineer based in London where I'm currently
               building things for{' '}
               <Hyperlink href="https://www.grafana.com" title="Grafana Labs" />,
