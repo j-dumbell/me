@@ -1,5 +1,6 @@
-import { FC, MutableRefObject, SVGProps } from 'react'
+import React, { FC, MutableRefObject, SVGProps } from 'react'
 import { Heading } from '@/components/section'
+import DevopsImg from '../../assets/devops.png'
 
 type SvgFC = FC<SVGProps<SVGSVGElement>>
 
@@ -61,26 +62,26 @@ const Software: SvgFC = (props: React.SVGProps<SVGSVGElement>) => (
 )
 
 type Column = {
-  Svg: React.FC<React.SVGProps<SVGSVGElement>>
+  img: string
   title: string
   description: string
 }
 
 const columns: Column[] = [
   {
-    Svg: Software,
+    img: DevopsImg,
     title: 'Software engineering',
     description:
       'From REST / GraphQL APIs and event-driven microservices, to slick UIs - I build for the web'
   },
   {
-    Svg: Chart,
+    img: DevopsImg,
     title: 'Data engineering',
     description:
       'I build and orchestrate high throughput ETL pipelines to power analytics and machine learning applications.'
   },
   {
-    Svg: Cloud,
+    img: DevopsImg,
     title: 'DevOps',
     description:
       'I architect cloud-native systems and provision with infrastructure-as-code.  I write CI/CD pipelines to enable shipping to production frequently and safely.'
@@ -97,10 +98,11 @@ export const About: FC<AboutProps> = (props) => {
       <Heading text="About" />
       <div className="container grid items-center justify-center gap-4 px-4 py-12 text-center md:px-6 lg:py-16">
         <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3 md:gap-12">
-          {columns.map(({ title, description, Svg }) => (
+          {columns.map(({ title, description, img }) => (
             <div key={title} className="space-y-3">
               <div className="flex items-center justify-center">
-                <Svg className="size-12 text-blue-600" />
+                <img className="size-36" src={img} alt={'x'} />
+                {/*<img className="size-12 text-blue-600"/>*/}
               </div>
               <h3 className="text-2xl font-bold tracking-tighter">{title}</h3>
               <p className="text-gray-500 dark:text-gray-400">{description}</p>
