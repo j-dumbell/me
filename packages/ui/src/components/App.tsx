@@ -1,22 +1,24 @@
-import React from 'react'
-import { Experience } from './Experience'
-import { About } from './About'
-import { Contact } from './Contact'
-import { Landing } from './Landing'
-import { Projects } from './Projects'
+import { Hero } from 'src/components/hero'
+import { About } from 'src/components/about'
+import { Footer } from '@/components/footer'
+import { Contact } from '@/components/contact'
+import { Projects } from '@/components/projects'
+import { FC, useRef } from 'react'
+import { Experience } from '@/components/experience'
 
-const App: React.FC = () => (
-  <div className="text-black">
-    {/*<Navbar />*/}
-    <p>WIP</p>
-    {/*<main>*/}
-    {/*  <Landing />*/}
-    {/*  <About />*/}
-    {/*  /!*<Experience />*!/*/}
-    {/*  <Projects />*/}
-    {/*  <Contact />*/}
-    {/*</main>*/}
-  </div>
-)
+const App: FC = () => {
+  const aboutRef = useRef<HTMLDivElement | null>(null)
+
+  return (
+    <>
+      <Hero aboutRef={aboutRef} />
+      <About aboutRef={aboutRef} />
+      <Experience />
+      <Projects />
+      <Contact />
+      <Footer />
+    </>
+  )
+}
 
 export default App

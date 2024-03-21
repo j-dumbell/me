@@ -1,7 +1,5 @@
-# j-dumbell/me
-Portfolio website for James Dumbell.
+# UI
 
-## UI
 This is the UI for James Dumbell's portfolio website.
 It's React app built with [Vite](https://vitejs.dev), using [TypeScript](https://www.typescriptlang.org), [Vitest](https://vitest.dev) & [Testing Library](https://testing-library.com) for testing and [Tailwindcss](https://tailwindcss.com) for styling.
 
@@ -29,6 +27,3 @@ yarn typecheck
 ```bash
 yarn build
 ```
-
-## License
-This project is licensed under the MIT License.
