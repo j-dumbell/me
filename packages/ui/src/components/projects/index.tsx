@@ -171,10 +171,12 @@ export const Projects: FC = () => {
     <div className="pb-40">
       <Heading text="Projects" />
       <HeadlineProjects />
-      <div className="mx-auto grid w-full max-w-screen-lg gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {cardProjects.map((proj) => (
-          <ProjectCard key={proj.name} {...proj} />
-        ))}
+      <div className="flex justify-center">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {cardProjects.map((proj) => (
+            <ProjectCard key={proj.name} {...proj} />
+          ))}
+        </div>
       </div>
     </div>
   )

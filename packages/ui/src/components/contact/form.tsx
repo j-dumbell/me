@@ -48,7 +48,9 @@ export const ContactForm: FC<ComponentProps<'form'>> = () => {
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema)
+    resolver: zodResolver(formSchema),
+    mode: 'onBlur',
+    reValidateMode: 'onBlur'
   })
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
@@ -107,7 +109,11 @@ export const ContactForm: FC<ComponentProps<'form'>> = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-[100%]">
+        <Button
+          type="submit"
+          className="w-[100%]"
+          disabled={!form.formState.isDirty || !form.formState.isValid}
+        >
           Submit
         </Button>
       </form>

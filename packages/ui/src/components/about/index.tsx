@@ -1,6 +1,8 @@
 import React, { FC, MutableRefObject, SVGProps } from 'react'
 import { Heading } from '@/components/section'
 import DevopsImg from '../../assets/devops.png'
+import DBImg from '../../assets/db.png'
+import Terminal from '../../assets/terminal.png'
 
 type SvgFC = FC<SVGProps<SVGSVGElement>>
 
@@ -69,13 +71,13 @@ type Column = {
 
 const columns: Column[] = [
   {
-    img: DevopsImg,
+    img: Terminal,
     title: 'Software engineering',
     description:
       'From REST / GraphQL APIs and event-driven microservices, to slick UIs - I build for the web'
   },
   {
-    img: DevopsImg,
+    img: DBImg,
     title: 'Data engineering',
     description:
       'I build and orchestrate high throughput ETL pipelines to power analytics and machine learning applications.'
