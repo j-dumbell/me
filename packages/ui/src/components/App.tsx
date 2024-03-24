@@ -1,10 +1,11 @@
 import { Hero } from 'src/components/hero'
-import { About } from 'src/components/about'
+import { Skills } from 'src/components/skills'
 import { Footer } from '@/components/footer'
 import { Contact } from '@/components/contact'
 import { Projects } from '@/components/projects'
 import { FC, useRef } from 'react'
 import { Experience } from '@/components/experience'
+import { About } from '@/components/about'
 
 const App: FC = () => {
   const aboutRef = useRef<HTMLDivElement | null>(null)
@@ -13,6 +14,7 @@ const App: FC = () => {
     <>
       <Hero aboutRef={aboutRef} />
       <About aboutRef={aboutRef} />
+      <Skills />
       <Experience />
       <Projects />
       <Contact />

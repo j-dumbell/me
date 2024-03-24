@@ -15,16 +15,13 @@ export const Hero: FC<HeroProps> = (props) => {
         <div className="flex flex-col items-center space-y-4 text-left">
           <div className="space-y-2">
             <p className="text3xl mx-auto max-w-[700px] text-gray-700 dark:text-gray-400 md:text-xl">
-              Hi, I'm
+              Hi, my name is
             </p>
             <h1 className="scroll-m-20 text-4xl font-bold tracking-tight lg:text-7xl">
               James Dumbell.
             </h1>
-            <p className="mx-auto max-w-[500px] pb-8 text-xl text-gray-500 dark:text-gray-400 md:text-xl">
-              I'm a software engineer based in London where I'm currently
-              building things for{' '}
-              <Hyperlink href="https://www.grafana.com" title="Grafana Labs" />,
-              helping companies monitor their mission critical applications.
+            <p className="scroll-m-20 pb-6 text-2xl font-bold tracking-tight lg:text-5xl">
+              I'm a software engineer.
             </p>
             <Button
               size="lg"
@@ -37,7 +34,7 @@ export const Hero: FC<HeroProps> = (props) => {
             </Button>
           </div>
         </div>
-        <img className="size-[500px]" src={HeroImg} alt="desk image" />
+        <img className="size-[450px]" src={HeroImg} alt="desk image" />
       </div>
     </section>
   )

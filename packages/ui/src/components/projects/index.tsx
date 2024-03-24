@@ -57,7 +57,7 @@ const ProjectCard: FC<CardProject> = ({
   npm
 }) => {
   return (
-    <Card className="m-1 flex h-72 w-80 flex-col justify-between p-5">
+    <Card className="m-1 flex h-72 w-80 flex-col justify-between p-5 transition duration-300 hover:scale-105">
       <div>
         <div className="flex justify-end">
           {npm && <NPMIcon href={npm} className="mr-2 size-7 text-black" />}
@@ -96,16 +96,16 @@ const HeadlineProjects: FC = () => {
           <CarouselItem key={proj.name}>
             <div className={contentClassName(index)}>
               <img
-                className="size-[500px]"
+                className="size-[400px]"
                 src={PlaceholderImg}
                 alt="desk image"
               />
               <div className="mx-6 flex w-96 flex-col justify-between">
-                <h5 className="mb-6 text-2xl font-semibold leading-none tracking-tight">
+                <h5 className="mb-6 text-right text-2xl font-semibold leading-none tracking-tight">
                   <a href={proj.github}>{proj.name}</a>
                 </h5>
-                <p className="mb-6">{proj.description}</p>
-                <div className="flex flex-wrap">
+                <p className="mb-6 text-right">{proj.description}</p>
+                <div className="flex flex-wrap justify-end">
                   {proj.technologies.map((tech) => (
                     <Badge key={tech} variant="outline" className="mb-1 mr-1">
                       {tech}
@@ -168,10 +168,10 @@ const cardProjects: CardProject[] = [
 
 export const Projects: FC = () => {
   return (
-    <div className="pb-40">
+    <div className="bg-slate-100 py-20">
       <Heading text="Projects" />
       <HeadlineProjects />
-      <div className="flex justify-center">
+      <div className="mt-20 flex justify-center">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {cardProjects.map((proj) => (
             <ProjectCard key={proj.name} {...proj} />

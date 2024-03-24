@@ -10,7 +10,7 @@ const NavElement: React.FC<NavElementProps> = (props: NavElementProps) => (
   <li>
     <a
       href="#"
-      className="block rounded py-2 pl-3 pr-4 hover:bg-gray-100 dark:text-slate-400 dark:hover:bg-gray-700 dark:hover:text-cyan-500 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-cyan-500 font-light"
+      className="block rounded py-2 pl-3 pr-4 font-light hover:bg-gray-100 dark:text-slate-400 dark:hover:bg-gray-700 dark:hover:text-cyan-500 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-cyan-500"
     >
       {props.title}
     </a>
@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = (): void => {
-      if (window.scrollY > document.getElementById('about')!.offsetTop) {
+      if (window.scrollY > document.getElementById('skills')!.offsetTop) {
         setVisible(true)
       } else {
         setVisible(false)
@@ -41,14 +41,14 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`top-0 right-0 w-full border-gray-200 sticky shadow-lg backdrop-blur-[4px] ease-in-out duration-300 ${
+      className={`sticky right-0 top-0 w-full border-gray-200 shadow-lg backdrop-blur-[4px] duration-300 ease-in-out ${
         visible ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-1">
         <JD className="h-9 w-9 text-white hover:text-cyan-500" />
         <div className="hidden w-full md:block md:w-auto">
-          <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0 bg-inherit">
+          <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-inherit p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0">
             <NavElement title="About" />
             <NavElement title="Experience" />
             <NavElement title="Projects" />
