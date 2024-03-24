@@ -123,7 +123,7 @@ const columns: Column[] = [
 
 export const Skills: FC = () => {
   return (
-    <div className="pb-40 pt-10">
+    <div className="py-20 pb-40">
       <Heading text="Skills" />
       <div className="container grid items-center justify-center gap-4 px-4 py-12 text-center md:px-6 lg:py-16">
         <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3 md:gap-12">

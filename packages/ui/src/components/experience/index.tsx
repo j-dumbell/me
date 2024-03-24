@@ -12,7 +12,7 @@ import InfinityWorksLogo from '../../assets/infinity-works.png'
 import Spark44Logo from '../../assets/spark44.jpg'
 import WonderblyLogo from '../../assets/wonderbly.png'
 import { Badge } from '@/components/ui/badge'
-import { IconMapPinFilled, IconExternalLink } from '@tabler/icons-react'
+import { Icon } from '@iconify/react'
 
 type Employment = {
   company: string
@@ -211,11 +211,14 @@ export const Experience: FC = () => {
                 <AccordionContent>
                   <div className="ml-[67px]">
                     <div className="mb-2 flex">
-                      <IconMapPinFilled className="mr-1" size="20" />
+                      <Icon icon="mdi:location" className="mr-1 size-6" />
                       <p>{location}</p>
                     </div>
                     <a href={`https://www.${url}`} className="mb-4 flex">
-                      <IconExternalLink size="20" className="mr-1" />
+                      <Icon
+                        icon="lucide:external-link"
+                        className="mr-1 size-5"
+                      />
                       <p>{url}</p>
                     </a>
                     <Details />

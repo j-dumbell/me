@@ -44,16 +44,18 @@ const mkFormUrl = (fields: Fields): string => {
   return `https://docs.google.com/forms/u/0/d/e/1FAIpQLSdvadbRcLHcZg-McLXur5TytNocoixdxN4QkffNHI2meTA-Dg/formResponse?${queryParams}`
 }
 
+type FormSchema = z.infer<typeof formSchema>
+
 export const ContactForm: FC<ComponentProps<'form'>> = () => {
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
-    mode: 'onBlur',
-    reValidateMode: 'onBlur'
+    mode: 'all',
+    reValidateMode: 'onChange'
   })
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = (values: FormSchema) => {
     window.open(mkFormUrl(values), '_blank', 'noreferrer')
     setIsSubmitted(true)
   }
@@ -70,7 +72,10 @@ export const ContactForm: FC<ComponentProps<'form'>> = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="m-auto max-w-lg">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="m-auto max-w-lg px-4"
+      >
         <FormField
           control={form.control}
           name="name"
@@ -111,7 +116,8 @@ export const ContactForm: FC<ComponentProps<'form'>> = () => {
         />
         <Button
           type="submit"
-          className="w-[100%]"
+          data-testid="submit-button"
+          className="w-full"
           disabled={!form.formState.isDirty || !form.formState.isValid}
         >
           Submit

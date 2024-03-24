@@ -8,9 +8,9 @@ import {
 } from '@/components/ui/card'
 import { FC } from 'react'
 import { Badge } from '@/components/ui/badge'
-import { GithubIcon, NPMIcon } from '@/components/icons'
 import { Heading } from '@/components/section'
 import PlaceholderImg from '@/assets/placeholder1.png'
+import SplendidImg from '@/assets/splendid.jpeg'
 import {
   Carousel,
   CarouselContent,
@@ -18,6 +18,8 @@ import {
   CarouselNext,
   CarouselPrevious
 } from '@/components/ui/carousel'
+import { Icon } from '@iconify/react'
+import { cn } from '@/lib/utils'
 
 type CardProject = {
   name: string
@@ -41,11 +43,20 @@ const carouselProjects: CarouselProject[] = [
     image: PlaceholderImg
   },
   {
-    name: 'name blah',
-    description: 'some desc',
-    technologies: ['Typescript', 'Golang'],
+    name: 'Splendid',
+    description:
+      'An online version of the board game Splendor build with websockets in Golang with a React UI.  Deployed on AWS with Terraform.',
+    technologies: [
+      'Golang',
+      'Websockets',
+      'Typescript',
+      'React',
+      'Docker',
+      'Terraform',
+      'AWS'
+    ],
     github: 'www.blah.com',
-    image: PlaceholderImg
+    image: SplendidImg
   }
 ]
 
@@ -60,12 +71,22 @@ const ProjectCard: FC<CardProject> = ({
     <Card className="m-1 flex h-72 w-80 flex-col justify-between p-5 transition duration-300 hover:scale-105">
       <div>
         <div className="flex justify-end">
-          {npm && <NPMIcon href={npm} className="mr-2 size-7 text-black" />}
-          <GithubIcon href={github} className="size-7 text-black" />
+          {npm && (
+            <Icon
+              icon="iconoir:npm"
+              className="mr-2 size-8 hover:text-indigo-600"
+            />
+          )}
+          <Icon
+            icon="mingcute:github-line"
+            className="size-7 hover:text-indigo-600"
+          />
         </div>
         <CardHeader className="mt-4">
           <CardTitle className="text-2xl">
-            <a href={github}>{name}</a>
+            <a className="hover:text-indigo-600" href={github}>
+              {name}
+            </a>
           </CardTitle>
         </CardHeader>
         <CardContent className="mt-4">
@@ -83,34 +104,62 @@ const ProjectCard: FC<CardProject> = ({
   )
 }
 
-const contentClassName = (index: number): string => {
-  const baseClasses = 'flex p-1 justify-center items-center'
-  return index % 2 ? `${baseClasses} flex-row-reverse` : baseClasses
-}
-
 const HeadlineProjects: FC = () => {
   return (
     <Carousel className="mx-auto mb-10 w-full max-w-5xl">
       <CarouselContent>
         {carouselProjects.map((proj, index) => (
           <CarouselItem key={proj.name}>
-            <div className={contentClassName(index)}>
+            {/*<div className={contentClassName(index)}>*/}
+            <div
+              className={cn(
+                'flex p-1 justify-center items-center',
+                !(index % 2 === 0) && 'flex-row-reverse'
+              )}
+            >
               <img
-                className="size-[400px]"
-                src={PlaceholderImg}
+                className="size-[400px] rounded-lg border-2"
+                src={proj.image}
                 alt="desk image"
               />
-              <div className="mx-6 flex w-96 flex-col justify-between">
-                <h5 className="mb-6 text-right text-2xl font-semibold leading-none tracking-tight">
+              <div
+                className={cn(
+                  'mx-6 flex w-96 flex-col',
+                  index % 2 === 0 && 'items-end'
+                )}
+              >
+                <h5
+                  className={cn(
+                    'mb-6 text-2xl font-semibold leading-none tracking-tight hover:text-indigo-600',
+                    index % 2 === 0 && 'text-right'
+                  )}
+                >
                   <a href={proj.github}>{proj.name}</a>
                 </h5>
-                <p className="mb-6 text-right">{proj.description}</p>
-                <div className="flex flex-wrap justify-end">
+                <p className={cn('mb-6', index % 2 === 0 && 'text-right')}>
+                  {proj.description}
+                </p>
+                <div
+                  className={cn(
+                    'flex flex-wrap mb-4',
+                    index % 2 === 0 && 'justify-end'
+                  )}
+                >
                   {proj.technologies.map((tech) => (
                     <Badge key={tech} variant="outline" className="mb-1 mr-1">
                       {tech}
                     </Badge>
                   ))}
+                </div>
+                <div className="flex">
+                  <Icon
+                    icon="mingcute:github-line"
+                    className="mr-2 size-7 hover:text-indigo-600"
+                  />
+                  <Icon
+                    icon="lucide:external-link"
+                    className="size-7 hover:text-indigo-600"
+                  />
                 </div>
               </div>
             </div>

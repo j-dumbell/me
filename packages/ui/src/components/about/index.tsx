@@ -29,8 +29,7 @@ export const About: FC<AboutProps> = (props) => {
           </p>
         </div>
         <img
-          // className="size-72 rounded-lg border-b-8 border-r-8 border-[#011173]"
-          className="size-72 rounded-lg border-4 border-[#000B60] [box-shadow:10px_10px_0px_#AAD0F6]"
+          className="size-72 rounded-lg border-4 border-[#000B60] [box-shadow:10px_10px_0px_#A78BFA]"
           src={MeImg}
           alt="James Dumbell"
         />

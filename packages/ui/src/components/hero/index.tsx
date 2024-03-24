@@ -2,7 +2,6 @@ import { FC, MutableRefObject } from 'react'
 import { Button } from '@/components/ui/button'
 import { CaretDownIcon } from '@radix-ui/react-icons'
 import HeroImg from '../../assets/hero.png'
-import { Hyperlink } from '@/components/hyperlink'
 
 type HeroProps = {
   aboutRef: MutableRefObject<HTMLDivElement | null>
@@ -17,7 +16,7 @@ export const Hero: FC<HeroProps> = (props) => {
             <p className="text3xl mx-auto max-w-[700px] text-gray-700 dark:text-gray-400 md:text-xl">
               Hi, my name is
             </p>
-            <h1 className="scroll-m-20 text-4xl font-bold tracking-tight lg:text-7xl">
+            <h1 className="scroll-m-20 text-4xl font-bold tracking-tight text-indigo-600 lg:text-7xl">
               James Dumbell.
             </h1>
             <p className="scroll-m-20 pb-6 text-2xl font-bold tracking-tight lg:text-5xl">

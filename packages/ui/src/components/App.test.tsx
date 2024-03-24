@@ -1,32 +1,12 @@
 import { render, screen } from '@testing-library/react'
-
-import App from './App'
+import { describe, it, expect } from 'vitest'
+import React from 'react'
+import App from '@/components/App'
 
 describe('<App />', () => {
-  it('should render the App', () => {
-    const { container } = render(<App />)
-
-    expect(
-      screen.getByRole('heading', {
-        name: /Welcome!/i,
-        level: 1
-      })
-    ).toBeInTheDocument()
-
-    expect(
-      screen.getByText(
-        /This is a boilerplate build with Vite, React 18, TypeScript, Vitest, Testing Library, TailwindCSS 3, Eslint and Prettier./i
-      )
-    ).toBeInTheDocument()
-
-    expect(
-      screen.getByRole('link', {
-        name: /start building for free/i
-      })
-    ).toBeInTheDocument()
-
-    expect(screen.getByRole('img')).toBeInTheDocument()
-
-    expect(container.firstChild).toBeInTheDocument()
+  it('renders with the correct label', () => {
+    render(<App />)
+    const buttonElement = screen.getByText('James Dumbell.')
+    expect(buttonElement).toBeInTheDocument()
   })
 })
