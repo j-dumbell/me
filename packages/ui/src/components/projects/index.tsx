@@ -199,19 +199,6 @@ const cardProjects: CardProject[] = [
     description: 'This site!  My personal portfolio website.',
     technologies: ['Typescript', 'React', 'TailwindCSS', 'AWS', 'CDK'],
     github: 'https://github.com/j-dumbell/me'
-  },
-  {
-    name: 'Splendid',
-    description: 'A bootleg online version of the board game Splendor.',
-    technologies: [
-      'Golang',
-      'Typescript',
-      'Websockets',
-      'React',
-      'AWS',
-      'Docker'
-    ],
-    github: 'https://github.com/j-dumbell/splendid'
   }
 ]
 
