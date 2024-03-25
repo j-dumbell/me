@@ -126,7 +126,7 @@ const employments: Employment[] = [
           <li>
             Analyze the data with SQL and Python, producing predictive models.
           </li>
-          <li>Build and maintain Looker dasbhoards.</li>
+          <li>Build and maintain Looker dashboards.</li>
         </ul>
       </>
     ),
