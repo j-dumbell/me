@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build --base=./",
     "serve": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
