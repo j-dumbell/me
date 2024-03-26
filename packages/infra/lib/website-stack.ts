@@ -28,6 +28,13 @@ export class WebsiteStack extends Stack {
       accessControl: s3.BucketAccessControl.PRIVATE,
       objectOwnership: s3.ObjectOwnership.BUCKET_OWNER_ENFORCED,
       encryption: s3.BucketEncryption.S3_MANAGED,
+      cors: [
+        {
+          allowedMethods: [s3.HttpMethods.GET],
+          allowedOrigins: ["*"],
+          allowedHeaders: ["*"],
+        },
+      ],
     });
 
     const cloudfrontOriginAccessIdentity = new cloudfront.OriginAccessIdentity(
@@ -62,6 +69,15 @@ export class WebsiteStack extends Stack {
       },
     );
 
+    const connectSrc: string[] = [
+      "https://api.iconify.design",
+      "https://api.unisvg.com",
+      "https://api.simplesvg.com",
+    ];
+    const cspPolicy = `default-src 'self'; script-src 'self' https://code.iconify.design; style-src 'self' 'unsafe-inline'; img-src 'self' https://cdn.iconify.design; connect-src 'self' ${connectSrc.join(
+      " ",
+    )}; font-src 'self'; object-src 'none';`;
+
     const responseHeaderPolicy = new cloudfront.ResponseHeadersPolicy(
       this,
       "security-headers-response-header-policy",
@@ -70,7 +86,7 @@ export class WebsiteStack extends Stack {
         securityHeadersBehavior: {
           contentSecurityPolicy: {
             override: true,
-            contentSecurityPolicy: "default-src 'self'",
+            contentSecurityPolicy: cspPolicy,
           },
           strictTransportSecurity: {
             override: true,
@@ -113,6 +129,18 @@ export class WebsiteStack extends Stack {
           viewerProtocolPolicy:
             cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
           responseHeadersPolicy: responseHeaderPolicy,
+          allowedMethods: cloudfront.AllowedMethods.ALLOW_ALL,
+          originRequestPolicy: new cloudfront.OriginRequestPolicy(
+            this,
+            "CORSOriginRequestPolicy",
+            {
+              headerBehavior: cloudfront.OriginRequestHeaderBehavior.allowList(
+                "Origin",
+                "Access-Control-Request-Headers",
+                "Access-Control-Request-Method",
+              ),
+            },
+          ),
         },
       },
     );

@@ -116,8 +116,7 @@ const employments: Employment[] = [
       <>
         <p>
           Lead analyst at a personalized book ecommerce website, working across
-          all business domains. perform analysis using Python and SQL, and
-          produce Looker dashboards.
+          all business domains.
         </p>
         <ul className="ml-6 list-disc text-left [&>li]:mt-2">
           <li>
@@ -126,7 +125,7 @@ const employments: Employment[] = [
           <li>
             Analyze the data with SQL and Python, producing predictive models.
           </li>
-          <li>Build and maintain Looker dasbhoards.</li>
+          <li>Build and maintain Looker dashboards.</li>
         </ul>
       </>
     ),
