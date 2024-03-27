@@ -197,7 +197,14 @@ const cardProjects: CardProject[] = [
   {
     name: 'Me',
     description: 'This site!  My personal portfolio website.',
-    technologies: ['Typescript', 'React', 'TailwindCSS', 'AWS', 'CDK'],
+    technologies: [
+      'Typescript',
+      'React',
+      'TailwindCSS',
+      'AWS',
+      'CDK',
+      'Google Analytics'
+    ],
     github: 'https://github.com/j-dumbell/me'
   }
 ]
