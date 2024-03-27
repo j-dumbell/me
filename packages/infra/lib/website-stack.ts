@@ -73,8 +73,9 @@ export class WebsiteStack extends Stack {
       "https://api.iconify.design",
       "https://api.unisvg.com",
       "https://api.simplesvg.com",
+      "www.google-analytics.com",
     ];
-    const cspPolicy = `default-src 'self'; script-src 'self' https://code.iconify.design; style-src 'self' 'unsafe-inline'; img-src 'self' https://cdn.iconify.design; connect-src 'self' ${connectSrc.join(
+    const cspPolicy = `default-src 'self'; script-src 'self' https://code.iconify.design www.googletagmanager.com/gtag/js; style-src 'self' 'unsafe-inline'; img-src 'self' https://cdn.iconify.design; connect-src 'self' ${connectSrc.join(
       " ",
     )}; font-src 'self'; object-src 'none';`;
 
