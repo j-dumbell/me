@@ -17,6 +17,8 @@
   "scripts": {
     "dev": "yarn workspace ui dev",
     "typecheck": "yarn workspace ui typecheck",
+    "ui": "yarn workspace ui",
+    "infra": "yarn workspace infra",
     "test": "yarn workspace ui test",
     "ui-build": "yarn workspace ui build",
     "ui-deploy": "aws s3 sync packages/ui/dist/ s3://jdumbell-portfolio-website-bucket --delete",
