@@ -211,7 +211,7 @@ const cardProjects: CardProject[] = [
 
 export const Projects: FC = () => {
   return (
-    <div className="bg-slate-100 py-20">
+    <div className="py-20">
       <Heading text="Projects" />
       <HeadlineProjects />
       <div className="mt-20 flex justify-center">

@@ -82,7 +82,12 @@ export const ContactForm: FC<ComponentProps<'form'>> = () => {
           render={({ field }) => (
             <FormItem className="mb-4">
               <FormControl>
-                <Input type="text" placeholder="Name" {...field} />
+                <Input
+                  className="bg-white"
+                  type="text"
+                  placeholder="Name"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -95,7 +100,12 @@ export const ContactForm: FC<ComponentProps<'form'>> = () => {
           render={({ field }) => (
             <FormItem className="mb-4">
               <FormControl>
-                <Input type="text" placeholder="Email" {...field} />
+                <Input
+                  className="bg-white"
+                  type="text"
+                  placeholder="Email"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -108,7 +118,11 @@ export const ContactForm: FC<ComponentProps<'form'>> = () => {
           render={({ field }) => (
             <FormItem className="mb-4">
               <FormControl>
-                <Textarea placeholder="Message" {...field} />
+                <Textarea
+                  className="bg-white"
+                  placeholder="Message"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

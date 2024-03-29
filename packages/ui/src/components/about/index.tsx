@@ -2,7 +2,6 @@ import React, { FC, MutableRefObject } from 'react'
 import { Heading } from '@/components/section'
 import MeImg from '../../assets/me.jpeg'
 import { Hyperlink } from '@/components/hyperlink'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 type AboutProps = {
   aboutRef: MutableRefObject<HTMLDivElement | null>
@@ -13,7 +12,7 @@ export const About: FC<AboutProps> = (props) => {
     <div className="bg-slate-100 pb-40 pt-20" ref={props.aboutRef}>
       <Heading text="About" />
       <div className="container flex max-w-4xl flex-wrap items-center justify-center">
-        <div className="mb-6 mr-8 max-w-lg sm:mr-0">
+        <div className="mr-8 max-w-lg">
           <p className="pb-6 text-lg text-gray-500 dark:text-gray-400">
             Nice to meet you! I'm a London-based mathematics graduate turned
             engineer with over 5 years experience across software engineering,
@@ -29,7 +28,7 @@ export const About: FC<AboutProps> = (props) => {
           </p>
         </div>
         <img
-          className="size-72 rounded-lg border-4 border-[#000B60] [box-shadow:10px_10px_0px_#A78BFA]"
+          className="size-60 rounded-lg border-0 border-[#000B60] [box-shadow:10px_10px_0px_#4f45e482]"
           src={MeImg}
           alt="James Dumbell"
         />

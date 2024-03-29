@@ -91,17 +91,20 @@ const columns: Column[] = [
 
 export const Skills: FC = () => {
   return (
-    <div className="py-20 pb-40">
+    <div className="py-20">
       <Heading text="Skills" />
       <div className="container grid items-center justify-center gap-4 px-4 py-12 text-center md:px-6 lg:py-16">
         <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3 md:gap-12">
           {columns.map(({ title, description, img, skills }) => (
             <div key={title} className="space-y-3">
               <div className="flex items-center justify-center">
-                <img className="size-36" src={img} alt={'x'} />
-                {/*<img className="size-12 text-blue-600"/>*/}
+                <img
+                  className="mb-8 size-36 transition duration-300 hover:scale-110"
+                  src={img}
+                  alt={''}
+                />
               </div>
-              <h3 className="text-2xl font-bold tracking-tighter">{title}</h3>
+              <h3 className="text-2xl font-medium tracking-tight">{title}</h3>
               <p className="text-gray-500">{description}</p>
               <div className="mt-4 flex flex-wrap justify-center p-5">
                 {skills.map((Skill, index) => (

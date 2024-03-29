@@ -9,7 +9,7 @@ export type HeadingProps = {
 export const Heading: FC<HeadingProps> = (props) => (
   <h2
     className={cn(
-      'mb-20 scroll-m-20 text-center text-4xl font-semibold tracking-tight underline underline-offset-8',
+      'mb-20 scroll-m-20 text-center text-5xl font-bold tracking-tight',
       props.className
     )}
   >
