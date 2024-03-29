@@ -3,13 +3,39 @@ import { Heading } from '@/components/section'
 import DevopsImg from '../../assets/devops.png'
 import DBImg from '../../assets/db.png'
 import Terminal from '../../assets/terminal.png'
-import { Badge } from '@/components/ui/badge'
+import {
+  ApacheAirflowCard,
+  ApacheSparkCard,
+  AWSCard,
+  AWSCDKCard,
+  DBTCard,
+  DockerCard,
+  DynamoDBCard,
+  GithubActionsCard,
+  GolangCard,
+  GrafanaCard,
+  GraphQLCard,
+  KafkaCard,
+  KEDACard,
+  KubernetesCard,
+  MongoDBCard,
+  PostgresCard,
+  PrometheusCard,
+  ProtobufCard,
+  PythonCard,
+  ReactCard,
+  ScalaCard,
+  SnowflakeCard,
+  TechHoverCardProps,
+  TerraformCard,
+  TypescriptCard
+} from '@/components/hovercard'
 
 type Column = {
   img: string
   title: string
   description: string
-  skills: string[]
+  skills: FC<TechHoverCardProps>[]
 }
 
 const columns: Column[] = [
@@ -19,15 +45,15 @@ const columns: Column[] = [
     description:
       'From REST / GraphQL APIs and event-driven microservices, to slick UIs - I build for the web.',
     skills: [
-      'Golang',
-      'Typescript',
-      'Kafka',
-      'Protobuf',
-      'GraphQL',
-      'PostgreSQL',
-      'MongoDB',
-      'DynamoDB',
-      'React'
+      GolangCard,
+      TypescriptCard,
+      KafkaCard,
+      ProtobufCard,
+      GraphQLCard,
+      PostgresCard,
+      MongoDBCard,
+      DynamoDBCard,
+      ReactCard
     ]
   },
   {
@@ -36,12 +62,12 @@ const columns: Column[] = [
     description:
       'I build and orchestrate high throughput ETL pipelines to power analytics and machine learning applications.',
     skills: [
-      'Scala',
-      'Python',
-      'Snowflake',
-      'DBT',
-      'Apache Spark',
-      'Apache Airflow'
+      ScalaCard,
+      PythonCard,
+      SnowflakeCard,
+      DBTCard,
+      ApacheSparkCard,
+      ApacheAirflowCard
     ]
   },
   {
@@ -50,14 +76,15 @@ const columns: Column[] = [
     description:
       'I architect cloud-native systems and provision with infrastructure-as-code.  I write CI/CD pipelines to enable shipping to production frequently and safely.',
     skills: [
-      'AWS',
-      'Terraform',
-      'Docker',
-      'Kubernetes',
-      'Github Actions',
-      'CDK',
-      'Prometheus',
-      'Grafana'
+      AWSCard,
+      TerraformCard,
+      DockerCard,
+      KubernetesCard,
+      KEDACard,
+      GithubActionsCard,
+      AWSCDKCard,
+      PrometheusCard,
+      GrafanaCard
     ]
   }
 ]
@@ -77,14 +104,8 @@ export const Skills: FC = () => {
               <h3 className="text-2xl font-bold tracking-tighter">{title}</h3>
               <p className="text-gray-500">{description}</p>
               <div className="mt-4 flex flex-wrap justify-center p-5">
-                {skills.map((skill) => (
-                  <Badge
-                    key={skill}
-                    variant="outline"
-                    className="mr-1 mt-1 text-sm"
-                  >
-                    {skill}
-                  </Badge>
+                {skills.map((Skill, index) => (
+                  <Skill key={index} className={'mr-2 mt-2'} />
                 ))}
               </div>
             </div>
