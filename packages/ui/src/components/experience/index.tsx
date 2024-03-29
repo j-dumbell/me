@@ -11,8 +11,35 @@ import GrafanaLabsLogo from '../../assets/grafana-labs.png'
 import InfinityWorksLogo from '../../assets/infinity-works.png'
 import Spark44Logo from '../../assets/spark44.jpg'
 import WonderblyLogo from '../../assets/wonderbly.png'
-import { Badge } from '@/components/ui/badge'
 import { Icon } from '@iconify/react'
+import {
+  ApacheAirflowCard,
+  ApacheSparkCard,
+  AWSCard,
+  BigQueryCard,
+  DockerCard,
+  DynamoDBCard,
+  GolangCard,
+  GrafanaCard,
+  GraphQLCard,
+  KafkaCard,
+  KEDACard,
+  KubernetesCard,
+  LookerCard,
+  MongoDBCard,
+  MySQLCard,
+  NextJSCard,
+  PostgresCard,
+  PrometheusCard,
+  ProtobufCard,
+  PythonCard,
+  ReactCard,
+  RedshiftCard,
+  ScalaCard,
+  SnowflakeCard,
+  TechHoverCardProps,
+  TypescriptCard
+} from '@/components/hovercard'
 
 type Employment = {
   company: string
@@ -22,7 +49,7 @@ type Employment = {
   from: Date
   to?: Date
   Details: FC
-  technologies: string[]
+  technologies: FC<TechHoverCardProps>[]
   location: string
 }
 
@@ -53,15 +80,15 @@ const employments: Employment[] = [
       </>
     ),
     technologies: [
-      'Golang',
-      'Kafka',
-      'Kubernetes',
-      'KEDA',
-      'Docker',
-      'MySQL',
-      'Protobuf',
-      'Prometheus',
-      'Grafana'
+      GolangCard,
+      KafkaCard,
+      KubernetesCard,
+      KEDACard,
+      DockerCard,
+      MySQLCard,
+      ProtobufCard,
+      PrometheusCard,
+      GrafanaCard
     ],
     location: 'Remote (London, UK)'
   },
@@ -89,19 +116,19 @@ const employments: Employment[] = [
       </>
     ),
     technologies: [
-      'Scala',
-      'Apache Spark',
-      'Python',
-      'Airflow',
-      'Snowflake',
-      'Typescript',
-      'GraphQL',
-      'React',
-      'NextJS',
-      'AWS',
-      'DynamoDB',
-      'MongoDB',
-      'PostgreSQL'
+      ScalaCard,
+      ApacheSparkCard,
+      PythonCard,
+      ApacheAirflowCard,
+      SnowflakeCard,
+      TypescriptCard,
+      GraphQLCard,
+      ReactCard,
+      NextJSCard,
+      AWSCard,
+      DynamoDBCard,
+      MongoDBCard,
+      PostgresCard
     ],
     location: 'London, UK'
   },
@@ -129,7 +156,7 @@ const employments: Employment[] = [
         </ul>
       </>
     ),
-    technologies: ['Python', 'Redshift', 'SQL', 'Looker'],
+    technologies: [PythonCard, RedshiftCard, LookerCard],
     location: 'London, UK'
   },
   {
@@ -157,7 +184,7 @@ const employments: Employment[] = [
         </ul>
       </>
     ),
-    technologies: ['Python', 'BigQuery', 'SQL'],
+    technologies: [PythonCard, BigQueryCard],
     location: 'Birmingham, UK'
   }
 ]
@@ -222,14 +249,8 @@ export const Experience: FC = () => {
                     </a>
                     <Details />
                     <div className="mt-4 flex flex-wrap">
-                      {technologies.map((tech) => (
-                        <Badge
-                          key={tech}
-                          variant="outline"
-                          className="mr-1 mt-1"
-                        >
-                          {tech}
-                        </Badge>
+                      {technologies.map((Card, index) => (
+                        <Card key={index} className="mr-1 mt-1" />
                       ))}
                     </div>
                   </div>
