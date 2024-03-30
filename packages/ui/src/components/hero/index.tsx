@@ -13,7 +13,7 @@ export const Hero: FC<HeroProps> = (props) => {
       <div className="container m-auto flex flex-wrap items-center justify-around md:px-6">
         <div className="flex flex-col items-center space-y-4 text-left">
           <div className="space-y-2">
-            <p className="text3xl mx-auto max-w-[700px] text-gray-700 dark:text-gray-400 md:text-xl">
+            <p className="mx-auto max-w-[700px] text-xl text-gray-700 dark:text-gray-400">
               Hi, my name is
             </p>
             <h1 className="scroll-m-20 text-4xl font-bold tracking-tight text-indigo-600 lg:text-7xl">
@@ -23,6 +23,7 @@ export const Hero: FC<HeroProps> = (props) => {
               I'm a software engineer.
             </p>
             <Button
+              className="text-lg font-light hover:bg-indigo-600"
               size="lg"
               onClick={() =>
                 props.aboutRef.current?.scrollIntoView({ behavior: 'smooth' })

@@ -7,7 +7,6 @@ import {
   CardTitle
 } from '@/components/ui/card'
 import { FC } from 'react'
-import { Badge } from '@/components/ui/badge'
 import { Heading } from '@/components/section'
 import PlaceholderImg from '@/assets/placeholder1.png'
 import SplendidImg from '@/assets/splendid.jpeg'
@@ -20,11 +19,28 @@ import {
 } from '@/components/ui/carousel'
 import { Icon } from '@iconify/react'
 import { cn } from '@/lib/utils'
+import {
+  AWSCard,
+  AWSCDKCard,
+  DockerCard,
+  GolangCard,
+  GoogleAnalyticsCard,
+  GrafanaCard,
+  NodeJSCard,
+  PrometheusCard,
+  ReactCard,
+  SnowflakeCard,
+  TailwindCSSCard,
+  TechHoverCardProps,
+  TerraformCard,
+  TypescriptCard,
+  WebsocketsCard
+} from '@/components/hovercard'
 
 type CardProject = {
   name: string
   description: string
-  technologies: string[]
+  technologies: FC<TechHoverCardProps>[]
   github: string
   npm?: string
 }
@@ -38,7 +54,7 @@ const carouselProjects: CarouselProject[] = [
     name: 'Climate monitor',
     description:
       'Monitor temperature and humidity metrics via Raspberry Pi sensors, exposed via Prometheus and monitored in a Grafana dashboard.',
-    technologies: ['Golang', 'Prometheus', 'Grafana', 'Docker'],
+    technologies: [GolangCard, PrometheusCard, GrafanaCard, DockerCard],
     github: 'https://www.github.com/j-dumbell/pi',
     image: PlaceholderImg
   },
@@ -47,15 +63,15 @@ const carouselProjects: CarouselProject[] = [
     description:
       'An online version of the board game Splendor build with websockets in Golang with a React UI.  Deployed on AWS with Terraform.',
     technologies: [
-      'Golang',
-      'Websockets',
-      'Typescript',
-      'React',
-      'Docker',
-      'Terraform',
-      'AWS'
+      GolangCard,
+      WebsocketsCard,
+      TypescriptCard,
+      ReactCard,
+      DockerCard,
+      TerraformCard,
+      AWSCard
     ],
-    github: 'www.blah.com',
+    github: 'https://github.com/j-dumbell/splendid',
     image: SplendidImg
   }
 ]
@@ -94,10 +110,8 @@ const ProjectCard: FC<CardProject> = ({
         </CardContent>
       </div>
       <CardFooter className="flex flex-wrap">
-        {technologies.map((tech) => (
-          <Badge key={tech} variant="outline" className="mb-1 mr-1">
-            {tech}
-          </Badge>
+        {technologies.map((Tech, index) => (
+          <Tech key={index} className="mb-1 mr-1" />
         ))}
       </CardFooter>
     </Card>
@@ -145,10 +159,8 @@ const HeadlineProjects: FC = () => {
                     index % 2 === 0 && 'justify-end'
                   )}
                 >
-                  {proj.technologies.map((tech) => (
-                    <Badge key={tech} variant="outline" className="mb-1 mr-1">
-                      {tech}
-                    </Badge>
+                  {proj.technologies.map((Tech, index) => (
+                    <Tech key={index} className="mb-1 mr-1" />
                   ))}
                 </div>
                 <div className="flex">
@@ -177,7 +189,7 @@ const cardProjects: CardProject[] = [
     name: 'Snow-Builder',
     description:
       'Type-safe query builder library for Snowflake with smart return type inference, written in Typescript.',
-    technologies: ['Typescript', 'NodeJS', 'Snowflake'],
+    technologies: [TypescriptCard, NodeJSCard, SnowflakeCard],
     github: 'https://github.com/j-dumbell/snow-builder',
     npm: 'https://www.npmjs.com/package/snow-builder'
   },
@@ -185,25 +197,25 @@ const cardProjects: CardProject[] = [
     name: 'CacheMem',
     description:
       'A concurrency safe, strongly typed, in-memory cache for Golang.',
-    technologies: ['Golang'],
+    technologies: [GolangCard],
     github: 'https://github.com/j-dumbell/cachemem'
   },
   {
     name: 'Go-FP',
     description: 'Functional programming utilities for Golang',
-    technologies: ['Golang'],
+    technologies: [GolangCard],
     github: 'https://github.com/j-dumbell/go-fp'
   },
   {
     name: 'Me',
     description: 'This site!  My personal portfolio website.',
     technologies: [
-      'Typescript',
-      'React',
-      'TailwindCSS',
-      'AWS',
-      'CDK',
-      'Google Analytics'
+      TypescriptCard,
+      ReactCard,
+      TailwindCSSCard,
+      AWSCard,
+      AWSCDKCard,
+      GoogleAnalyticsCard
     ],
     github: 'https://github.com/j-dumbell/me'
   }
@@ -211,7 +223,7 @@ const cardProjects: CardProject[] = [
 
 export const Projects: FC = () => {
   return (
-    <div className="bg-slate-100 py-20">
+    <div className="py-20">
       <Heading text="Projects" />
       <HeadlineProjects />
       <div className="mt-20 flex justify-center">

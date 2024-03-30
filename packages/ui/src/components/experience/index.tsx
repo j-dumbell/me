@@ -48,9 +48,13 @@ type Employment = {
   logo: string
   from: Date
   to?: Date
-  Details: FC
+  Details: FC<DetailsProps>
   technologies: FC<TechHoverCardProps>[]
   location: string
+}
+
+type DetailsProps = {
+  className?: string
 }
 
 const employments: Employment[] = [
@@ -60,8 +64,8 @@ const employments: Employment[] = [
     title: 'Senior Software Engineer',
     logo: GrafanaLabsLogo,
     from: new Date('2023-06-01'),
-    Details: () => (
-      <>
+    Details: ({ className }) => (
+      <div className={className}>
         <p>
           Senior software engineer at a global technology company that develops
           open-source and SAS observability software.
@@ -77,7 +81,7 @@ const employments: Employment[] = [
             in Grafana dashboards.
           </li>
         </ul>
-      </>
+      </div>
     ),
     technologies: [
       GolangCard,
@@ -99,8 +103,8 @@ const employments: Employment[] = [
     logo: InfinityWorksLogo,
     from: new Date('2019-07-01'),
     to: new Date('2023-06-01'),
-    Details: () => (
-      <>
+    Details: ({ className }) => (
+      <div className={className}>
         <p>
           Senior software engineer at a London-based consultancy, working across
           data engineering and full stack development projects for various
@@ -113,7 +117,7 @@ const employments: Employment[] = [
             target specific audiences using the terrabytes of customer data.
           </li>
         </ul>
-      </>
+      </div>
     ),
     technologies: [
       ScalaCard,
@@ -139,8 +143,8 @@ const employments: Employment[] = [
     logo: WonderblyLogo,
     from: new Date('2018-09-01'),
     to: new Date('2019-06-01'),
-    Details: () => (
-      <>
+    Details: ({ className }) => (
+      <div className={className}>
         <p>
           Lead analyst at a personalized book ecommerce website, working across
           all business domains.
@@ -154,7 +158,7 @@ const employments: Employment[] = [
           </li>
           <li>Build and maintain Looker dashboards.</li>
         </ul>
-      </>
+      </div>
     ),
     technologies: [PythonCard, RedshiftCard, LookerCard],
     location: 'London, UK'
@@ -166,8 +170,8 @@ const employments: Employment[] = [
     logo: Spark44Logo,
     from: new Date('2016-10-01'),
     to: new Date('2018-09-01'),
-    Details: () => (
-      <>
+    Details: ({ className }) => (
+      <div className={className}>
         <p>
           Data engineer at digital marketing agency, working on the Jaguar Land
           Rover account.
@@ -182,7 +186,7 @@ const employments: Employment[] = [
             layer ready for business consumption.
           </li>
         </ul>
-      </>
+      </div>
     ),
     technologies: [PythonCard, BigQueryCard],
     location: 'Birmingham, UK'
@@ -201,10 +205,10 @@ const formatRange = (from: Date, to: Date | undefined): string => {
 
 export const Experience: FC = () => {
   return (
-    <section className="w-full pb-40">
+    <section className="w-full bg-slate-100 py-20">
       <Heading text="Experience" />
       <div className="flex justify-center space-y-12">
-        <Accordion type="single" collapsible className="mx-4 w-full max-w-2xl">
+        <Accordion type="single" collapsible className="mx-4 w-full max-w-4xl">
           {employments.map(
             ({
               company,
@@ -222,13 +226,13 @@ export const Experience: FC = () => {
                   <div className="flex">
                     <img className="mr-5 size-12" src={logo} alt={company} />
                     <div className="space-y-1">
-                      <h2 className="scroll-m-20 text-left text-xl font-semibold tracking-tight">
+                      <h2 className="scroll-m-20 text-left text-2xl font-medium tracking-tight">
                         {company}
                       </h2>
-                      <p className="text-left text-sm text-gray-500 dark:text-gray-400">
+                      <p className="text-left text-base text-gray-500">
                         {title}
                       </p>
-                      <p className="text-left text-sm text-gray-500 dark:text-gray-400">
+                      <p className="text-left text-base text-gray-500">
                         {formatRange(from, to)}
                       </p>
                     </div>
@@ -238,16 +242,16 @@ export const Experience: FC = () => {
                   <div className="ml-[67px]">
                     <div className="mb-2 flex">
                       <Icon icon="mdi:location" className="mr-1 size-6" />
-                      <p>{location}</p>
+                      <p className="text-base text-gray-500">{location}</p>
                     </div>
                     <a href={`https://www.${url}`} className="mb-4 flex">
                       <Icon
                         icon="lucide:external-link"
                         className="mr-1 size-5"
                       />
-                      <p>{url}</p>
+                      <p className="text-base text-gray-500">{url}</p>
                     </a>
-                    <Details />
+                    <Details className="text-base text-gray-500" />
                     <div className="mt-4 flex flex-wrap">
                       {technologies.map((Card, index) => (
                         <Card key={index} className="mr-1 mt-1" />
