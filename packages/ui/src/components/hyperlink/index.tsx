@@ -12,7 +12,7 @@ export type HyperlinkProps = {
 export const Hyperlink: FC<HyperlinkProps> = (props: HyperlinkProps) => (
   <a
     className={cn(
-      'group text-black transition-all duration-300 ease-in-out hover:text-indigo-600',
+      'group text-indigo-600 transition-all duration-300 ease-in-out hover:text-indigo-600',
       props.withIcon && 'flex items-center',
       props.className
     )}

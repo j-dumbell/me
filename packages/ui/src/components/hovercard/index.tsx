@@ -13,7 +13,7 @@ export type HoverCardProps = {
   className?: string
   iconClassName?: string
   title: string
-  icon: string
+  icon?: string
   description: string
   link: string
 }
@@ -26,18 +26,20 @@ export const TechHoverCard: FC<HoverCardProps> = (props) => {
           {props.title}
         </Button>
       </HoverCardTrigger>
-      <HoverCardContent className="w-80 bg-slate-100">
+      <HoverCardContent className="w-80">
         <div className="flex justify-between space-x-4">
-          <Icon
-            icon={props.icon}
-            className={cn('size-20', props.iconClassName)}
-          />
+          {props.icon && (
+            <Icon
+              icon={props.icon}
+              className={cn('size-20', props.iconClassName)}
+            />
+          )}
           <div className="space-y-1">
             <div className={'flex'}>
               <Hyperlink
                 title={props.title}
                 href={props.link}
-                className={'mr-2 text-sm font-semibold'}
+                className={'mr-2 text-sm font-semibold text-black'}
                 withIcon
               />
             </div>
@@ -349,5 +351,44 @@ export const BigQueryCard: FC<TechHoverCardProps> = (props) => (
     iconClassName={'text-[#679df8]'}
     link={'https://cloud.google.com/bigquery'}
     description={`BigQuery is a serverless and cost-effective enterprise data warehouse that works across clouds and scales with your data.`}
+  />
+)
+
+export const WebsocketsCard: FC<TechHoverCardProps> = (props) => (
+  <TechHoverCard
+    className={props.className}
+    title={'Websockets'}
+    link={'https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API'}
+    description={`The WebSocket API is an advanced technology that makes it possible to open a two-way interactive communication session between the user's browser and a server.`}
+  />
+)
+
+export const NodeJSCard: FC<TechHoverCardProps> = (props) => (
+  <TechHoverCard
+    className={props.className}
+    title={'NodeJS'}
+    icon={'skill-icons:nodejs-dark'}
+    link={'https://nodejs.org/en'}
+    description={`Node.js® is a free, open-source, cross-platform JavaScript runtime environment that lets developers create servers, web apps, command line tools and scripts.`}
+  />
+)
+
+export const TailwindCSSCard: FC<TechHoverCardProps> = (props) => (
+  <TechHoverCard
+    className={props.className}
+    title={'Tailwind CSS'}
+    icon={'skill-icons:tailwindcss-dark'}
+    link={'https://tailwindcss.com/'}
+    description={`A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.`}
+  />
+)
+
+export const GoogleAnalyticsCard: FC<TechHoverCardProps> = (props) => (
+  <TechHoverCard
+    className={props.className}
+    title={'Google Analytics'}
+    icon={'logos:google-analytics'}
+    link={'https://marketingplatform.google.com/intl/en_uk/about/analytics/'}
+    description={`Google Analytics gives you the tools, free of charge, to understand the customer journey and improve marketing ROI.`}
   />
 )

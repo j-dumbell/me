@@ -14,6 +14,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { ComponentProps, FC, useState } from 'react'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { CheckIcon } from '@radix-ui/react-icons'
+import { cn } from '@/lib/utils'
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -60,83 +61,93 @@ export const ContactForm: FC<ComponentProps<'form'>> = () => {
     setIsSubmitted(true)
   }
 
-  if (isSubmitted) {
-    return (
-      <Alert className="m-auto max-w-sm">
-        <CheckIcon className="size-6" />
-        <AlertTitle>Success!</AlertTitle>
-        <AlertDescription>I'll review and respond shortly.</AlertDescription>
-      </Alert>
-    )
-  }
-
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="m-auto max-w-lg px-4"
-      >
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem className="mb-4">
-              <FormControl>
-                <Input
-                  className="bg-white"
-                  type="text"
-                  placeholder="Name"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem className="mb-4">
-              <FormControl>
-                <Input
-                  className="bg-white"
-                  type="text"
-                  placeholder="Email"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="message"
-          render={({ field }) => (
-            <FormItem className="mb-4">
-              <FormControl>
-                <Textarea
-                  className="bg-white"
-                  placeholder="Message"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button
-          type="submit"
-          data-testid="submit-button"
-          className="w-full"
-          disabled={!form.formState.isDirty || !form.formState.isValid}
+    <div>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="relative m-auto max-w-lg px-4"
         >
-          Submit
-        </Button>
-      </form>
-    </Form>
+          {isSubmitted && (
+            <div
+              className={
+                'absolute z-10 m-0 size-full max-w-lg bg-slate-100 p-0'
+              }
+            >
+              <Alert variant="success">
+                <CheckIcon className="size-6" />
+                <AlertTitle>Thanks for your message!</AlertTitle>
+                <AlertDescription>{`I'll review and respond as soon as possible.`}</AlertDescription>
+              </Alert>
+            </div>
+          )}
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem className="mb-4">
+                <FormControl>
+                  <Input
+                    className="bg-white"
+                    type="text"
+                    placeholder="Name"
+                    disabled={isSubmitted}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem className="mb-4">
+                <FormControl>
+                  <Input
+                    className="bg-white"
+                    type="text"
+                    placeholder="Email"
+                    disabled={isSubmitted}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="message"
+            render={({ field }) => (
+              <FormItem className="mb-4">
+                <FormControl>
+                  <Textarea
+                    className="bg-white"
+                    placeholder="Message"
+                    disabled={isSubmitted}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button
+            type="submit"
+            data-testid="submit-button"
+            className={cn('w-full', isSubmitted && 'shadow-none')}
+            disabled={
+              !form.formState.isDirty || !form.formState.isValid || isSubmitted
+            }
+          >
+            Submit
+          </Button>
+        </form>
+      </Form>
+    </div>
   )
 }

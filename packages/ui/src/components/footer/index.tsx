@@ -3,9 +3,25 @@ import { Icon } from '@iconify/react'
 
 export const Footer: FC = () => {
   return (
-    <section className="w-full bg-zinc-900 py-10 dark:bg-zinc-100">
+    <section className="w-full bg-zinc-900 pb-12">
       <div className="container flex flex-col items-center px-4 text-center md:px-6">
-        <div className="flex justify-center space-x-4">
+        <button
+          className={
+            'size-10 -translate-y-2/4 rounded bg-indigo-600 hover:bg-[#6962e5]'
+          }
+          onClick={() =>
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            })
+          }
+        >
+          <Icon
+            icon="heroicons-solid:chevron-double-up"
+            className={'m-auto block size-8 text-center text-white'}
+          />
+        </button>
+        <div className="mt-4 flex justify-center space-x-4">
           <a
             aria-label="Github profile"
             href="https://github.com/j-dumbell"
@@ -13,7 +29,7 @@ export const Footer: FC = () => {
           >
             <Icon
               icon="mingcute:github-line"
-              className="size-7 text-white hover:text-indigo-600"
+              className="size-8 text-white hover:text-indigo-600"
             />
           </a>
           <a
@@ -23,7 +39,7 @@ export const Footer: FC = () => {
           >
             <Icon
               icon="mdi:linkedin"
-              className="size-7 text-white hover:text-indigo-600"
+              className="size-8 text-white hover:text-indigo-600"
             />
           </a>
           <a
@@ -33,7 +49,17 @@ export const Footer: FC = () => {
           >
             <Icon
               icon="mdi:instagram"
-              className="size-7 text-white hover:text-indigo-600"
+              className="size-8 text-white hover:text-indigo-600"
+            />
+          </a>
+          <a
+            aria-label="CV"
+            className="text-white hover:text-indigo-600"
+            href="CV.pdf"
+          >
+            <Icon
+              icon="tabler:file-cv"
+              className="size-8 text-white hover:text-indigo-600"
             />
           </a>
         </div>

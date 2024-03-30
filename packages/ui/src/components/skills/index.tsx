@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { Heading } from '@/components/section'
 import DevopsImg from '../../assets/devops.png'
 import DBImg from '../../assets/db.png'
-import Terminal from '../../assets/terminal.png'
+import ComputerImg from '../../assets/computer.png'
 import {
   ApacheAirflowCard,
   ApacheSparkCard,
@@ -40,7 +40,7 @@ type Column = {
 
 const columns: Column[] = [
   {
-    img: Terminal,
+    img: ComputerImg,
     title: 'Software engineering',
     description:
       'From REST / GraphQL APIs and event-driven microservices, to slick UIs - I build for the web.',
