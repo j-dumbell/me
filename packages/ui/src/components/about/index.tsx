@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Heading, Paragraph } from 'src/components/typography'
+import { Heading, Paragraph } from '@/components/typography'
 import MeImg from '../../assets/me.jpeg'
 import { Hyperlink } from '@/components/hyperlink'
 import { Section } from '@/components/section'

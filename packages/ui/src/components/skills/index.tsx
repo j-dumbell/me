@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Heading, Paragraph } from 'src/components/typography'
+import { Heading, Paragraph } from '@/components/typography'
 import DevopsImg from '../../assets/devops.png'
 import DBImg from '../../assets/db.png'
 import ComputerImg from '../../assets/computer.png'
