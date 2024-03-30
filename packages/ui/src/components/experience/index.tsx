@@ -5,7 +5,7 @@ import {
   Accordion
 } from '@/components/ui/accordion'
 import React, { FC } from 'react'
-import { Heading } from '@/components/section'
+import { Heading, Paragraph } from 'src/components/typography'
 import { format } from 'date-fns/format'
 import GrafanaLabsLogo from '../../assets/grafana-labs.png'
 import InfinityWorksLogo from '../../assets/infinity-works.png'
@@ -40,6 +40,7 @@ import {
   TechHoverCardProps,
   TypescriptCard
 } from '@/components/hovercard'
+import { Section } from '@/components/section'
 
 type Employment = {
   company: string
@@ -66,10 +67,10 @@ const employments: Employment[] = [
     from: new Date('2023-06-01'),
     Details: ({ className }) => (
       <div className={className}>
-        <p>
+        <Paragraph>
           Senior software engineer at a global technology company that develops
           open-source and SAS observability software.
-        </p>
+        </Paragraph>
         <ul className="ml-6 list-disc text-left [&>li]:mt-2">
           <li>
             Wrote microservices in Go to manage SAS customer usage and billing
@@ -105,12 +106,12 @@ const employments: Employment[] = [
     to: new Date('2023-06-01'),
     Details: ({ className }) => (
       <div className={className}>
-        <p>
+        <Paragraph>
           Senior software engineer at a London-based consultancy, working across
           data engineering and full stack development projects for various
           clients.
-        </p>
-        <h4>Sainsbury's</h4>
+        </Paragraph>
+        <h4>{`Sainsbury's`}</h4>
         <ul className="ml-6 list-disc text-left [&>li]:mt-2">
           <li>
             Built a web app to allow digital marketers to run campaigns that
@@ -145,10 +146,10 @@ const employments: Employment[] = [
     to: new Date('2019-06-01'),
     Details: ({ className }) => (
       <div className={className}>
-        <p>
+        <Paragraph>
           Lead analyst at a personalized book ecommerce website, working across
           all business domains.
-        </p>
+        </Paragraph>
         <ul className="ml-6 list-disc text-left [&>li]:mt-2">
           <li>
             Ingest and model business data in data warehouse (AWS Redshift).
@@ -172,10 +173,10 @@ const employments: Employment[] = [
     to: new Date('2018-09-01'),
     Details: ({ className }) => (
       <div className={className}>
-        <p>
+        <Paragraph>
           Data engineer at digital marketing agency, working on the Jaguar Land
           Rover account.
-        </p>
+        </Paragraph>
         <ul className="ml-6 list-disc text-left [&>li]:mt-2">
           <li>
             Ingested Google Analytics website data into a data warehouse (Big
@@ -205,8 +206,8 @@ const formatRange = (from: Date, to: Date | undefined): string => {
 
 export const Experience: FC = () => {
   return (
-    <section className="w-full bg-slate-100 py-20">
-      <Heading text="Experience" />
+    <Section className="bg-slate-100">
+      <Heading>Experience</Heading>
       <div className="flex justify-center space-y-12">
         <Accordion type="single" collapsible className="mx-4 w-full max-w-4xl">
           {employments.map(
@@ -264,6 +265,6 @@ export const Experience: FC = () => {
           )}
         </Accordion>
       </div>
-    </section>
+    </Section>
   )
 }

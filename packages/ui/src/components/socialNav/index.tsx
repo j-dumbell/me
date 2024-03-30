@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, MutableRefObject, useEffect, useState } from 'react'
 import { Icon } from '@iconify/react'
 import { cn } from '@/lib/utils'
 
@@ -12,17 +12,30 @@ const SocialLink: FC<SocialLinkProps> = (props) => (
   <a aria-label={props.label} href={props.href}>
     <Icon
       icon={props.icon}
-      className="size-6 text-zinc-900 transition duration-300 hover:-translate-y-1 hover:text-indigo-600"
+      className="size-6 text-slate-900 transition duration-300 hover:-translate-y-1 hover:text-indigo-600"
     />
   </a>
 )
 
-export const SocialNav: FC = () => {
+type SocialNavProps = {
+  footerRef: MutableRefObject<HTMLDivElement | null>
+}
+
+export const SocialNav: FC<SocialNavProps> = (props) => {
   const [isVisible, setIsVisible] = useState(false)
 
   const toggleVisibility = () => {
     const heroHeight = window.innerHeight * 0.7
-    if (window.scrollY > heroHeight) {
+    const footerY =
+      props.footerRef.current &&
+      props.footerRef.current.getBoundingClientRect().top +
+        window.scrollY -
+        window.innerHeight
+
+    if (
+      window.scrollY > heroHeight &&
+      (footerY ? window.scrollY < footerY : true)
+    ) {
       setIsVisible(true)
     } else {
       setIsVisible(false)
@@ -35,7 +48,7 @@ export const SocialNav: FC = () => {
     return () => {
       window.removeEventListener('scroll', toggleVisibility)
     }
-  }, [])
+  })
 
   return (
     <div
@@ -60,7 +73,7 @@ export const SocialNav: FC = () => {
         icon="mdi:instagram"
       />
       <SocialLink label="CV" href="CV.pdf" icon="tabler:file-cv" />
-      <div className="h-44 w-0.5 animate-fadeInBottom bg-zinc-900"></div>
+      <div className="h-44 w-0.5 bg-slate-900"></div>
     </div>
   )
 }

@@ -12,12 +12,12 @@ module.exports = {
     container: {
       center: true,
       padding: "2rem",
-      screens: {
-        "xs": "280",
-        "2xl": "1400px",
-      },
     },
     extend: {
+      screens: {
+        "xs": "280px",
+        "2xl": "1400px",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

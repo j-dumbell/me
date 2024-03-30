@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Heading } from '@/components/section'
+import { Heading, Paragraph } from 'src/components/typography'
 import DevopsImg from '../../assets/devops.png'
 import DBImg from '../../assets/db.png'
 import ComputerImg from '../../assets/computer.png'
@@ -30,6 +30,7 @@ import {
   TerraformCard,
   TypescriptCard
 } from '@/components/hovercard'
+import { Section } from '@/components/section'
 
 type Column = {
   img: string
@@ -91,21 +92,23 @@ const columns: Column[] = [
 
 export const Skills: FC = () => {
   return (
-    <div className="py-20">
-      <Heading text="Skills" />
+    <Section>
+      <Heading>Skills</Heading>
       <div className="container grid items-center justify-center gap-4 px-4 py-12 text-center md:px-6 lg:py-16">
-        <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3 md:gap-12">
+        <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-12">
           {columns.map(({ title, description, img, skills }) => (
             <div key={title} className="space-y-3">
               <div className="flex items-center justify-center">
                 <img
-                  className="mb-8 size-36 transition duration-300 hover:scale-110"
+                  className="mb-8 size-36 transition duration-300 hover:scale-[115%]"
                   src={img}
                   alt={''}
                 />
               </div>
-              <h3 className="text-2xl font-medium tracking-tight">{title}</h3>
-              <p className="text-gray-500">{description}</p>
+              <h3 className="text-2xl font-medium tracking-tight text-slate-800">
+                {title}
+              </h3>
+              <Paragraph>{description}</Paragraph>
               <div className="mt-4 flex flex-wrap justify-center p-5">
                 {skills.map((Skill, index) => (
                   <Skill key={index} className={'mr-2 mt-2'} />
@@ -115,6 +118,6 @@ export const Skills: FC = () => {
           ))}
         </div>
       </div>
-    </div>
+    </Section>
   )
 }
