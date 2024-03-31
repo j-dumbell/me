@@ -7,7 +7,7 @@ import {
   CardTitle
 } from '@/components/ui/card'
 import { FC } from 'react'
-import { Heading } from '@/components/section'
+import { Heading, Paragraph } from 'src/components/typography'
 import PlaceholderImg from '@/assets/placeholder1.png'
 import SplendidImg from '@/assets/splendid.jpeg'
 import {
@@ -36,6 +36,7 @@ import {
   TypescriptCard,
   WebsocketsCard
 } from '@/components/hovercard'
+import { Section } from '@/components/section'
 
 type CardProject = {
   name: string
@@ -150,9 +151,11 @@ const HeadlineProjects: FC = () => {
                 >
                   <a href={proj.github}>{proj.name}</a>
                 </h5>
-                <p className={cn('mb-6', index % 2 === 0 && 'text-right')}>
+                <Paragraph
+                  className={cn('mb-6', index % 2 === 0 && 'text-right')}
+                >
                   {proj.description}
-                </p>
+                </Paragraph>
                 <div
                   className={cn(
                     'flex flex-wrap mb-4',
@@ -223,8 +226,8 @@ const cardProjects: CardProject[] = [
 
 export const Projects: FC = () => {
   return (
-    <div className="py-20">
-      <Heading text="Projects" />
+    <Section>
+      <Heading>Projects</Heading>
       <HeadlineProjects />
       <div className="mt-20 flex justify-center">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -233,6 +236,6 @@ export const Projects: FC = () => {
           ))}
         </div>
       </div>
-    </div>
+    </Section>
   )
 }

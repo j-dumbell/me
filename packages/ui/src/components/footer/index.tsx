@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react'
 
 export const Footer: FC = () => {
   return (
-    <section className="w-full bg-zinc-900 pb-12">
+    <section className="w-full bg-slate-900 pb-12">
       <div className="container flex flex-col items-center px-4 text-center md:px-6">
         <button
           className={
