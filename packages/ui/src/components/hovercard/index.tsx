@@ -104,11 +104,11 @@ export const TypescriptCard: FC<TechHoverCardProps> = (props) => (
 export const KafkaCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
-    title={'Kafka'}
+    title={'Apache Kafka'}
     icon={'devicon:apachekafka'}
-    iconClassName={'size-52'}
+    iconClassName={'size-32'}
     link={'https://kafka.apache.org/'}
-    description={`Apache Kafka is an open-source distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications.`}
+    description={`Apache Kafka is an open-source distributed event streaming platform used for high-performance data pipelines, streaming analytics and mission-critical applications.`}
   />
 )
 

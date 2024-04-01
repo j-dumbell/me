@@ -205,7 +205,7 @@ const cardProjects: CardProject[] = [
   },
   {
     name: 'Go-FP',
-    description: 'Functional programming utilities for Golang',
+    description: 'Functional programming utilities for Golang.',
     technologies: [GolangCard],
     github: 'https://github.com/j-dumbell/go-fp'
   },

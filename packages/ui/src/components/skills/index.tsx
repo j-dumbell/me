@@ -44,7 +44,7 @@ const columns: Column[] = [
     img: ComputerImg,
     title: 'Software engineering',
     description:
-      'From REST / GraphQL APIs and event-driven microservices, to slick UIs - I build for the web.',
+      'From event-driven microservices to slick UIs and everything between - I build for the web.',
     skills: [
       GolangCard,
       TypescriptCard,

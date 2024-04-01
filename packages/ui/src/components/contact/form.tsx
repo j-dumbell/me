@@ -138,6 +138,7 @@ export const ContactForm: FC<ComponentProps<'form'>> = () => {
           />
           <Button
             type="submit"
+            variant={'jd'}
             data-testid="submit-button"
             className={cn('w-full', isSubmitted && 'shadow-none')}
             disabled={
