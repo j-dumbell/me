@@ -52,12 +52,12 @@ type CarouselProject = CardProject & {
 
 const carouselProjects: CarouselProject[] = [
   {
-    name: 'Climate monitor',
+    name: 'cmdgenie',
     description:
-      'Monitor temperature and humidity metrics via Raspberry Pi sensors, exposed via Prometheus and monitored in a Grafana dashboard.',
-    technologies: [GolangCard, PrometheusCard, GrafanaCard, DockerCard],
-    github: 'https://www.github.com/j-dumbell/pi',
-    image: PlaceholderImg
+      'An AI-powered assistant that generates shell commands from the comfort of your command line',
+    technologies: [GolangCard],
+    github: 'https://github.com/j-dumbell/cmdgenie',
+    image: PlaceholderImg, // ToDo - add image
   },
   {
     name: 'Splendid',
@@ -89,15 +89,19 @@ const ProjectCard: FC<CardProject> = ({
       <div>
         <div className="flex justify-end">
           {npm && (
-            <Icon
-              icon="iconoir:npm"
-              className="mr-2 size-8 hover:text-indigo-600"
-            />
+            <a href={npm} target="_blank" rel="noopener noreferrer">
+              <Icon
+                icon="iconoir:npm"
+                className="mr-2 size-8 hover:text-indigo-600"
+              />
+            </a>
           )}
-          <Icon
-            icon="mingcute:github-line"
-            className="size-7 hover:text-indigo-600"
-          />
+          <a href={github} target="_blank" rel="noopener noreferrer">
+            <Icon
+              icon="mingcute:github-line"
+              className="size-7 hover:text-indigo-600"
+            />
+          </a>
         </div>
         <CardHeader className="mt-4">
           <CardTitle className="text-2xl">
@@ -167,14 +171,18 @@ const HeadlineProjects: FC = () => {
                   ))}
                 </div>
                 <div className="flex">
-                  <Icon
-                    icon="mingcute:github-line"
-                    className="mr-2 size-7 hover:text-indigo-600"
-                  />
-                  <Icon
-                    icon="lucide:external-link"
-                    className="size-7 hover:text-indigo-600"
-                  />
+                  <a href={proj.github} target="_blank" rel="noopener noreferrer">
+                    <Icon
+                      icon="mingcute:github-line"
+                      className="mr-2 size-7 hover:text-indigo-600"
+                    />
+                  </a>
+                  <a href={proj.github} target="_blank" rel="noopener noreferrer">
+                    <Icon
+                      icon="lucide:external-link"
+                      className="size-7 hover:text-indigo-600"
+                    />
+                  </a>
                 </div>
               </div>
             </div>
@@ -195,6 +203,13 @@ const cardProjects: CardProject[] = [
     technologies: [TypescriptCard, NodeJSCard, SnowflakeCard],
     github: 'https://github.com/j-dumbell/snow-builder',
     npm: 'https://www.npmjs.com/package/snow-builder'
+  },
+  {
+    name: 'Go-bytes',
+    description:
+      'A Golang package for working with quantities of bytes, inspired by time.Duration.',
+    technologies: [GolangCard],
+    github: 'https://github.com/j-dumbell/go-bytes'
   },
   {
     name: 'CacheMem',
