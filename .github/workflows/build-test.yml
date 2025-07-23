@@ -24,10 +24,3 @@ jobs:
       run: yarn test --run
     - name: build
       run: yarn ui-build
-    - name: configure AWS credentials (OIDC)
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubActionsCDKDeployRole
-        aws-region: us-east-1
-    - name: infra diff
-      run: yarn infra-diff
