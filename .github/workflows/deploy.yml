@@ -10,6 +10,7 @@ permissions:
   contents: read    # Required to checkout code
 
 env:
+  AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
   AWS_DEFAULT_REGION: 'us-east-1'
 
 jobs:
