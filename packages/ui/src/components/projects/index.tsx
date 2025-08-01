@@ -8,7 +8,6 @@ import {
 } from '@/components/ui/card'
 import { FC } from 'react'
 import { Heading, Paragraph } from 'src/components/typography'
-import PlaceholderImg from '@/assets/placeholder1.png'
 import SplendidImg from '@/assets/splendid.jpeg'
 import {
   Carousel,
