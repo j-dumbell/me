@@ -25,9 +25,7 @@ import {
   DockerCard,
   GolangCard,
   GoogleAnalyticsCard,
-  GrafanaCard,
   NodeJSCard,
-  PrometheusCard,
   ReactCard,
   SnowflakeCard,
   TailwindCSSCard,
@@ -37,6 +35,7 @@ import {
   WebsocketsCard
 } from '@/components/hovercard'
 import { Section } from '@/components/section'
+import { AsciinemaPlayer } from '@/components/asciinemaPlayer'
 
 type CardProject = {
   name: string
@@ -46,8 +45,18 @@ type CardProject = {
   npm?: string
 }
 
-type CarouselProject = CardProject & {
+type ImageContent = {
+  _type: 'image'
   image: string
+}
+
+type CastContent = {
+  _type: 'cast'
+  src: string
+}
+
+type CarouselProject = CardProject & {
+  content: ImageContent | CastContent
 }
 
 const carouselProjects: CarouselProject[] = [
@@ -57,7 +66,10 @@ const carouselProjects: CarouselProject[] = [
       'An AI-powered assistant that generates shell commands from the comfort of your command line',
     technologies: [GolangCard],
     github: 'https://github.com/j-dumbell/cmdgenie',
-    image: PlaceholderImg, // ToDo - add image
+    content: {
+      _type: 'cast',
+      src: 'cmdgenie-demo.cast'
+    }
   },
   {
     name: 'Splendid',
@@ -73,7 +85,10 @@ const carouselProjects: CarouselProject[] = [
       AWSCard
     ],
     github: 'https://github.com/j-dumbell/splendid',
-    image: SplendidImg
+    content: {
+      _type: 'image',
+      image: SplendidImg
+    }
   }
 ]
 
@@ -129,18 +144,27 @@ const HeadlineProjects: FC = () => {
       <CarouselContent>
         {carouselProjects.map((proj, index) => (
           <CarouselItem key={proj.name}>
-            {/*<div className={contentClassName(index)}>*/}
             <div
               className={cn(
                 'flex p-1 justify-center items-center',
                 !(index % 2 === 0) && 'flex-row-reverse'
               )}
             >
-              <img
-                className="size-[400px] rounded-lg border-2"
-                src={proj.image}
-                alt="desk image"
-              />
+              {proj.content._type === 'image' ? (
+                <img
+                  className="size-[400px] rounded-lg border-2"
+                  src={proj.content.image}
+                  alt="desk image"
+                />
+              ) : (
+                <div 
+                  className="w-[640px] h-[400px] flex items-center justify-center"
+                  onKeyDown={(e) => e.stopPropagation()}
+                >
+                  <AsciinemaPlayer className="w-full h-full" src={proj.content.src} />
+                </div>
+              )}
+
               <div
                 className={cn(
                   'mx-6 flex w-96 flex-col',
@@ -171,13 +195,21 @@ const HeadlineProjects: FC = () => {
                   ))}
                 </div>
                 <div className="flex">
-                  <a href={proj.github} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={proj.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Icon
                       icon="mingcute:github-line"
                       className="mr-2 size-7 hover:text-indigo-600"
                     />
                   </a>
-                  <a href={proj.github} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={proj.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Icon
                       icon="lucide:external-link"
                       className="size-7 hover:text-indigo-600"
