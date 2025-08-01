@@ -1,7 +1,7 @@
 import { FC, MutableRefObject } from 'react'
 import { Button } from '@/components/ui/button'
 import { CaretDownIcon } from '@radix-ui/react-icons'
-import HeroImg from '../../assets/hero.png'
+const HeroImg = '/hero.png'
 
 type HeroProps = {
   aboutRef: MutableRefObject<HTMLDivElement | null>
