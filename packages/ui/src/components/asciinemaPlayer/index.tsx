@@ -12,22 +12,18 @@ type PlayerTheme =
 
 type AsciinemaPlayerProps = {
   src: string
-  // rows?: number
-  // cols?: number
   autoPlay?: boolean
   loop?: boolean
   theme?: PlayerTheme
-  // fit?: boolean
+  className?: string
 }
 
 export const AsciinemaPlayer: FC<AsciinemaPlayerProps> = ({
   src,
-  // rows = 20,
-  // cols = 80,
   autoPlay = false,
   loop = false,
-  theme = 'monokai'
-  // fit = false
+  theme = 'monokai',
+  className = ''
 }) => {
   const playerRef = useRef<HTMLDivElement | null>(null)
   const [isVisible, setIsVisible] = useState(false)
@@ -87,5 +83,10 @@ export const AsciinemaPlayer: FC<AsciinemaPlayerProps> = ({
     }
   }, [playerInstance])
 
-  return <div ref={playerRef} className="w-full h-full min-h-[400px]" />
+  return (
+    <div 
+      ref={playerRef} 
+      className={`w-full asciinema-player ${className}`}
+    />
+  )
 }

@@ -157,7 +157,12 @@ const HeadlineProjects: FC = () => {
                   alt="desk image"
                 />
               ) : (
-                <AsciinemaPlayer src={proj.content.src} />
+                <div 
+                  className="w-[640px] h-[400px] flex items-center justify-center"
+                  onKeyDown={(e) => e.stopPropagation()}
+                >
+                  <AsciinemaPlayer className="w-full h-full" src={proj.content.src} />
+                </div>
               )}
 
               <div
@@ -270,7 +275,6 @@ export const Projects: FC = () => {
   return (
     <Section>
       <Heading>Projects</Heading>
-      <AsciinemaPlayer src={'cmdgenie-demo.cast'} />
       <HeadlineProjects />
       <div className="mt-20 flex justify-center">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
