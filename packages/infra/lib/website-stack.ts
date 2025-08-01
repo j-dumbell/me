@@ -73,13 +73,16 @@ export class WebsiteStack extends Stack {
       "https://api.iconify.design",
       "https://api.unisvg.com",
       "https://api.simplesvg.com",
-      "www.google-analytics.com",
+      "https://www.google-analytics.com",
       "https://region1.analytics.google.com",
+      "https://www.google.co.uk",
+      "https://www.google.com",
+      "https://www.googletagmanager.com",
     ];
 
-    const cspPolicy = `default-src 'self'; script-src 'self' 'unsafe-inline' https://code.iconify.design https://www.googletagmanager.com/gtag/js; style-src 'self' 'unsafe-inline'; img-src 'self' https://cdn.iconify.design; connect-src 'self' ${connectSrc.join(
+    const cspPolicy = `default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://code.iconify.design https://www.googletagmanager.com/gtag/js; style-src 'self' 'unsafe-inline'; img-src 'self' https://cdn.iconify.design https://www.google.co.uk https://www.google.com https://www.googletagmanager.com; connect-src 'self' ${connectSrc.join(
       " ",
-    )}; font-src 'self'; object-src 'none';`;
+    )}; font-src 'self'; object-src 'none'; media-src 'self';`;
 
     const responseHeaderPolicy = new cloudfront.ResponseHeadersPolicy(
       this,
