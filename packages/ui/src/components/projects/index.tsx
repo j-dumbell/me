@@ -139,25 +139,25 @@ const ProjectCard: FC<CardProject> = ({
 
 const HeadlineProjects: FC = () => {
   return (
-    <Carousel className="mx-auto mb-10 w-full max-w-5xl">
+    <Carousel className="mx-auto mb-10 w-full max-w-5xl px-12 md:px-16">
       <CarouselContent>
         {carouselProjects.map((proj, index) => (
           <CarouselItem key={proj.name}>
             <div
               className={cn(
-                'flex p-1 justify-center items-center',
-                !(index % 2 === 0) && 'flex-row-reverse'
+                'flex p-1 justify-center items-center flex-col md:flex-row',
+                !(index % 2 === 0) && 'md:flex-row-reverse'
               )}
             >
               {proj.content._type === 'image' ? (
                 <img
-                  className="size-[400px] rounded-lg border-2"
+                  className="w-full max-w-[400px] h-auto rounded-lg border-2 mb-4 md:mb-0"
                   src={proj.content.image}
                   alt="desk image"
                 />
               ) : (
                 <div 
-                  className="w-[640px] h-[400px] flex items-center justify-center"
+                  className="w-full max-w-[640px] h-[300px] md:h-[400px] flex items-center justify-center mb-4 md:mb-0"
                   onKeyDown={(e) => e.stopPropagation()}
                 >
                   <AsciinemaPlayer className="w-full h-full" src={proj.content.src} />
@@ -166,34 +166,34 @@ const HeadlineProjects: FC = () => {
 
               <div
                 className={cn(
-                  'mx-6 flex w-96 flex-col',
-                  index % 2 === 0 && 'items-end'
+                  'mx-2 md:mx-6 flex w-full md:w-96 flex-col',
+                  index % 2 === 0 && 'md:items-end'
                 )}
               >
                 <h5
                   className={cn(
-                    'mb-6 text-2xl font-semibold leading-none tracking-tight hover:text-indigo-600',
-                    index % 2 === 0 && 'text-right'
+                    'mb-6 text-2xl font-semibold leading-none tracking-tight hover:text-indigo-600 text-center md:text-left',
+                    index % 2 === 0 && 'md:text-right'
                   )}
                 >
                   <a href={proj.github}>{proj.name}</a>
                 </h5>
                 <Paragraph
-                  className={cn('mb-6', index % 2 === 0 && 'text-right')}
+                  className={cn('mb-6 text-center md:text-left', index % 2 === 0 && 'md:text-right')}
                 >
                   {proj.description}
                 </Paragraph>
                 <div
                   className={cn(
-                    'flex flex-wrap mb-4',
-                    index % 2 === 0 && 'justify-end'
+                    'flex flex-wrap mb-4 justify-center md:justify-start',
+                    index % 2 === 0 && 'md:justify-end'
                   )}
                 >
                   {proj.technologies.map((Tech, index) => (
                     <Tech key={index} className="mb-1 mr-1" />
                   ))}
                 </div>
-                <div className="flex">
+                <div className="flex justify-center md:justify-start">
                   <a
                     href={proj.github}
                     target="_blank"
