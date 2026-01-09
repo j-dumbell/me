@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/card'
 import { FC } from 'react'
 import { Heading, Paragraph } from 'src/components/typography'
-import SplendidImg from '@/assets/splendid.jpeg'
+import TransmissionExporterImg from '@/assets/transmission-exporter.png'
 import {
   Carousel,
   CarouselContent,
@@ -24,14 +24,14 @@ import {
   DockerCard,
   GolangCard,
   GoogleAnalyticsCard,
+  GrafanaCard,
   NodeJSCard,
+  PrometheusCard,
   ReactCard,
   SnowflakeCard,
   TailwindCSSCard,
   TechHoverCardProps,
-  TerraformCard,
-  TypescriptCard,
-  WebsocketsCard
+  TypescriptCard
 } from '@/components/hovercard'
 import { Section } from '@/components/section'
 import { AsciinemaPlayer } from '@/components/asciinemaPlayer'
@@ -71,22 +71,14 @@ const carouselProjects: CarouselProject[] = [
     }
   },
   {
-    name: 'Splendid',
+    name: 'Transmission-exporter',
     description:
-      'An online version of the board game Splendor build with websockets in Golang with a React UI.  Deployed on AWS with Terraform.',
-    technologies: [
-      GolangCard,
-      WebsocketsCard,
-      TypescriptCard,
-      ReactCard,
-      DockerCard,
-      TerraformCard,
-      AWSCard
-    ],
-    github: 'https://github.com/j-dumbell/splendid',
+      'A Prometheus exporter and Grafana dashboard for the Transmission bittorrent client',
+    technologies: [GolangCard, PrometheusCard, GrafanaCard, DockerCard],
+    github: 'https://github.com/j-dumbell/transmission-exporter',
     content: {
       _type: 'image',
-      image: SplendidImg
+      image: TransmissionExporterImg
     }
   }
 ]
@@ -151,16 +143,19 @@ const HeadlineProjects: FC = () => {
             >
               {proj.content._type === 'image' ? (
                 <img
-                  className="w-full max-w-[400px] h-auto rounded-lg border-2 mb-4 md:mb-0"
+                  className="mb-4 h-auto w-full max-w-[500px] rounded-lg border-2 md:mb-0"
                   src={proj.content.image}
                   alt="desk image"
                 />
               ) : (
-                <div 
-                  className="w-full max-w-[640px] h-[300px] md:h-[400px] flex items-center justify-center mb-4 md:mb-0"
+                <div
+                  className="mb-4 flex h-[375px] w-full max-w-[500px] items-center justify-center md:mb-0"
                   onKeyDown={(e) => e.stopPropagation()}
                 >
-                  <AsciinemaPlayer className="w-full h-full" src={proj.content.src} />
+                  <AsciinemaPlayer
+                    className="size-full"
+                    src={proj.content.src}
+                  />
                 </div>
               )}
 
@@ -179,7 +174,10 @@ const HeadlineProjects: FC = () => {
                   <a href={proj.github}>{proj.name}</a>
                 </h5>
                 <Paragraph
-                  className={cn('mb-6 text-center md:text-left', index % 2 === 0 && 'md:text-right')}
+                  className={cn(
+                    'mb-6 text-center md:text-left',
+                    index % 2 === 0 && 'md:text-right'
+                  )}
                 >
                   {proj.description}
                 </Paragraph>
