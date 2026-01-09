@@ -142,13 +142,13 @@ const HeadlineProjects: FC = () => {
             >
               {proj.content._type === 'image' ? (
                 <img
-                  className="mb-4 h-auto w-full max-w-[400px] rounded-lg border-2 md:mb-0"
+                  className="mb-4 h-auto w-full max-w-[500px] rounded-lg border-2 md:mb-0"
                   src={proj.content.image}
                   alt="desk image"
                 />
               ) : (
                 <div
-                  className="mb-4 flex h-[300px] w-full max-w-screen-sm items-center justify-center md:mb-0 md:h-[400px]"
+                  className="mb-4 flex h-[375px] w-full max-w-[500px] items-center justify-center md:mb-0"
                   onKeyDown={(e) => e.stopPropagation()}
                 >
                   <AsciinemaPlayer
