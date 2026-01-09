@@ -21,6 +21,7 @@ import { cn } from '@/lib/utils'
 import {
   AWSCard,
   AWSCDKCard,
+  DockerCard,
   GolangCard,
   GoogleAnalyticsCard,
   GrafanaCard,
@@ -73,7 +74,7 @@ const carouselProjects: CarouselProject[] = [
     name: 'Transmission-exporter',
     description:
       'A Prometheus exporter and Grafana dashboard for the Transmission bittorrent client',
-    technologies: [GolangCard, PrometheusCard, GrafanaCard],
+    technologies: [GolangCard, PrometheusCard, GrafanaCard, DockerCard],
     github: 'https://github.com/j-dumbell/transmission-exporter',
     content: {
       _type: 'image',
