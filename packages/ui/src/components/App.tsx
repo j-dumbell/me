@@ -9,14 +9,12 @@ import { About } from '@/components/about'
 import { SocialNav } from '@/components/socialNav'
 
 const App: FC = () => {
-  const aboutRef = useRef<HTMLDivElement | null>(null)
   const footerRef = useRef<HTMLDivElement | null>(null)
 
   return (
-    <>
-      <Hero aboutRef={aboutRef} />
+    <main className={'mx-auto max-w-screen-xl px-4'}>
+      <Hero />
       <SocialNav footerRef={footerRef} />
-      <div ref={aboutRef}></div>
       <About />
       <Skills />
       <Experience />
@@ -24,7 +22,7 @@ const App: FC = () => {
       <Contact />
       <div ref={footerRef}></div>
       <Footer />
-    </>
+    </main>
   )
 }
 

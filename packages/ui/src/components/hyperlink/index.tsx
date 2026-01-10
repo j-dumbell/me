@@ -12,7 +12,7 @@ export type HyperlinkProps = {
 export const Hyperlink: FC<HyperlinkProps> = (props: HyperlinkProps) => (
   <a
     className={cn(
-      'group text-indigo-600 transition-all duration-300 ease-in-out hover:text-indigo-600',
+      'group text-emerald-400 transition-all duration-300 ease-in-out hover:text-emerald-400',
       props.withIcon && 'flex items-center',
       props.className
     )}
@@ -20,7 +20,7 @@ export const Hyperlink: FC<HyperlinkProps> = (props: HyperlinkProps) => (
     target="_blank"
     rel="noreferrer"
   >
-    <span className="duration-400 bg-gradient-to-r from-indigo-600 to-indigo-600 bg-[length:0%_1px] bg-left-bottom bg-no-repeat transition-all ease-out hover:text-indigo-600 group-hover:bg-[length:100%_1px]">
+    <span className="duration-400 bg-gradient-to-r from-emerald-400 to-emerald-400 bg-[length:0%_1px] bg-left-bottom bg-no-repeat transition-all ease-out hover:text-emerald-400 group-hover:bg-[length:100%_1px]">
       {props.title}
     </span>
     {props.withIcon && (
