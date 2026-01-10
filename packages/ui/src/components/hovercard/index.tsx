@@ -11,7 +11,6 @@ import { Hyperlink } from '@/components/hyperlink'
 
 export type HoverCardProps = {
   className?: string
-  iconClassName?: string
   title: string
   icon?: string
   description: string
@@ -22,27 +21,27 @@ export const TechHoverCard: FC<HoverCardProps> = (props) => {
   return (
     <HoverCard>
       <HoverCardTrigger asChild className={props.className}>
-        <Button variant="outline" className="h-6 border-slate-300 px-2">
+        <Button variant="outline" className="h-8 border-slate-300 px-2">
           {props.icon && (
-            <Icon
-              icon={props.icon}
-              className={cn('size-4 mr-1.5', props.iconClassName)}
-            />
+            <Icon icon={props.icon} className={cn('size-4 mr-2')} />
           )}
           {props.title}
         </Button>
       </HoverCardTrigger>
       <HoverCardContent className="w-80">
-        <div className="space-y-1">
-          <div className={'flex'}>
-            <Hyperlink
-              title={props.title}
-              href={props.link}
-              className={'mr-2 text-sm font-semibold text-black'}
-              withIcon
-            />
+        <div className="flex justify-between space-x-4">
+          <div className="space-y-1">
+            <div className={'flex'}>
+              <Hyperlink
+                title={props.title}
+                href={props.link}
+                className={'mr-2 text-sm font-semibold text-black'}
+                withIcon
+              />
+            </div>
+
+            <p className="text-left text-sm">{props.description}</p>
           </div>
-          <p className="text-left text-sm">{props.description}</p>
         </div>
       </HoverCardContent>
     </HoverCard>
@@ -342,7 +341,6 @@ export const BigQueryCard: FC<TechHoverCardProps> = (props) => (
     className={props.className}
     title={'BigQuery'}
     icon={'simple-icons:googlebigquery'}
-    iconClassName={'text-[#679df8]'}
     link={'https://cloud.google.com/bigquery'}
     description={`BigQuery is a serverless and cost-effective enterprise data warehouse that works across clouds and scales with your data.`}
   />
