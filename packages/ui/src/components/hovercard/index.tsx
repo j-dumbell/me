@@ -23,29 +23,26 @@ export const TechHoverCard: FC<HoverCardProps> = (props) => {
     <HoverCard>
       <HoverCardTrigger asChild className={props.className}>
         <Button variant="outline" className="h-6 border-slate-300 px-2">
+          {props.icon && (
+            <Icon
+              icon={props.icon}
+              className={cn('size-4 mr-1.5', props.iconClassName)}
+            />
+          )}
           {props.title}
         </Button>
       </HoverCardTrigger>
       <HoverCardContent className="w-80">
-        <div className="flex justify-between space-x-4">
-          {props.icon && (
-            <Icon
-              icon={props.icon}
-              className={cn('size-20', props.iconClassName)}
+        <div className="space-y-1">
+          <div className={'flex'}>
+            <Hyperlink
+              title={props.title}
+              href={props.link}
+              className={'mr-2 text-sm font-semibold text-black'}
+              withIcon
             />
-          )}
-          <div className="space-y-1">
-            <div className={'flex'}>
-              <Hyperlink
-                title={props.title}
-                href={props.link}
-                className={'mr-2 text-sm font-semibold text-black'}
-                withIcon
-              />
-            </div>
-
-            <p className="text-left text-sm">{props.description}</p>
           </div>
+          <p className="text-left text-sm">{props.description}</p>
         </div>
       </HoverCardContent>
     </HoverCard>
@@ -95,7 +92,6 @@ export const TypescriptCard: FC<TechHoverCardProps> = (props) => (
     className={props.className}
     title={'Typescript'}
     icon={'skill-icons:typescript'}
-    iconClassName={'size-28'}
     link={'https://www.typescriptlang.org/'}
     description={`TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.`}
   />
@@ -106,7 +102,6 @@ export const KafkaCard: FC<TechHoverCardProps> = (props) => (
     className={props.className}
     title={'Apache Kafka'}
     icon={'devicon:apachekafka'}
-    iconClassName={'size-32'}
     link={'https://kafka.apache.org/'}
     description={`Apache Kafka is an open-source distributed event streaming platform used for high-performance data pipelines, streaming analytics and mission-critical applications.`}
   />
@@ -117,7 +112,6 @@ export const ProtobufCard: FC<TechHoverCardProps> = (props) => (
     className={props.className}
     title={'Protobuf'}
     icon={'vscode-icons:file-type-protobuf'}
-    iconClassName={'size-32'}
     link={'https://protobuf.dev/'}
     description={`Protocol Buffers are language-neutral, platform-neutral extensible mechanisms for serializing structured data.`}
   />
