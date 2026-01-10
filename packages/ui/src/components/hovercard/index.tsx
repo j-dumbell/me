@@ -13,15 +13,66 @@ export type HoverCardProps = {
   className?: string
   title: string
   icon?: string
+  colour?: string
   description: string
   link: string
 }
 
+type RGB = {
+  r: number
+  g: number
+  b: number
+}
+
+const hexToRGB = (hex: string): RGB => {
+  const colourCode = hex.replace('#', '')
+  return {
+    r: parseInt(colourCode.substring(0, 2), 16),
+    g: parseInt(colourCode.substring(2, 4), 16),
+    b: parseInt(colourCode.substring(4, 6), 16)
+  }
+}
+
+const mixRGB = (a: RGB, b: RGB, amount: number): RGB => {
+  return {
+    r: Math.round(a.r + (b.r - a.r) * amount),
+    g: Math.round(a.g + (b.g - a.g) * amount),
+    b: Math.round(a.b + (b.b - a.b) * amount)
+  }
+}
+
+const whiteRGB: RGB = { r: 255, g: 255, b: 255 }
+const blackRGB: RGB = { r: 0, g: 0, b: 0 }
+
+const mixWhite = (rgb: RGB) => mixRGB(rgb, whiteRGB, 0.9)
+const mixBlack = (rgb: RGB) => mixRGB(rgb, blackRGB, 0.7)
+
+const rgbToCSS = (rgb: RGB) => `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`
+
 export const TechHoverCard: FC<HoverCardProps> = (props) => {
+  const bgColor = props.colour
+    ? rgbToCSS(mixWhite(hexToRGB(props.colour)))
+    : 'white'
+
+  const style = {
+    backgroundColor: bgColor,
+    color: props.colour || 'black'
+  } as React.CSSProperties
+
   return (
     <HoverCard>
       <HoverCardTrigger asChild className={props.className}>
-        <Button variant="outline" className="h-8 border-slate-300 px-2">
+        <Button
+          style={style}
+          variant="outline"
+          className={cn('h-8 px-2 border-transparent')}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = bgColor
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = bgColor
+          }}
+        >
           {props.icon && (
             <Icon icon={props.icon} className={cn('size-4 mr-2')} />
           )}
@@ -57,6 +108,7 @@ export const GolangCard: FC<TechHoverCardProps> = (props) => (
     className={props.className}
     title={'Golang'}
     icon={'logos:go'}
+    colour={'#00ADD8'}
     link={'https://go.dev/'}
     description={`Build simple, secure, scalable systems with Go.`}
   />
@@ -66,6 +118,7 @@ export const PythonCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'Python'}
+    colour={'#3776AB'}
     icon={'logos:python'}
     link={'https://www.python.org/'}
     description={`Python is powerful... and fast;
@@ -80,6 +133,7 @@ export const ScalaCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'Scala'}
+    colour={'#DC322F'}
     icon={'logos:scala'}
     link={'https://www.scala-lang.org/'}
     description={`A programming language that scales with you: from small scripts to large multiplatform applications.`}
@@ -90,6 +144,7 @@ export const TypescriptCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'Typescript'}
+    colour={'#3178C6'}
     icon={'skill-icons:typescript'}
     link={'https://www.typescriptlang.org/'}
     description={`TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.`}
@@ -120,6 +175,7 @@ export const GraphQLCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'GraphQL'}
+    colour={'#E10098'}
     icon={'logos:graphql'}
     link={'https://graphql.org/'}
     description={`GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data.`}
@@ -130,6 +186,7 @@ export const PostgresCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'PostgreSQL'}
+    colour={'#336791'}
     icon={'logos:postgresql'}
     link={'https://www.postgresql.org/'}
     description={`PostgreSQL is a powerful, open source object-relational database system with over 35 years of active development.`}
@@ -140,6 +197,7 @@ export const MongoDBCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'MongoDB'}
+    colour={'#47A248'}
     icon={'skill-icons:mongodb'}
     link={'https://www.mongodb.com/'}
     description={`MongoDB is a source-available, cross-platform, document-oriented database program.`}
@@ -150,6 +208,7 @@ export const DynamoDBCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'DynamoDB'}
+    colour={'#4053D6'}
     icon={'devicon:dynamodb'}
     link={'https://aws.amazon.com/dynamodb/'}
     description={`Serverless, NoSQL, fully managed database with single-digit millisecond performance at any scale.`}
@@ -160,6 +219,7 @@ export const ReactCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'React'}
+    colour={'#61DAFB'}
     icon={'logos:react'}
     link={'https://react.dev/'}
     description={`React is the library for web and native user interfaces. Build user interfaces out of individual pieces called components written in JavaScript.`}
@@ -170,6 +230,7 @@ export const SnowflakeCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'Snowflake'}
+    colour={'#29B5E8'}
     icon={'logos:snowflake-icon'}
     link={'https://www.snowflake.com/en/'}
     description={`Snowflake enables organizations to learn, build, and connect with their data-driven peers. Collaborate, build data apps & power diverse workloads.`}
@@ -181,6 +242,7 @@ export const DBTCard: FC<TechHoverCardProps> = (props) => (
     className={props.className}
     title={'DBT'}
     icon={'logos:dbt-icon'}
+    colour={'#FF694B'}
     link={'https://www.getdbt.com/'}
     description={`dbt is a data transformation tool that enables data analysts and engineers to transform data in a cloud analytics warehouse.`}
   />
@@ -190,6 +252,7 @@ export const ApacheSparkCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'Apache Spark'}
+    colour={'#E25A1C'}
     icon={'devicon:apachespark'}
     link={'https://spark.apache.org/'}
     description={`Apache Spark™ is a multi-language engine for executing data engineering, data science, and machine learning on single-node machines or clusters.`}
@@ -210,6 +273,7 @@ export const AWSCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'AWS'}
+    colour={'#FF9900'}
     icon={'logos:aws'}
     link={'https://aws.amazon.com/'}
     description={`Amazon Web Services offers reliable, scalable, and inexpensive cloud computing services.`}
@@ -220,6 +284,7 @@ export const TerraformCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'Terraform'}
+    colour={'#7B42BC'}
     icon={'logos:terraform-icon'}
     link={'https://www.terraform.io/'}
     description={`Terraform is an infrastructure as code tool that enables you to safely and predictably provision and manage infrastructure in any cloud.`}
@@ -230,6 +295,7 @@ export const DockerCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'Docker'}
+    colour={'#2496ED'}
     icon={'skill-icons:docker'}
     link={'https://www.docker.com/'}
     description={`Docker is a platform designed to help developers build, share, and run container applications.`}
@@ -240,6 +306,7 @@ export const KubernetesCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'Kubernetes'}
+    colour={'#326CE5'}
     icon={'devicon:kubernetes'}
     link={'https://kubernetes.io/'}
     description={`Kubernetes, is an open-source system for automating deployment, scaling, and management of containerized applications.`}
@@ -260,6 +327,7 @@ export const AWSCDKCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'AWS CDK'}
+    colour={'#C925D1'}
     icon={'logos:aws-cloudformation'}
     link={'https://aws.amazon.com/cdk/'}
     description={`Define your cloud application resources using familiar programming languages.`}
@@ -270,6 +338,7 @@ export const PrometheusCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'Prometheus'}
+    colour={'#E6522C'}
     icon={'logos:prometheus'}
     link={'https://prometheus.io/'}
     description={`An open-source monitoring system with a dimensional data model, flexible query language, efficient time series database and modern alerting approach.`}
@@ -280,6 +349,7 @@ export const GrafanaCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'Grafana'}
+    colour={'#F46800'}
     icon={'logos:grafana'}
     link={'https://grafana.com/'}
     description={`Grafana is the open source analytics & monitoring solution for every database.`}
@@ -290,6 +360,7 @@ export const KEDACard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'KEDA'}
+    colour={'#4B8BBE'}
     icon={'devicon:kubernetes'}
     link={'https://keda.sh/'}
     description={`With KEDA, you can drive the scaling of any container in Kubernetes based on the number of events needing to be processed.`}
@@ -320,6 +391,7 @@ export const RedshiftCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'Redshift'}
+    colour={'#8C4FFF'}
     icon={'logos:aws-redshift'}
     link={'https://aws.amazon.com/redshift/'}
     description={`Amazon Redshift is a fast, fully managed cloud data warehouse that makes it simple and cost-effective to analyze all your data.`}
@@ -330,6 +402,7 @@ export const LookerCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'Looker'}
+    colour={'#4285F4'}
     icon={'logos:looker-icon'}
     link={'https://cloud.google.com/looker'}
     description={`Looker is an enterprise platform for BI, data applications, and embedded analytics that helps you explore and share insights in real time.`}
@@ -359,6 +432,7 @@ export const NodeJSCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'NodeJS'}
+    colour={'#339933'}
     icon={'skill-icons:nodejs-dark'}
     link={'https://nodejs.org/en'}
     description={`Node.js® is a free, open-source, cross-platform JavaScript runtime environment that lets developers create servers, web apps, command line tools and scripts.`}
@@ -369,6 +443,7 @@ export const TailwindCSSCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'Tailwind CSS'}
+    colour={'#38BDF8'}
     icon={'skill-icons:tailwindcss-dark'}
     link={'https://tailwindcss.com/'}
     description={`A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.`}
@@ -379,6 +454,7 @@ export const GoogleAnalyticsCard: FC<TechHoverCardProps> = (props) => (
   <TechHoverCard
     className={props.className}
     title={'Google Analytics'}
+    colour={'#E37400'}
     icon={'logos:google-analytics'}
     link={'https://marketingplatform.google.com/intl/en_uk/about/analytics/'}
     description={`Google Analytics gives you the tools, free of charge, to understand the customer journey and improve marketing ROI.`}
