@@ -2,17 +2,16 @@ import { FC } from 'react'
 import { Heading, Paragraph } from '@/components/typography'
 import MeImg from '../../assets/me.jpeg'
 import { Hyperlink } from '@/components/hyperlink'
-import { Section } from '@/components/section'
 
 export const About: FC = () => {
   return (
-    <Section className="bg-slate-100">
-      <Heading>About</Heading>
-      <div className="container flex max-w-4xl flex-wrap items-center justify-center space-x-8 space-y-8">
-        <div className="max-w-lg">
+    <section>
+      <div className="flex items-center">
+        <div className="w-1/2">
+          <Heading>🙋🏻‍♂️ About me</Heading>
           <Paragraph>
             {`Hi, I'm James, nice to meet you! I'm a London-based mathematics
-            graduate turned engineer with over 5 years experience across
+            graduate turned engineer with over 8 years experience across
             software engineering, devOps and data engineering.`}
           </Paragraph>
 
@@ -27,12 +26,14 @@ export const About: FC = () => {
             helping companies monitor their mission critical applications.
           </Paragraph>
         </div>
-        <img
-          className="size-72 rounded-lg border-0 border-[#000B60] [box-shadow:10px_10px_0px_#4f45e482]"
-          src={MeImg}
-          alt="James Dumbell"
-        />
+        <div className={'flex w-1/2 justify-center'}>
+          <img
+            className="size-72 rounded-full border-4 border-emerald-400"
+            src={MeImg}
+            alt="James Dumbell"
+          />
+        </div>
       </div>
-    </Section>
+    </section>
   )
 }

@@ -33,7 +33,6 @@ import {
   TechHoverCardProps,
   TypescriptCard
 } from '@/components/hovercard'
-import { Section } from '@/components/section'
 import { AsciinemaPlayer } from '@/components/asciinemaPlayer'
 
 type CardProject = {
@@ -91,27 +90,27 @@ const ProjectCard: FC<CardProject> = ({
   npm
 }) => {
   return (
-    <Card className="m-1 flex h-72 w-80 flex-col justify-between p-5 transition duration-300 hover:scale-105">
+    <Card className="m-1 flex h-72 w-80 flex-col justify-between border-none bg-gray-900 p-5 transition duration-300 hover:scale-105">
       <div>
         <div className="flex justify-end">
           {npm && (
             <a href={npm} target="_blank" rel="noopener noreferrer">
               <Icon
                 icon="iconoir:npm"
-                className="mr-2 size-8 hover:text-indigo-600"
+                className="mr-2 size-8 text-white hover:text-emerald-400"
               />
             </a>
           )}
           <a href={github} target="_blank" rel="noopener noreferrer">
             <Icon
               icon="mingcute:github-line"
-              className="size-7 hover:text-indigo-600"
+              className="size-7 text-white hover:text-emerald-400"
             />
           </a>
         </div>
         <CardHeader className="mt-4">
-          <CardTitle className="text-2xl">
-            <a className="hover:text-indigo-600" href={github}>
+          <CardTitle className="text-2xl text-gray-500">
+            <a className="hover:text-emerald-400" href={github}>
               {name}
             </a>
           </CardTitle>
@@ -143,7 +142,7 @@ const HeadlineProjects: FC = () => {
             >
               {proj.content._type === 'image' ? (
                 <img
-                  className="mb-4 h-auto w-full max-w-[500px] rounded-lg border-2 md:mb-0"
+                  className="mb-4 h-auto w-full max-w-[500px] rounded-lg border-8 border-emerald-400 md:mb-0"
                   src={proj.content.image}
                   alt="desk image"
                 />
@@ -167,7 +166,7 @@ const HeadlineProjects: FC = () => {
               >
                 <h5
                   className={cn(
-                    'mb-6 text-2xl font-semibold leading-none tracking-tight hover:text-indigo-600 text-center md:text-left',
+                    'mb-6 text-2xl text-gray-500 font-semibold leading-none hover:text-emerald-400 text-center md:text-left',
                     index % 2 === 0 && 'md:text-right'
                   )}
                 >
@@ -199,7 +198,7 @@ const HeadlineProjects: FC = () => {
                   >
                     <Icon
                       icon="mingcute:github-line"
-                      className="mr-2 size-7 hover:text-indigo-600"
+                      className="mr-2 size-7 text-white hover:text-emerald-400"
                     />
                   </a>
                   <a
@@ -209,7 +208,7 @@ const HeadlineProjects: FC = () => {
                   >
                     <Icon
                       icon="lucide:external-link"
-                      className="size-7 hover:text-indigo-600"
+                      className="size-7 text-white hover:text-emerald-400"
                     />
                   </a>
                 </div>
@@ -270,8 +269,8 @@ const cardProjects: CardProject[] = [
 
 export const Projects: FC = () => {
   return (
-    <Section>
-      <Heading>Projects</Heading>
+    <section className={'pt-48'}>
+      <Heading className={'pb-10'}>🚧 Projects</Heading>
       <HeadlineProjects />
       <div className="mt-20 flex justify-center">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -280,6 +279,6 @@ export const Projects: FC = () => {
           ))}
         </div>
       </div>
-    </Section>
+    </section>
   )
 }

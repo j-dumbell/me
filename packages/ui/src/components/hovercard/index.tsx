@@ -41,17 +41,13 @@ const mixRGB = (a: RGB, b: RGB, amount: number): RGB => {
   }
 }
 
-const whiteRGB: RGB = { r: 255, g: 255, b: 255 }
-const blackRGB: RGB = { r: 0, g: 0, b: 0 }
-
-const mixWhite = (rgb: RGB) => mixRGB(rgb, whiteRGB, 0.9)
-const mixBlack = (rgb: RGB) => mixRGB(rgb, blackRGB, 0.7)
+const gray950Hex = '#030512'
 
 const rgbToCSS = (rgb: RGB) => `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`
 
 export const TechHoverCard: FC<HoverCardProps> = (props) => {
   const bgColor = props.colour
-    ? rgbToCSS(mixWhite(hexToRGB(props.colour)))
+    ? rgbToCSS(mixRGB(hexToRGB(props.colour), hexToRGB(gray950Hex), 0.7))
     : 'white'
 
   const style = {
@@ -65,7 +61,7 @@ export const TechHoverCard: FC<HoverCardProps> = (props) => {
         <Button
           style={style}
           variant="outline"
-          className={cn('h-8 px-2 border-transparent')}
+          className={cn('h-6 px-1 border-transparent')}
           onMouseEnter={(e) => {
             e.currentTarget.style.backgroundColor = bgColor
           }}
@@ -79,19 +75,21 @@ export const TechHoverCard: FC<HoverCardProps> = (props) => {
           {props.title}
         </Button>
       </HoverCardTrigger>
-      <HoverCardContent className="w-80">
+      <HoverCardContent className="w-80 bg-gray-950">
         <div className="flex justify-between space-x-4">
           <div className="space-y-1">
             <div className={'flex'}>
               <Hyperlink
                 title={props.title}
                 href={props.link}
-                className={'mr-2 text-sm font-semibold text-black'}
-                withIcon
+                className={'mr-2 text-sm font-semibold text-white'}
+                linkIconSide={'right'}
               />
             </div>
 
-            <p className="text-left text-sm">{props.description}</p>
+            <p className="text-left text-sm text-gray-500">
+              {props.description}
+            </p>
           </div>
         </div>
       </HoverCardContent>
