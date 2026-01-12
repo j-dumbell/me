@@ -100,13 +100,6 @@ export const Skills: FC = () => {
         <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-12">
           {columns.map(({ title, description, img, skills }) => (
             <div key={title} className="space-y-3">
-              {/*<div className="flex items-center justify-center">*/}
-              {/*  <img*/}
-              {/*    className="mb-8 size-36 transition duration-300 hover:scale-[115%]"*/}
-              {/*    src={img}*/}
-              {/*    alt={''}*/}
-              {/*  />*/}
-              {/*</div>*/}
               <h3 className="text-2xl font-semibold text-gray-400">{title}</h3>
               <Paragraph>{description}</Paragraph>
               <div className="mt-4 flex flex-wrap py-5">

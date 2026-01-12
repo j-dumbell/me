@@ -109,7 +109,7 @@ const ProjectCard: FC<CardProject> = ({
           </a>
         </div>
         <CardHeader className="mt-4">
-          <CardTitle className="text-2xl text-gray-500">
+          <CardTitle className="text-2xl text-gray-400">
             <a className="hover:text-emerald-400" href={github}>
               {name}
             </a>
@@ -166,7 +166,7 @@ const HeadlineProjects: FC = () => {
               >
                 <h5
                   className={cn(
-                    'mb-6 text-2xl text-gray-500 font-semibold leading-none hover:text-emerald-400 text-center md:text-left',
+                    'mb-6 text-2xl text-gray-400 font-semibold leading-none hover:text-emerald-400 text-center md:text-left',
                     index % 2 === 0 && 'md:text-right'
                   )}
                 >

@@ -18,7 +18,7 @@ const App: FC = () => {
       <Skills />
       <Experience />
       <Projects />
-      <Contact />
+      {/*<Contact />*/}
       <div ref={footerRef}></div>
       <Footer />
     </main>

@@ -41,6 +41,7 @@ import {
   TypescriptCard
 } from '@/components/hovercard'
 import { Hyperlink } from '@/components/hyperlink'
+import { cn } from '@/lib/utils'
 
 type Employment = {
   company: string
@@ -66,8 +67,8 @@ const employments: Employment[] = [
     logo: GrafanaLabsLogo,
     from: new Date('2023-06-01'),
     Details: ({ className }) => (
-      <div className={className}>
-        <Paragraph className="text-base">
+      <div className={cn(className, 'text-gray-400 text-lg')}>
+        <Paragraph>
           Senior software engineer at a global technology company that develops
           open-source and SAS observability software.
         </Paragraph>
@@ -244,9 +245,9 @@ const formatRange = (from: Date, to: Date | undefined): string => {
 
 export const Experience: FC = () => {
   return (
-    <section className={'pt-48'}>
+    <section className={'pt-40'}>
       <Heading>💼 Experience</Heading>
-      <div className="flex justify-center space-y-12">
+      <div className="flex justify-center space-y-12 pt-12">
         <Accordion
           type="single"
           collapsible
@@ -273,10 +274,10 @@ export const Experience: FC = () => {
                       <h2 className="scroll-m-20 text-left text-2xl font-medium tracking-tight text-white">
                         {company}
                       </h2>
-                      <p className="text-left text-base text-gray-500">
+                      <p className="text-left text-base text-gray-400">
                         {title}
                       </p>
-                      <p className="text-left text-base text-gray-500">
+                      <p className="text-left text-base text-gray-400">
                         {formatRange(from, to)}
                       </p>
                     </div>
@@ -287,17 +288,17 @@ export const Experience: FC = () => {
                     <div className="mb-2 flex">
                       <Icon
                         icon="mdi:location"
-                        className="mr-1 size-6 text-gray-500"
+                        className="mr-1 size-6 text-gray-400"
                       />
-                      <p className="text-base text-gray-500">{location}</p>
+                      <p className="text-base text-gray-400">{location}</p>
                     </div>
                     <Hyperlink
                       title={url}
                       href={`https://www.${url}`}
-                      className={'mr-2 text-base text-gray-500'}
+                      className={'mr-2 text-base text-gray-400'}
                       linkIconSide={'left'}
                     />
-                    <Details className="text-base text-gray-500" />
+                    <Details className="pt-5 text-base text-gray-400" />
                     <div className="mt-4 flex flex-wrap">
                       {technologies.map((Card, index) => (
                         <Card key={index} className="mr-2 mt-1" />

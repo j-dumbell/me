@@ -87,7 +87,7 @@ export const TechHoverCard: FC<HoverCardProps> = (props) => {
               />
             </div>
 
-            <p className="text-left text-sm text-gray-500">
+            <p className="text-left text-sm text-gray-400">
               {props.description}
             </p>
           </div>

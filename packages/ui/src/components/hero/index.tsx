@@ -13,15 +13,15 @@ export const Hero: FC = () => {
         <h1 className="scroll-m-20 text-9xl font-bold tracking-tight text-white md:text-6xl lg:text-9xl">
           James Dumbell.
         </h1>
-        <p className="scroll-m-20 pb-8 text-3xl font-semibold text-gray-500 dark:text-slate-100 md:text-4xl lg:text-5xl">
+        <p className="scroll-m-20 pb-8 text-3xl font-semibold text-gray-400 dark:text-slate-100 md:text-4xl lg:text-5xl">
           {`I'm a software engineer.`}
         </p>
-        <p className="scroll-m-20 text-lg text-gray-500 md:text-4xl lg:text-2xl">
+        <p className="scroll-m-20 text-lg text-gray-400 md:text-4xl lg:text-2xl">
           {`💼 Currently working for `}
           <Hyperlink href="https://www.grafana.com" title="Grafana Labs" />
           {'.'}
         </p>
-        <p className="scroll-m-20 text-lg text-gray-500 md:text-4xl lg:text-2xl">
+        <p className="scroll-m-20 text-lg text-gray-400 md:text-4xl lg:text-2xl">
           {'🏠 Based in London, UK.'}
         </p>
         <div className={'pt-6'}>

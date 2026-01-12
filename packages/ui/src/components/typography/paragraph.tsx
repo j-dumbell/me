@@ -14,7 +14,7 @@ export const Paragraph: FC<ParagraphProps> = ({
   <p
     {...otherProps}
     className={cn(
-      'leading-7 [&:not(:first-child)]:mt-6 text-gray-500 text-lg',
+      'leading-7 [&:not(:first-child)]:mt-6 text-gray-400 text-lg',
       className
     )}
   >
