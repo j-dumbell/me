@@ -40,8 +40,8 @@ import {
   TechHoverCardProps,
   TypescriptCard
 } from '@/components/hovercard'
-import { Section } from '@/components/section'
 import { Hyperlink } from '@/components/hyperlink'
+import { cn } from '@/lib/utils'
 
 type Employment = {
   company: string
@@ -67,12 +67,12 @@ const employments: Employment[] = [
     logo: GrafanaLabsLogo,
     from: new Date('2023-06-01'),
     Details: ({ className }) => (
-      <div className={className}>
-        <Paragraph className="text-base">
+      <div className={cn(className, 'text-gray-400 text-lg')}>
+        <Paragraph>
           Senior software engineer at a global technology company that develops
           open-source and SAS observability software.
         </Paragraph>
-        <ul className="ml-6 list-disc text-left text-base [&>li]:mt-2">
+        <ul className="ml-6 list-disc text-left [&>li]:mt-2">
           <li>
             Wrote microservices in Go to manage SAS customer usage and billing
             including REST APIs and Kafka event consumers.
@@ -141,7 +141,7 @@ const employments: Employment[] = [
               title={'web app'}
             />{' '}
             to allow digital marketers to create campaigns, build audiences and
-            measure results, powered by terrabytes of Sainsbury's customer data.
+            measure results, powered by terabytes of Sainsbury's customer data.
           </li>
           <li>
             Built a{' '}
@@ -245,14 +245,14 @@ const formatRange = (from: Date, to: Date | undefined): string => {
 
 export const Experience: FC = () => {
   return (
-    <Section className="bg-slate-100">
-      <Heading>Experience</Heading>
-      <div className="flex justify-center space-y-12">
+    <section className={'pt-40'}>
+      <Heading>💼 Experience</Heading>
+      <div className="flex justify-center space-y-12 pt-12">
         <Accordion
           type="single"
           collapsible
           defaultValue={'Grafana Labs'}
-          className="mx-4 w-full max-w-4xl rounded-xl border border-slate-200 bg-white px-8 py-4 text-slate-950 shadow"
+          className="mx-4 w-full max-w-4xl rounded-xl bg-gray-900 px-8 py-4 shadow"
         >
           {employments.map(
             ({
@@ -271,13 +271,13 @@ export const Experience: FC = () => {
                   <div className="flex">
                     <img className="mr-5 size-12" src={logo} alt={company} />
                     <div className="space-y-1">
-                      <h2 className="scroll-m-20 text-left text-2xl font-medium tracking-tight text-slate-900">
+                      <h2 className="scroll-m-20 text-left text-2xl font-medium tracking-tight text-white">
                         {company}
                       </h2>
-                      <p className="text-left text-base text-slate-600">
+                      <p className="text-left text-base text-gray-400">
                         {title}
                       </p>
-                      <p className="text-left text-base text-slate-600">
+                      <p className="text-left text-base text-gray-400">
                         {formatRange(from, to)}
                       </p>
                     </div>
@@ -286,20 +286,22 @@ export const Experience: FC = () => {
                 <AccordionContent>
                   <div className="ml-[67px]">
                     <div className="mb-2 flex">
-                      <Icon icon="mdi:location" className="mr-1 size-6" />
-                      <p className="text-base text-slate-600">{location}</p>
-                    </div>
-                    <a href={`https://www.${url}`} className="mb-4 flex">
                       <Icon
-                        icon="lucide:external-link"
-                        className="mr-1 size-5"
+                        icon="mdi:location"
+                        className="mr-1 size-6 text-gray-400"
                       />
-                      <p className="text-base text-slate-600">{url}</p>
-                    </a>
-                    <Details className="text-base text-slate-600" />
+                      <p className="text-base text-gray-400">{location}</p>
+                    </div>
+                    <Hyperlink
+                      title={url}
+                      href={`https://www.${url}`}
+                      className={'mr-2 text-base text-gray-400'}
+                      linkIconSide={'left'}
+                    />
+                    <Details className="pt-5 text-base text-gray-400" />
                     <div className="mt-4 flex flex-wrap">
                       {technologies.map((Card, index) => (
-                        <Card key={index} className="mr-1 mt-1" />
+                        <Card key={index} className="mr-2 mt-1" />
                       ))}
                     </div>
                   </div>
@@ -309,6 +311,6 @@ export const Experience: FC = () => {
           )}
         </Accordion>
       </div>
-    </Section>
+    </section>
   )
 }

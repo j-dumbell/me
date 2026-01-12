@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 
 export type HyperlinkProps = {
   className?: string
-  withIcon?: boolean
+  linkIconSide?: 'left' | 'right'
   href: string
   title: string
 }
@@ -12,19 +12,22 @@ export type HyperlinkProps = {
 export const Hyperlink: FC<HyperlinkProps> = (props: HyperlinkProps) => (
   <a
     className={cn(
-      'group text-indigo-600 transition-all duration-300 ease-in-out hover:text-indigo-600',
-      props.withIcon && 'flex items-center',
+      'group text-emerald-400 transition-all duration-300 ease-in-out hover:text-emerald-400',
+      !!props.linkIconSide && 'flex items-center',
       props.className
     )}
     href={props.href}
     target="_blank"
     rel="noreferrer"
   >
-    <span className="duration-400 bg-gradient-to-r from-indigo-600 to-indigo-600 bg-[length:0%_1px] bg-left-bottom bg-no-repeat transition-all ease-out hover:text-indigo-600 group-hover:bg-[length:100%_1px]">
+    {props.linkIconSide === 'left' && (
+      <Icon icon="lucide:external-link" className="mr-2 size-4" />
+    )}
+    <span className="duration-400 bg-gradient-to-r from-emerald-400 to-emerald-400 bg-[length:0%_1px] bg-left-bottom bg-no-repeat transition-all ease-out hover:text-emerald-400 group-hover:bg-[length:100%_1px]">
       {props.title}
     </span>
-    {props.withIcon && (
-      <Icon icon="lucide:external-link" className="ml-2 size-4" />
+    {props.linkIconSide === 'right' && (
+      <Icon icon="lucide:external-link" className="ml-2 " />
     )}
   </a>
 )

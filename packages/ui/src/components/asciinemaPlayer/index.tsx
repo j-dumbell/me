@@ -84,9 +84,6 @@ export const AsciinemaPlayer: FC<AsciinemaPlayerProps> = ({
   }, [playerInstance])
 
   return (
-    <div 
-      ref={playerRef} 
-      className={`w-full asciinema-player ${className}`}
-    />
+    <div ref={playerRef} className={`asciinema-player w-full ${className}`} />
   )
 }

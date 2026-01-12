@@ -3,11 +3,11 @@ import { Icon } from '@iconify/react'
 
 export const Footer: FC = () => {
   return (
-    <section className="w-full bg-slate-900 pb-12">
+    <section className="w-full pb-12 pt-36">
       <div className="container flex flex-col items-center px-4 text-center md:px-6">
         <button
           className={
-            'size-10 -translate-y-2/4 rounded bg-indigo-600 hover:bg-[#6962e5]'
+            'size-10 -translate-y-2/4 rounded bg-white/10 hover:bg-emerald-400/80'
           }
           onClick={() =>
             window.scrollTo({
@@ -29,7 +29,7 @@ export const Footer: FC = () => {
           >
             <Icon
               icon="mingcute:github-line"
-              className="size-8 text-white hover:text-indigo-600"
+              className="size-8 text-white hover:text-emerald-400"
             />
           </a>
           <a
@@ -39,7 +39,7 @@ export const Footer: FC = () => {
           >
             <Icon
               icon="mdi:linkedin"
-              className="size-8 text-white hover:text-indigo-600"
+              className="size-8 text-white hover:text-emerald-400"
             />
           </a>
           <a
@@ -49,17 +49,17 @@ export const Footer: FC = () => {
           >
             <Icon
               icon="mdi:instagram"
-              className="size-8 text-white hover:text-indigo-600"
+              className="size-8 text-white hover:text-emerald-400"
             />
           </a>
           <a
             aria-label="CV"
-            className="text-white hover:text-indigo-600"
+            className="text-white hover:text-emerald-400"
             href="CV.pdf"
           >
             <Icon
               icon="tabler:file-cv"
-              className="size-8 text-white hover:text-indigo-600"
+              className="size-8 text-white hover:text-emerald-400"
             />
           </a>
         </div>

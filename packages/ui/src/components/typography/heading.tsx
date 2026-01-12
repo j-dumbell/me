@@ -13,10 +13,7 @@ export const Heading: FC<HeadingProps> = ({
 }) => (
   <h2
     {...otherProps}
-    className={cn(
-      'mb-20 scroll-m-20 text-center text-3xl xs:text-5xl font-bold tracking-tight text-slate-900 ',
-      className
-    )}
+    className={cn('text-white text-3xl font-bold', className)}
   >
     {children}
   </h2>

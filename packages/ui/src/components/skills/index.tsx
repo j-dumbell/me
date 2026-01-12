@@ -30,7 +30,6 @@ import {
   TerraformCard,
   TypescriptCard
 } from '@/components/hovercard'
-import { Section } from '@/components/section'
 
 type Column = {
   img: string
@@ -39,10 +38,11 @@ type Column = {
   skills: FC<TechHoverCardProps>[]
 }
 
-const columns: Column[] = [
+export const columns: Column[] = [
   {
     img: ComputerImg,
-    title: 'Software engineering',
+    title: '🛠️ Software engineering',
+    // title: 'Software engineering',
     description:
       'From event-driven microservices to slick UIs and everything between - I build for the web.',
     skills: [
@@ -59,7 +59,8 @@ const columns: Column[] = [
   },
   {
     img: DBImg,
-    title: 'Data engineering',
+    title: '🧠 Data engineering & ML',
+    // title: 'Data engineering & ML',
     description:
       'I build and orchestrate high throughput ETL pipelines to power analytics and machine learning applications.',
     skills: [
@@ -73,7 +74,8 @@ const columns: Column[] = [
   },
   {
     img: DevopsImg,
-    title: 'DevOps',
+    title: '🚀 DevOps',
+    // title: 'DevOps',
     description:
       'I architect cloud-native systems and provision with infrastructure-as-code.  I write CI/CD pipelines to enable shipping to production frequently and safely.',
     skills: [
@@ -92,24 +94,15 @@ const columns: Column[] = [
 
 export const Skills: FC = () => {
   return (
-    <Section>
-      <Heading>Skills</Heading>
-      <div className="container grid items-center justify-center gap-4 px-4 py-12 text-center md:px-6 lg:py-16">
+    <section className={'pt-48'}>
+      <Heading>🎓 Skills</Heading>
+      <div className="grid items-center gap-4 pt-10">
         <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-12">
           {columns.map(({ title, description, img, skills }) => (
             <div key={title} className="space-y-3">
-              <div className="flex items-center justify-center">
-                <img
-                  className="mb-8 size-36 transition duration-300 hover:scale-[115%]"
-                  src={img}
-                  alt={''}
-                />
-              </div>
-              <h3 className="text-2xl font-medium tracking-tight text-slate-800">
-                {title}
-              </h3>
+              <h3 className="text-2xl font-semibold text-gray-400">{title}</h3>
               <Paragraph>{description}</Paragraph>
-              <div className="mt-4 flex flex-wrap justify-center p-5">
+              <div className="mt-4 flex flex-wrap py-5">
                 {skills.map((Skill, index) => (
                   <Skill key={index} className={'mr-2 mt-2'} />
                 ))}
@@ -118,6 +111,6 @@ export const Skills: FC = () => {
           ))}
         </div>
       </div>
-    </Section>
+    </section>
   )
 }
