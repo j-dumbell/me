@@ -7,7 +7,7 @@ export const Footer: FC = () => {
       <div className="container flex flex-col items-center px-4 text-center md:px-6">
         <button
           className={
-            'size-10 -translate-y-2/4 rounded bg-white/10 hover:bg-emerald-400/80'
+            'size-10 -translate-y-2/4 rounded bg-white/10 hover:bg-emerald-400/80 cursor-pointer'
           }
           onClick={() =>
             window.scrollTo({

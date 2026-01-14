@@ -2,18 +2,18 @@ import React, { FC } from 'react'
 import { Button } from '@/components/ui/button'
 import { Hyperlink } from '@/components/hyperlink'
 import { Icon } from '@iconify/react'
+import { CanvasDistributedGraph } from '@/components/canvas'
 
 export const Hero: FC = () => {
   return (
-    <section className="flex min-h-screen items-center">
-      <div className="space-y-4">
-        <p className="text-4xl text-emerald-400 md:text-4xl">
-          Hi, my name is -
-        </p>
+    <section className="relative flex min-h-screen items-center">
+      <CanvasDistributedGraph />
+      <div className="relative z-10 space-y-4">
+        <p className="text-4xl text-emerald-400 md:text-4xl">Hi, my name is</p>
         <h1 className="scroll-m-20 text-9xl font-bold tracking-tight text-white md:text-6xl lg:text-9xl">
           James Dumbell.
         </h1>
-        <p className="scroll-m-20 pb-8 text-3xl font-semibold text-gray-400 dark:text-slate-100 md:text-4xl lg:text-5xl">
+        <p className="scroll-m-20 pb-8 text-3xl font-semibold text-gray-400 md:text-4xl lg:text-5xl">
           {`I'm a software engineer.`}
         </p>
         <p className="scroll-m-20 text-lg text-gray-400 md:text-4xl lg:text-2xl">
