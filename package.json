@@ -25,5 +25,6 @@
     "ui-serve": "yarn workspace ui serve",
     "infra-diff": "yarn workspace infra diff",
     "infra-deploy": "yarn workspace infra deploy"
-  }
+  },
+  "dependencies": {}
 }

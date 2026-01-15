@@ -90,7 +90,7 @@ const ProjectCard: FC<CardProject> = ({
   npm
 }) => {
   return (
-    <Card className="m-1 flex h-72 w-80 flex-col justify-between border-none bg-gray-900 p-5 transition duration-300 hover:scale-105">
+    <Card className="m-1 flex h-72 w-80 flex-col justify-between border-none bg-gray-900 p-5">
       <div>
         <div className="flex justify-end">
           {npm && (
@@ -260,8 +260,7 @@ const cardProjects: CardProject[] = [
       ReactCard,
       TailwindCSSCard,
       AWSCard,
-      AWSCDKCard,
-      GoogleAnalyticsCard
+      AWSCDKCard
     ],
     github: 'https://github.com/j-dumbell/me'
   }
