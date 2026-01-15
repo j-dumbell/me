@@ -260,8 +260,7 @@ const cardProjects: CardProject[] = [
       ReactCard,
       TailwindCSSCard,
       AWSCard,
-      AWSCDKCard,
-      GoogleAnalyticsCard
+      AWSCDKCard
     ],
     github: 'https://github.com/j-dumbell/me'
   }

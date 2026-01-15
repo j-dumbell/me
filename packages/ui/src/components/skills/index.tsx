@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { Heading, Paragraph } from '@/components/typography'
 import DevopsImg from '../../assets/devops.png'
 import DBImg from '../../assets/db.png'
@@ -30,21 +30,24 @@ import {
   TerraformCard,
   TypescriptCard
 } from '@/components/hovercard'
+import { Icon } from '@iconify/react'
 
 type Column = {
   img: string
   title: string
+  iconId: string
   description: string
   skills: FC<TechHoverCardProps>[]
 }
 
-export const columns: Column[] = [
+const columns: Column[] = [
   {
     img: ComputerImg,
-    title: '🛠️ Software engineering',
-    // title: 'Software engineering',
+    iconId: 'mynaui:terminal',
+    // title: '🛠️ Software engineering',
+    title: 'Software engineering',
     description:
-      'From event-driven microservices to slick UIs and everything between - I build for the web.',
+      'I design and build scalable systems. I work across the entire stack, everything from distributed event-driven backends to slick UIs.',
     skills: [
       GolangCard,
       TypescriptCard,
@@ -59,10 +62,10 @@ export const columns: Column[] = [
   },
   {
     img: DBImg,
-    title: '🧠 Data engineering & ML',
-    // title: 'Data engineering & ML',
-    description:
-      'I build and orchestrate high throughput ETL pipelines to power analytics and machine learning applications.',
+    iconId: 'carbon:machine-learning-model',
+    // title: '🧠 Data engineering & ML',
+    title: 'Data engineering & ML',
+    description: `I build data platforms using ETL pipelines to populate data lakes warehouses. I model data to support analytics and machine learning applications.`,
     skills: [
       ScalaCard,
       PythonCard,
@@ -74,10 +77,11 @@ export const columns: Column[] = [
   },
   {
     img: DevopsImg,
-    title: '🚀 DevOps',
-    // title: 'DevOps',
+    iconId: 'charm:rocket',
+    // title: '🚀 DevOps',
+    title: 'DevOps',
     description:
-      'I architect cloud-native systems and provision with infrastructure-as-code.  I write CI/CD pipelines to enable shipping to production frequently and safely.',
+      'I build CI/CD pipelines to ship software frequently. I use metrics, logs and traces to ensure systems are reliable. I always manage infrastructure as code.',
     skills: [
       AWSCard,
       TerraformCard,
@@ -98,9 +102,15 @@ export const Skills: FC = () => {
       <Heading>🎓 Skills</Heading>
       <div className="grid items-center gap-4 pt-10">
         <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-12">
-          {columns.map(({ title, description, img, skills }) => (
+          {columns.map(({ title, description, skills, iconId }) => (
             <div key={title} className="space-y-3">
-              <h3 className="text-2xl font-semibold text-gray-400">{title}</h3>
+              <Icon
+                icon={iconId}
+                className="mx-auto size-16 text-emerald-400"
+              />
+              <h3 className="text-2xl font-semibold text-gray-400 pt-8">
+                {title}
+              </h3>
               <Paragraph>{description}</Paragraph>
               <div className="mt-4 flex flex-wrap py-5">
                 {skills.map((Skill, index) => (
