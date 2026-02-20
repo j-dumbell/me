@@ -55,15 +55,15 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-tailwindcss": "^3.14.1",
-    "happy-dom": "^14.3.6",
+    "happy-dom": "^20.0.2",
     "jsdom": "^24.0.0",
     "postcss": "^8.4.33",
     "prettier": "3.1.1",
     "@tailwindcss/postcss": "^4.1.18",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.3.3",
-    "vite": "^5.0.12",
+    "vite": "^5.4.21",
     "vite-tsconfig-paths": "^4.3.1",
-    "vitest": "^1.2.2"
+    "vitest": "^1.6.1"
   }
 }
