@@ -3,7 +3,13 @@ name: build-test
 on: [pull_request]
 
 permissions:
+  id-token: write   # Required for OIDC
   contents: read    # Required to checkout code
+
+env:
+  AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+  AWS_DEFAULT_REGION: 'us-east-1'
+  S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
 
 jobs:
   build:
@@ -23,3 +29,10 @@ jobs:
       run: yarn test --run
     - name: build
       run: yarn ui-build
+    - name: configure AWS credentials (OIDC)
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubActionsCDKDeployRole
+        aws-region: us-east-1
+    - name: deploy infra
+      run: yarn infra-diff

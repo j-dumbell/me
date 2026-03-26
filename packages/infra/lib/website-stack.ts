@@ -140,7 +140,7 @@ export class WebsiteStack extends Stack {
           viewerProtocolPolicy:
             cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
           responseHeadersPolicy: responseHeaderPolicy,
-          allowedMethods: cloudfront.AllowedMethods.ALLOW_ALL,
+          allowedMethods: cloudfront.AllowedMethods.ALLOW_GET_HEAD,
           originRequestPolicy: new cloudfront.OriginRequestPolicy(
             this,
             "CORSOriginRequestPolicy",
