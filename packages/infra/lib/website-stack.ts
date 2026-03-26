@@ -9,6 +9,10 @@ import {
   aws_certificatemanager as acm,
   aws_cloudfront_origins as origins,
   aws_route53_targets as route53Targets,
+  aws_sns as sns,
+  aws_sns_subscriptions as snsSubscriptions,
+  aws_lambda as lambda,
+  aws_budgets as budgets,
   Duration,
 } from "aws-cdk-lib";
 import { Construct } from "constructs";
@@ -18,6 +22,7 @@ const wwwDomainName = `www.${domainName}`;
 
 interface WebsiteStackProps extends StackProps {
   bucketName: string;
+  alertEmail: string;
 }
 
 export class WebsiteStack extends Stack {
@@ -164,6 +169,87 @@ export class WebsiteStack extends Stack {
         ),
         zone,
       });
+    });
+
+    // Budget killswitch: disables CloudFront when monthly spend exceeds the limit
+    const budgetAlertTopic = new sns.Topic(this, "budget-alert-topic");
+
+    budgetAlertTopic.addToResourcePolicy(
+      new iam.PolicyStatement({
+        principals: [new iam.ServicePrincipal("budgets.amazonaws.com")],
+        actions: ["sns:Publish"],
+        resources: [budgetAlertTopic.topicArn],
+      }),
+    );
+
+    const killswitchFn = new lambda.Function(this, "killswitch-fn", {
+      runtime: lambda.Runtime.NODEJS_22_X,
+      handler: "index.handler",
+      code: lambda.Code.fromInline(`
+const { CloudFrontClient, GetDistributionConfigCommand, UpdateDistributionCommand } = require("@aws-sdk/client-cloudfront");
+const client = new CloudFrontClient({});
+exports.handler = async () => {
+  const id = process.env.DIST_ID;
+  const { DistributionConfig, ETag } = await client.send(new GetDistributionConfigCommand({ Id: id }));
+  if (!DistributionConfig.Enabled) { console.log("Already disabled"); return; }
+  DistributionConfig.Enabled = false;
+  await client.send(new UpdateDistributionCommand({ Id: id, IfMatch: ETag, DistributionConfig }));
+  console.log("CloudFront distribution disabled - budget exceeded");
+};`),
+      environment: {
+        DIST_ID: cloudfrontDistribution.distributionId,
+      },
+    });
+
+    killswitchFn.addToRolePolicy(
+      new iam.PolicyStatement({
+        actions: [
+          "cloudfront:GetDistributionConfig",
+          "cloudfront:UpdateDistribution",
+        ],
+        resources: [
+          `arn:aws:cloudfront::${this.account}:distribution/${cloudfrontDistribution.distributionId}`,
+        ],
+      }),
+    );
+
+    budgetAlertTopic.addSubscription(
+      new snsSubscriptions.LambdaSubscription(killswitchFn),
+    );
+
+    new budgets.CfnBudget(this, "monthly-budget", {
+      budget: {
+        budgetType: "COST",
+        timeUnit: "MONTHLY",
+        budgetLimit: { amount: 10, unit: "USD" },
+      },
+      notificationsWithSubscribers: [
+        {
+          // Warn at 80% — email only
+          notification: {
+            notificationType: "ACTUAL",
+            comparisonOperator: "GREATER_THAN",
+            threshold: 80,
+            thresholdType: "PERCENTAGE",
+          },
+          subscribers: [
+            { subscriptionType: "EMAIL", address: props.alertEmail },
+          ],
+        },
+        {
+          // Kill at 100% — disable CloudFront + email
+          notification: {
+            notificationType: "ACTUAL",
+            comparisonOperator: "GREATER_THAN",
+            threshold: 100,
+            thresholdType: "PERCENTAGE",
+          },
+          subscribers: [
+            { subscriptionType: "SNS", address: budgetAlertTopic.topicArn },
+            { subscriptionType: "EMAIL", address: props.alertEmail },
+          ],
+        },
+      ],
     });
   }
 }
