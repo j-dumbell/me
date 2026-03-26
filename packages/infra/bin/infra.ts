@@ -6,7 +6,9 @@ import { WebsiteStack } from "../lib/website-stack";
 const getEnvOrThrow = (envName: string): string => {
   const envValue = process.env[envName];
   if (!envValue) {
-    throw new Error(`environment variable ${envName} has not been set`);
+    throw new Error(
+      `required environment variable ${envName} has not been set`,
+    );
   }
 
   return envValue;
@@ -18,4 +20,5 @@ new WebsiteStack(app, "website-stack", {
     account: getEnvOrThrow("AWS_ACCOUNT_ID"),
     region: "us-east-1",
   },
+  bucketName: getEnvOrThrow("S3_BUCKET_NAME"),
 });
