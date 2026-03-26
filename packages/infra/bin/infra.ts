@@ -21,4 +21,5 @@ new WebsiteStack(app, "website-stack", {
     region: "us-east-1",
   },
   bucketName: getEnvOrThrow("S3_BUCKET_NAME"),
+  alertEmail: getEnvOrThrow("ALERT_EMAIL"),
 });
