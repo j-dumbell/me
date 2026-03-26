@@ -12,6 +12,7 @@ permissions:
 env:
   AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
   AWS_DEFAULT_REGION: 'us-east-1'
+  S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
 
 jobs:
   deploy:

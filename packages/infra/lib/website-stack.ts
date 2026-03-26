@@ -16,12 +16,16 @@ import { Construct } from "constructs";
 const domainName = "dumbell.dev";
 const wwwDomainName = `www.${domainName}`;
 
+interface WebsiteStackProps extends StackProps {
+  bucketName: string;
+}
+
 export class WebsiteStack extends Stack {
-  constructor(scope: Construct, id: string, props?: StackProps) {
+  constructor(scope: Construct, id: string, props: WebsiteStackProps) {
     super(scope, id, props);
 
     const websiteBucket = new s3.Bucket(this, "website-bucket", {
-      bucketName: "jdumbell-portfolio-website-bucket",
+      bucketName: props.bucketName,
       publicReadAccess: false,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
       removalPolicy: RemovalPolicy.RETAIN,
@@ -127,6 +131,7 @@ export class WebsiteStack extends Stack {
       {
         certificate: certificate,
         domainNames: [domainName, wwwDomainName],
+        priceClass: cloudfront.PriceClass.PRICE_CLASS_100,
         defaultRootObject: "index.html",
         defaultBehavior: {
           origin: new origins.S3Origin(websiteBucket, {
@@ -135,7 +140,7 @@ export class WebsiteStack extends Stack {
           viewerProtocolPolicy:
             cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
           responseHeadersPolicy: responseHeaderPolicy,
-          allowedMethods: cloudfront.AllowedMethods.ALLOW_ALL,
+          allowedMethods: cloudfront.AllowedMethods.ALLOW_GET_HEAD,
           originRequestPolicy: new cloudfront.OriginRequestPolicy(
             this,
             "CORSOriginRequestPolicy",
