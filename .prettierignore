@@ -1,0 +1,11 @@
+# Build artifacts (not source)
+**/dist
+**/cdk.out
+**/*.d.ts
+packages/infra/bin/*.js
+packages/infra/lib/*.js
+
+# Not part of the ui/infra lint-consistency scope
+.github
+README.md
+packages/ui/README.md

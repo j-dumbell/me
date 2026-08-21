@@ -17,6 +17,10 @@ jobs:
         cache: 'npm'
     - name: install dependencies
       run: yarn install --frozen-lockfile
+    - name: lint
+      run: yarn lint
+    - name: format
+      run: yarn format
     - name: typecheck
       run: yarn typecheck
     - name: test

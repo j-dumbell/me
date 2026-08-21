@@ -4,11 +4,7 @@ import * as Player from 'asciinema-player'
 import 'asciinema-player/dist/bundle/asciinema-player.css'
 
 type PlayerTheme =
-  | 'asciinema'
-  | 'tango'
-  | 'solarized-dark'
-  | 'solarized-light'
-  | 'monokai'
+  'asciinema' | 'tango' | 'solarized-dark' | 'solarized-light' | 'monokai'
 
 type AsciinemaPlayerProps = {
   src: string
