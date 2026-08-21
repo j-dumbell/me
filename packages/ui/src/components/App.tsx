@@ -1,7 +1,6 @@
 import { Hero } from 'src/components/hero'
 import { Skills } from 'src/components/skills'
 import { Footer } from '@/components/footer'
-import { Contact } from '@/components/contact'
 import { Projects } from '@/components/projects'
 import { FC, useRef } from 'react'
 import { Experience } from '@/components/experience'
@@ -11,7 +10,7 @@ const App: FC = () => {
   const footerRef = useRef<HTMLDivElement | null>(null)
 
   return (
-    <main className={'mx-auto max-w-screen-xl px-4'}>
+    <main className={'mx-auto max-w-7xl px-4'}>
       <Hero />
       {/*<SocialNav footerRef={footerRef} />*/}
       <About />

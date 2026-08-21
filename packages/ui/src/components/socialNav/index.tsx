@@ -53,7 +53,7 @@ export const SocialNav: FC<SocialNavProps> = (props) => {
   return (
     <div
       className={cn(
-        'fixed left-6 top-0 bottom-20 flex h-screen flex-col justify-end items-center space-y-5 pt-4 px-4 invisible md:visible transition-opacity duration-500',
+        'invisible fixed top-0 bottom-20 left-6 flex h-screen flex-col items-center justify-end space-y-5 px-4 pt-4 transition-opacity duration-500 md:visible',
         isVisible ? 'opacity-500' : 'opacity-0'
       )}
     >

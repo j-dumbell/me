@@ -16,12 +16,12 @@ export const About: FC = () => {
           </Paragraph>
 
           <Paragraph>
-            Fast forward to today, and I've had the privilege of working on some
-            interesting projects in a variety of industries including{' '}
+            Fast forward to today, and I&apos;ve had the privilege of working on
+            some interesting projects in a variety of industries including{' '}
             <Hyperlink href="https://www.wonderbly.com/uk" title="ecommerce" />,{' '}
             <Hyperlink href="https://www.nectar360.co.uk/" title="marketing" />,{' '}
             <Hyperlink href="https://convexin.com/" title="insurtech" /> and
-            observability. I'm currently building things for{' '}
+            observability. I&apos;m currently building things for{' '}
             <Hyperlink href="https://www.grafana.com" title="Grafana Labs" />,
             helping companies monitor their mission critical applications.
           </Paragraph>

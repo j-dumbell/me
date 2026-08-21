@@ -18,6 +18,12 @@ type AsciinemaPlayerProps = {
   className?: string
 }
 
+// asciinema-player has no TS definitions - a minimal shape for the instance
+// returned by Player.create is enough for how we use it here.
+type PlayerInstance = {
+  dispose: () => void
+}
+
 export const AsciinemaPlayer: FC<AsciinemaPlayerProps> = ({
   src,
   autoPlay = false,
@@ -27,10 +33,13 @@ export const AsciinemaPlayer: FC<AsciinemaPlayerProps> = ({
 }) => {
   const playerRef = useRef<HTMLDivElement | null>(null)
   const [isVisible, setIsVisible] = useState(false)
-  const [playerInstance, setPlayerInstance] = useState<any>(null)
+  const [playerInstance, setPlayerInstance] = useState<PlayerInstance | null>(
+    null
+  )
 
   // Intersection Observer to detect when the player becomes visible
   useEffect(() => {
+    const element = playerRef.current
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting)
@@ -38,13 +47,13 @@ export const AsciinemaPlayer: FC<AsciinemaPlayerProps> = ({
       { threshold: 0.1 }
     )
 
-    if (playerRef.current) {
-      observer.observe(playerRef.current)
+    if (element) {
+      observer.observe(element)
     }
 
     return () => {
-      if (playerRef.current) {
-        observer.unobserve(playerRef.current)
+      if (element) {
+        observer.unobserve(element)
       }
     }
   }, [])
@@ -52,7 +61,7 @@ export const AsciinemaPlayer: FC<AsciinemaPlayerProps> = ({
   // Initialize player when visible
   useEffect(() => {
     if (playerRef.current && isVisible && !playerInstance) {
-      const instance = Player.create(src, playerRef.current, {
+      const instance: PlayerInstance = Player.create(src, playerRef.current, {
         autoPlay,
         loop,
         startAt: 0,

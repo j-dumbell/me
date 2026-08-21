@@ -3,11 +3,11 @@ import { Icon } from '@iconify/react'
 
 export const Footer: FC = () => {
   return (
-    <section className="w-full pb-12 pt-36">
+    <section className="w-full pt-36 pb-12">
       <div className="container flex flex-col items-center px-4 text-center md:px-6">
         <button
           className={
-            'size-10 -translate-y-2/4 rounded bg-white/10 hover:bg-emerald-400/80 cursor-pointer'
+            'size-10 -translate-y-2/4 cursor-pointer rounded bg-white/10 hover:bg-emerald-400/80'
           }
           onClick={() =>
             window.scrollTo({
@@ -64,7 +64,7 @@ export const Footer: FC = () => {
           </a>
         </div>
       </div>
-      <p className="text-center text-sm leading-7 text-white [&:not(:first-child)]:mt-2">
+      <p className="text-center text-sm leading-7 text-white not-first:mt-2">
         Created by yours truly using React, Typescript and TailwindCSS.
       </p>
     </section>

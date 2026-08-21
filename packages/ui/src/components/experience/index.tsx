@@ -67,7 +67,7 @@ const employments: Employment[] = [
     logo: GrafanaLabsLogo,
     from: new Date('2023-06-01'),
     Details: ({ className }) => (
-      <div className={cn(className, 'text-gray-400 text-lg')}>
+      <div className={cn(className, 'text-lg text-gray-400')}>
         <Paragraph>
           Senior software engineer at a global technology company that develops
           open-source and SAS observability software.
@@ -141,7 +141,8 @@ const employments: Employment[] = [
               title={'web app'}
             />{' '}
             to allow digital marketers to create campaigns, build audiences and
-            measure results, powered by terabytes of Sainsbury's customer data.
+            measure results, powered by terabytes of Sainsbury&apos;s customer
+            data.
           </li>
           <li>
             Built a{' '}
@@ -301,7 +302,7 @@ export const Experience: FC = () => {
                     <Details className="pt-5 text-base text-gray-400" />
                     <div className="mt-4 flex flex-wrap">
                       {technologies.map((Card, index) => (
-                        <Card key={index} className="mr-2 mt-1" />
+                        <Card key={index} className="mt-1 mr-2" />
                       ))}
                     </div>
                   </div>
