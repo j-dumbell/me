@@ -53,7 +53,12 @@ export const ContactForm: FC<ComponentProps<'form'>> = () => {
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     mode: 'all',
-    reValidateMode: 'onChange'
+    reValidateMode: 'onChange',
+    defaultValues: {
+      name: '',
+      email: '',
+      message: ''
+    }
   })
 
   const onSubmit = (values: FormSchema) => {
