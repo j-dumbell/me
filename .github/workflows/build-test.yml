@@ -17,9 +17,19 @@ jobs:
         cache: 'npm'
     - name: install dependencies
       run: yarn install --frozen-lockfile
+    - name: lint
+      run: yarn lint
+    - name: format
+      run: yarn format
     - name: typecheck
       run: yarn typecheck
     - name: test
       run: yarn test --run
     - name: build
       run: yarn ui-build
+    - name: cdk synth
+      env:
+        AWS_ACCOUNT_ID: '507783707923'
+        S3_BUCKET_NAME: dummy-bucket
+        ALERT_EMAIL: dummy@example.com
+      run: yarn infra-synth

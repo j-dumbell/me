@@ -16,15 +16,34 @@
   ],
   "scripts": {
     "dev": "yarn workspace ui dev",
-    "typecheck": "yarn workspace ui typecheck",
+    "typecheck": "yarn workspace ui typecheck && yarn workspace infra typecheck",
     "ui": "yarn workspace ui",
     "infra": "yarn workspace infra",
     "test": "yarn workspace ui test",
     "ui-build": "yarn workspace ui build",
     "ui-deploy": "aws s3 sync packages/ui/dist/ s3://$S3_BUCKET_NAME --delete",
     "ui-serve": "yarn workspace ui serve",
+    "infra-synth": "yarn workspace infra synth",
     "infra-diff": "yarn workspace infra diff",
-    "infra-deploy": "yarn workspace infra deploy"
+    "infra-deploy": "yarn workspace infra deploy",
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write ."
   },
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "@types/node": "^24.13.3",
+    "prettier": "3.9.6",
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^6.1.1",
+    "eslint-plugin-tailwindcss": "^4.4.0",
+    "globals": "^17.11.0",
+    "typescript-eslint": "^8.67.0"
+  }
 }
