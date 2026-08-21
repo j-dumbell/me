@@ -108,13 +108,13 @@ export const Skills: FC = () => {
                 icon={iconId}
                 className="mx-auto size-16 text-emerald-400"
               />
-              <h3 className="text-2xl font-semibold text-gray-400 pt-8">
+              <h3 className="pt-8 text-2xl font-semibold text-gray-400">
                 {title}
               </h3>
               <Paragraph>{description}</Paragraph>
               <div className="mt-4 flex flex-wrap py-5">
                 {skills.map((Skill, index) => (
-                  <Skill key={index} className={'mr-2 mt-2'} />
+                  <Skill key={index} className={'mt-2 mr-2'} />
                 ))}
               </div>
             </div>

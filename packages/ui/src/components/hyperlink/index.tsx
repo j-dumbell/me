@@ -23,7 +23,7 @@ export const Hyperlink: FC<HyperlinkProps> = (props: HyperlinkProps) => (
     {props.linkIconSide === 'left' && (
       <Icon icon="lucide:external-link" className="mr-2 size-4" />
     )}
-    <span className="duration-400 bg-gradient-to-r from-emerald-400 to-emerald-400 bg-[length:0%_1px] bg-left-bottom bg-no-repeat transition-all ease-out hover:text-emerald-400 group-hover:bg-[length:100%_1px]">
+    <span className="bg-linear-to-r from-emerald-400 to-emerald-400 bg-size-[0%_1px] bg-bottom-left bg-no-repeat transition-all duration-400 ease-out group-hover:bg-size-[100%_1px] hover:text-emerald-400">
       {props.title}
     </span>
     {props.linkIconSide === 'right' && (

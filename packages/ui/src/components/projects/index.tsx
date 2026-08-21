@@ -23,7 +23,6 @@ import {
   AWSCDKCard,
   DockerCard,
   GolangCard,
-  GoogleAnalyticsCard,
   GrafanaCard,
   NodeJSCard,
   PrometheusCard,
@@ -121,7 +120,7 @@ const ProjectCard: FC<CardProject> = ({
       </div>
       <CardFooter className="flex flex-wrap">
         {technologies.map((Tech, index) => (
-          <Tech key={index} className="mb-1 mr-1" />
+          <Tech key={index} className="mr-1 mb-1" />
         ))}
       </CardFooter>
     </Card>
@@ -136,19 +135,19 @@ const HeadlineProjects: FC = () => {
           <CarouselItem key={proj.name}>
             <div
               className={cn(
-                'flex p-1 justify-center items-center flex-col md:flex-row',
+                'flex flex-col items-center justify-center p-1 md:flex-row',
                 !(index % 2 === 0) && 'md:flex-row-reverse'
               )}
             >
               {proj.content._type === 'image' ? (
                 <img
-                  className="mb-4 h-auto w-full max-w-[500px] rounded-lg border-8 border-emerald-400 md:mb-0"
+                  className="mb-4 h-auto w-full max-w-125 rounded-lg border-8 border-emerald-400 md:mb-0"
                   src={proj.content.image}
                   alt="desk image"
                 />
               ) : (
                 <div
-                  className="mb-4 flex h-[375px] w-full max-w-[500px] items-center justify-center md:mb-0"
+                  className="mb-4 flex h-[375px] w-full max-w-125 items-center justify-center md:mb-0"
                   onKeyDown={(e) => e.stopPropagation()}
                 >
                   <AsciinemaPlayer
@@ -160,13 +159,13 @@ const HeadlineProjects: FC = () => {
 
               <div
                 className={cn(
-                  'mx-2 md:mx-6 flex w-full md:w-96 flex-col',
+                  'mx-2 flex w-full flex-col md:mx-6 md:w-96',
                   index % 2 === 0 && 'md:items-end'
                 )}
               >
                 <h5
                   className={cn(
-                    'mb-6 text-2xl text-gray-400 font-semibold leading-none hover:text-emerald-400 text-center md:text-left',
+                    'mb-6 text-center text-2xl leading-none font-semibold text-gray-400 hover:text-emerald-400 md:text-left',
                     index % 2 === 0 && 'md:text-right'
                   )}
                 >
@@ -182,12 +181,12 @@ const HeadlineProjects: FC = () => {
                 </Paragraph>
                 <div
                   className={cn(
-                    'flex flex-wrap mb-4 justify-center md:justify-start',
+                    'mb-4 flex flex-wrap justify-center md:justify-start',
                     index % 2 === 0 && 'md:justify-end'
                   )}
                 >
                   {proj.technologies.map((Tech, index) => (
-                    <Tech key={index} className="mb-1 mr-1" />
+                    <Tech key={index} className="mr-1 mb-1" />
                   ))}
                 </div>
                 <div className="flex justify-center md:justify-start">

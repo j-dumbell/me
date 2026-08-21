@@ -9,6 +9,6 @@ export type SectionProps = DetailedHTMLProps<
 export const Section: FC<SectionProps> = ({ className, ...otherProps }) => (
   <section
     {...otherProps}
-    className={cn('pt-20 pb-40 md:px-36 px-2', className)}
+    className={cn('px-2 pt-20 pb-40 md:px-36', className)}
   ></section>
 )

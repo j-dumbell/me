@@ -61,7 +61,7 @@ export const TechHoverCard: FC<HoverCardProps> = (props) => {
         <Button
           style={style}
           variant="outline"
-          className={cn('h-6 px-1 border-transparent')}
+          className={cn('h-6 border-transparent px-1')}
           onMouseEnter={(e) => {
             e.currentTarget.style.backgroundColor = bgColor
           }}
@@ -70,7 +70,7 @@ export const TechHoverCard: FC<HoverCardProps> = (props) => {
           }}
         >
           {props.icon && (
-            <Icon icon={props.icon} className={cn('size-4 mr-2')} />
+            <Icon icon={props.icon} className={cn('mr-2 size-4')} />
           )}
           {props.title}
         </Button>

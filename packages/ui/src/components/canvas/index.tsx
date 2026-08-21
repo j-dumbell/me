@@ -27,11 +27,10 @@ type Edge = {
   isActive: boolean
 }
 
-
 export const CanvasDistributedGraph: FC<Props> = ({
   width,
   height,
-  nodeCount = 15,
+  nodeCount = 15
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animationFrameRef = useRef<number | undefined>(undefined)
@@ -58,8 +57,7 @@ export const CanvasDistributedGraph: FC<Props> = ({
           const dx = x - existingNode.baseX
           const dy = y - existingNode.baseY
           const distance = Math.sqrt(dx * dx + dy * dy)
-          const minDistance =
-            radius + existingNode.radius + floatRadius * 2 + 2 // +2 for small buffer
+          const minDistance = radius + existingNode.radius + floatRadius * 2 + 2 // +2 for small buffer
           if (distance < minDistance) {
             return true
           }
@@ -96,7 +94,7 @@ export const CanvasDistributedGraph: FC<Props> = ({
           floatOffsetX: 0,
           floatOffsetY: 0,
           floatPhase: Math.random() * Math.PI * 2,
-          floatSpeed: 0.3 + Math.random() * 0.4,
+          floatSpeed: 0.3 + Math.random() * 0.4
         })
       }
 
@@ -122,7 +120,7 @@ export const CanvasDistributedGraph: FC<Props> = ({
       from: fromNodeId,
       to: targetNode.id,
       pulseProgress: 0,
-      isActive: true,
+      isActive: true
     }
 
     edges.push(newEdge)
@@ -141,7 +139,7 @@ export const CanvasDistributedGraph: FC<Props> = ({
 
     // Clear canvas with transparent background
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    
+
     // Draw edges (pulses only, no lines)
     edges.forEach((edge) => {
       const fromNode = nodes[edge.from]
@@ -151,10 +149,8 @@ export const CanvasDistributedGraph: FC<Props> = ({
 
       // Draw pulse along edge
       if (edge.isActive) {
-        const pulseX =
-          fromNode.x + (toNode.x - fromNode.x) * edge.pulseProgress
-        const pulseY =
-          fromNode.y + (toNode.y - fromNode.y) * edge.pulseProgress
+        const pulseX = fromNode.x + (toNode.x - fromNode.x) * edge.pulseProgress
+        const pulseY = fromNode.y + (toNode.y - fromNode.y) * edge.pulseProgress
 
         // Pulse glow
         const gradient = ctx.createRadialGradient(
@@ -165,7 +161,10 @@ export const CanvasDistributedGraph: FC<Props> = ({
           pulseY,
           15
         )
-        gradient.addColorStop(0, `rgba(52, 211, 153, ${1 - edge.pulseProgress})`)
+        gradient.addColorStop(
+          0,
+          `rgba(52, 211, 153, ${1 - edge.pulseProgress})`
+        )
         gradient.addColorStop(1, 'rgba(52, 211, 153, 0)')
 
         ctx.fillStyle = gradient
@@ -184,9 +183,14 @@ export const CanvasDistributedGraph: FC<Props> = ({
     // Draw nodes
     nodes.forEach((node) => {
       const radius = node.radius
-      
+
       // Verify node is within canvas bounds
-      if (node.x < 0 || node.x > canvas.width || node.y < 0 || node.y > canvas.height) {
+      if (
+        node.x < 0 ||
+        node.x > canvas.width ||
+        node.y < 0 ||
+        node.y > canvas.height
+      ) {
         return // Skip nodes outside canvas
       }
 
@@ -219,9 +223,10 @@ export const CanvasDistributedGraph: FC<Props> = ({
       ctx.fill()
 
       // Node border
-      ctx.strokeStyle = node.glowIntensity > 0.3
-        ? `rgba(52, 211, 153, ${0.8 + node.glowIntensity * 0.2})`
-        : 'rgba(31, 41, 55, 0.6)' // gray-800 border
+      ctx.strokeStyle =
+        node.glowIntensity > 0.3
+          ? `rgba(52, 211, 153, ${0.8 + node.glowIntensity * 0.2})`
+          : 'rgba(31, 41, 55, 0.6)' // gray-800 border
       ctx.lineWidth = 1.5
       ctx.stroke()
     })
@@ -240,7 +245,7 @@ export const CanvasDistributedGraph: FC<Props> = ({
       }
       return {
         width: window.innerWidth,
-        height: window.innerHeight,
+        height: window.innerHeight
       }
     }
 
@@ -278,7 +283,7 @@ export const CanvasDistributedGraph: FC<Props> = ({
       })
 
       // Update pulse animations
-      edges.forEach((edge, index) => {
+      edges.forEach((edge) => {
         if (edge.isActive) {
           edge.pulseProgress += 0.02
 
@@ -326,7 +331,7 @@ export const CanvasDistributedGraph: FC<Props> = ({
       }
 
       draw()
-      
+
       // Continue animation loop
       if (animationFrameRef.current !== null) {
         animationFrameRef.current = requestAnimationFrame(animate)
@@ -336,38 +341,38 @@ export const CanvasDistributedGraph: FC<Props> = ({
     // Wait for next frame to ensure DOM is ready
     const init = () => {
       updateCanvasSize()
-      
+
       // Verify canvas has dimensions
       if (canvas.width === 0 || canvas.height === 0) {
         requestAnimationFrame(init)
         return
       }
-      
+
       // Generate initial nodes (no pre-generated edges)
       const { width: viewportWidth, height: viewportHeight } = getViewportSize()
       const nodes = generateNodes(nodeCount, viewportWidth, viewportHeight)
       nodesRef.current = nodes
       edgesRef.current = []
-      
+
       // Verify nodes were generated
       if (nodes.length === 0) {
         return
       }
-      
+
       // Draw initial frame
       draw()
-      
+
       // Start first pulse from a random node
       lastPulseTimeRef.current = performance.now()
       if (nodes.length > 1) {
         const randomNode = nodes[Math.floor(Math.random() * nodes.length)]
         startPulseToRandomNode(randomNode.id)
       }
-      
+
       // Start animation loop
       animationFrameRef.current = requestAnimationFrame(animate)
     }
-    
+
     // Use setTimeout to ensure DOM is fully ready
     setTimeout(() => {
       init()
@@ -385,8 +390,8 @@ export const CanvasDistributedGraph: FC<Props> = ({
     <div
       ref={containerRef}
       className="hidden lg:block"
-      style={{ 
-        pointerEvents: 'none', 
+      style={{
+        pointerEvents: 'none',
         position: 'absolute',
         top: 0,
         left: 0,
@@ -400,9 +405,9 @@ export const CanvasDistributedGraph: FC<Props> = ({
     >
       <canvas
         ref={canvasRef}
-        style={{ 
-          display: 'block', 
-          width: '100%', 
+        style={{
+          display: 'block',
+          width: '100%',
           height: '100%',
           backgroundColor: 'transparent'
         }}
