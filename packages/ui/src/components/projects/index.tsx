@@ -33,6 +33,7 @@ import {
   TypescriptCard
 } from '@/components/hovercard'
 import { AsciinemaPlayer } from '@/components/asciinemaPlayer'
+import { Reveal } from '@/components/reveal'
 
 type CardProject = {
   name: string
@@ -268,12 +269,18 @@ const cardProjects: CardProject[] = [
 export const Projects: FC = () => {
   return (
     <section className={'pt-48'}>
-      <Heading className={'pb-10'}>🚧 Projects</Heading>
-      <HeadlineProjects />
+      <Reveal>
+        <Heading className={'pb-10'}>🚧 Projects</Heading>
+      </Reveal>
+      <Reveal>
+        <HeadlineProjects />
+      </Reveal>
       <div className="mt-20 flex justify-center">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {cardProjects.map((proj) => (
-            <ProjectCard key={proj.name} {...proj} />
+          {cardProjects.map((proj, index) => (
+            <Reveal key={proj.name} delayMs={(index % 3) * 150}>
+              <ProjectCard {...proj} />
+            </Reveal>
           ))}
         </div>
       </div>
