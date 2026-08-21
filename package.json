@@ -23,6 +23,7 @@
     "ui-build": "yarn workspace ui build",
     "ui-deploy": "aws s3 sync packages/ui/dist/ s3://$S3_BUCKET_NAME --delete",
     "ui-serve": "yarn workspace ui serve",
+    "infra-synth": "yarn workspace infra synth",
     "infra-diff": "yarn workspace infra diff",
     "infra-deploy": "yarn workspace infra deploy",
     "lint": "eslint . --max-warnings=0",

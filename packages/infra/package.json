@@ -12,6 +12,7 @@
     "lint": "eslint bin lib --max-warnings=0",
     "lint:fix": "eslint bin lib --fix",
     "cdk": "cdk",
+    "synth": "yarn cdk synth",
     "diff": "yarn cdk diff",
     "deploy": "yarn cdk deploy"
   },

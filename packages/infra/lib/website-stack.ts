@@ -67,16 +67,14 @@ export class WebsiteStack extends Stack {
       domainName: domainName
     })
 
-    const certificate = new acm.DnsValidatedCertificate(
-      this,
-      'site-certificate',
-      {
-        domainName: domainName,
-        subjectAlternativeNames: [wwwDomainName],
-        hostedZone: zone,
-        region: 'us-east-1'
-      }
-    )
+    // CloudFront requires the certificate to live in us-east-1 - the stack
+    // itself is deployed there (see bin/infra.ts), so no cross-region
+    // handling is needed here.
+    const certificate = new acm.Certificate(this, 'site-certificate', {
+      domainName: domainName,
+      subjectAlternativeNames: [wwwDomainName],
+      validation: acm.CertificateValidation.fromDns(zone)
+    })
 
     const connectSrc: string[] = [
       'https://api.iconify.design',
@@ -139,9 +137,12 @@ export class WebsiteStack extends Stack {
         priceClass: cloudfront.PriceClass.PRICE_CLASS_100,
         defaultRootObject: 'index.html',
         defaultBehavior: {
-          origin: new origins.S3Origin(websiteBucket, {
-            originAccessIdentity: cloudfrontOriginAccessIdentity
-          }),
+          origin: origins.S3BucketOrigin.withOriginAccessIdentity(
+            websiteBucket,
+            {
+              originAccessIdentity: cloudfrontOriginAccessIdentity
+            }
+          ),
           viewerProtocolPolicy:
             cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
           responseHeadersPolicy: responseHeaderPolicy,
