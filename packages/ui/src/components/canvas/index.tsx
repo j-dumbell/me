@@ -389,7 +389,7 @@ export const CanvasDistributedGraph: FC<Props> = ({
   return (
     <div
       ref={containerRef}
-      className="hidden lg:block"
+      className="hidden animate-in duration-1000 fill-mode-both fade-in lg:block"
       style={{
         pointerEvents: 'none',
         position: 'absolute',

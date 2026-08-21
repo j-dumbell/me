@@ -31,6 +31,7 @@ import {
   TypescriptCard
 } from '@/components/hovercard'
 import { Icon } from '@iconify/react'
+import { Reveal } from '@/components/reveal'
 
 type Column = {
   img: string
@@ -99,11 +100,13 @@ const columns: Column[] = [
 export const Skills: FC = () => {
   return (
     <section className={'pt-48'}>
-      <Heading>🎓 Skills</Heading>
+      <Reveal>
+        <Heading>🎓 Skills</Heading>
+      </Reveal>
       <div className="grid items-center gap-4 pt-10">
         <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-12">
-          {columns.map(({ title, description, skills, iconId }) => (
-            <div key={title} className="space-y-3">
+          {columns.map(({ title, description, skills, iconId }, index) => (
+            <Reveal key={title} delayMs={index * 150} className="space-y-3">
               <Icon
                 icon={iconId}
                 className="mx-auto size-16 text-emerald-400"
@@ -117,7 +120,7 @@ export const Skills: FC = () => {
                   <Skill key={index} className={'mt-2 mr-2'} />
                 ))}
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

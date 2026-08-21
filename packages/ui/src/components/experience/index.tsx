@@ -42,6 +42,7 @@ import {
 } from '@/components/hovercard'
 import { Hyperlink } from '@/components/hyperlink'
 import { cn } from '@/lib/utils'
+import { Reveal } from '@/components/reveal'
 
 type Employment = {
   company: string
@@ -247,70 +248,74 @@ const formatRange = (from: Date, to: Date | undefined): string => {
 export const Experience: FC = () => {
   return (
     <section className={'pt-40'}>
-      <Heading>💼 Experience</Heading>
+      <Reveal>
+        <Heading>💼 Experience</Heading>
+      </Reveal>
       <div className="flex justify-center space-y-12 pt-12">
-        <Accordion
-          type="single"
-          collapsible
-          defaultValue={'Grafana Labs'}
-          className="mx-4 w-full max-w-4xl rounded-xl bg-gray-900 px-8 py-4 shadow"
-        >
-          {employments.map(
-            ({
-              company,
-              title,
-              from,
-              to,
-              Details,
-              logo,
-              technologies,
-              location,
-              url
-            }) => (
-              <AccordionItem key={company} value={company}>
-                <AccordionTrigger>
-                  <div className="flex">
-                    <img className="mr-5 size-12" src={logo} alt={company} />
-                    <div className="space-y-1">
-                      <h2 className="scroll-m-20 text-left text-2xl font-medium tracking-tight text-white">
-                        {company}
-                      </h2>
-                      <p className="text-left text-base text-gray-400">
-                        {title}
-                      </p>
-                      <p className="text-left text-base text-gray-400">
-                        {formatRange(from, to)}
-                      </p>
+        <Reveal className="mx-4 w-full max-w-4xl">
+          <Accordion
+            type="single"
+            collapsible
+            defaultValue={'Grafana Labs'}
+            className="w-full rounded-xl bg-gray-900 px-8 py-4 shadow"
+          >
+            {employments.map(
+              ({
+                company,
+                title,
+                from,
+                to,
+                Details,
+                logo,
+                technologies,
+                location,
+                url
+              }) => (
+                <AccordionItem key={company} value={company}>
+                  <AccordionTrigger>
+                    <div className="flex">
+                      <img className="mr-5 size-12" src={logo} alt={company} />
+                      <div className="space-y-1">
+                        <h2 className="scroll-m-20 text-left text-2xl font-medium tracking-tight text-white">
+                          {company}
+                        </h2>
+                        <p className="text-left text-base text-gray-400">
+                          {title}
+                        </p>
+                        <p className="text-left text-base text-gray-400">
+                          {formatRange(from, to)}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="ml-[67px]">
-                    <div className="mb-2 flex">
-                      <Icon
-                        icon="mdi:location"
-                        className="mr-1 size-6 text-gray-400"
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <div className="ml-[67px]">
+                      <div className="mb-2 flex">
+                        <Icon
+                          icon="mdi:location"
+                          className="mr-1 size-6 text-gray-400"
+                        />
+                        <p className="text-base text-gray-400">{location}</p>
+                      </div>
+                      <Hyperlink
+                        title={url}
+                        href={`https://www.${url}`}
+                        className={'mr-2 text-base text-gray-400'}
+                        linkIconSide={'left'}
                       />
-                      <p className="text-base text-gray-400">{location}</p>
+                      <Details className="pt-5 text-base text-gray-400" />
+                      <div className="mt-4 flex flex-wrap">
+                        {technologies.map((Card, index) => (
+                          <Card key={index} className="mt-1 mr-2" />
+                        ))}
+                      </div>
                     </div>
-                    <Hyperlink
-                      title={url}
-                      href={`https://www.${url}`}
-                      className={'mr-2 text-base text-gray-400'}
-                      linkIconSide={'left'}
-                    />
-                    <Details className="pt-5 text-base text-gray-400" />
-                    <div className="mt-4 flex flex-wrap">
-                      {technologies.map((Card, index) => (
-                        <Card key={index} className="mt-1 mr-2" />
-                      ))}
-                    </div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            )
-          )}
-        </Accordion>
+                  </AccordionContent>
+                </AccordionItem>
+              )
+            )}
+          </Accordion>
+        </Reveal>
       </div>
     </section>
   )
