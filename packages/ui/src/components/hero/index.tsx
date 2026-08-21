@@ -9,22 +9,24 @@ export const Hero: FC = () => {
     <section className="relative flex min-h-screen items-center">
       <CanvasDistributedGraph />
       <div className="relative z-10 space-y-4">
-        <p className="text-4xl text-emerald-400 md:text-4xl">Hi, my name is</p>
-        <h1 className="scroll-m-20 text-9xl font-bold tracking-tight text-white md:text-6xl lg:text-9xl">
+        <p className="animate-in text-4xl text-emerald-400 delay-0 duration-700 fill-mode-both fade-in slide-in-from-bottom-4 md:text-4xl">
+          Hi, my name is
+        </p>
+        <h1 className="animate-in scroll-m-20 text-9xl font-bold tracking-tight text-white delay-200 duration-700 fill-mode-both fade-in slide-in-from-bottom-4 md:text-6xl lg:text-9xl">
           James Dumbell.
         </h1>
-        <p className="scroll-m-20 pb-8 text-3xl font-semibold text-gray-400 md:text-4xl lg:text-5xl">
+        <p className="animate-in scroll-m-20 pb-8 text-3xl font-semibold text-gray-400 delay-[400ms] duration-700 fill-mode-both fade-in slide-in-from-bottom-4 md:text-4xl lg:text-5xl">
           {`I'm a software engineer.`}
         </p>
-        <p className="scroll-m-20 text-lg text-gray-400 md:text-4xl lg:text-2xl">
+        <p className="animate-in scroll-m-20 text-lg text-gray-400 delay-[600ms] duration-700 fill-mode-both fade-in slide-in-from-bottom-4 md:text-4xl lg:text-2xl">
           {`💼 Currently working for `}
           <Hyperlink href="https://www.grafana.com" title="Grafana Labs" />
           {'.'}
         </p>
-        <p className="scroll-m-20 text-lg text-gray-400 md:text-4xl lg:text-2xl">
+        <p className="animate-in scroll-m-20 text-lg text-gray-400 delay-[800ms] duration-700 fill-mode-both fade-in slide-in-from-bottom-4 md:text-4xl lg:text-2xl">
           {'🏠 Based in London, UK.'}
         </p>
-        <div className={'pt-6'}>
+        <div className="animate-in pt-6 delay-1000 duration-700 fill-mode-both fade-in slide-in-from-bottom-4">
           <a
             href={'https://www.github.com/j-dumbell'}
             target="_blank"
